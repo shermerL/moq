@@ -3,11 +3,15 @@
 //! Parses SPS NAL units and AVCDecoderConfigurationRecord blobs into
 //! catalog-ready fields. The [`Avc1`] transmuxer rewrites Annex-B input
 //! (inline SPS/PPS) as length-prefixed NALU + out-of-band avcC, which is
-//! what every CMAF and MKV consumer expects. [`Import`] is the importer;
-//! it auto-detects either wire shape from the leading bytes.
+//! what every CMAF and MKV consumer expects. [`Export`] subscribes to a
+//! catalog-narrowed H.264 rendition and emits an Annex-B elementary
+//! stream; [`Import`] is the importer (auto-detects either wire shape
+//! from the leading bytes).
 
+mod export;
 mod import;
 
+pub use export::*;
 pub use import::*;
 
 use bytes::{Buf, BufMut, Bytes, BytesMut};
@@ -28,6 +32,12 @@ pub enum Error {
 
 	#[error("AVCDecoderConfigurationRecord too short")]
 	AvccTooShort,
+
+	#[error("AVCDecoderConfigurationRecord truncated")]
+	AvccTruncated,
+
+	#[error("avc1 description for rendition {name:?} is missing SPS or PPS (sps={sps}, pps={pps})")]
+	MissingParamSets { name: String, sps: usize, pps: usize },
 
 	#[error("SPS too large for avcC length field ({0} > {max})", max = u16::MAX)]
 	SpsTooLarge(usize),
@@ -188,6 +198,58 @@ pub(crate) fn build_avcc(sps_nal: &[u8], pps_nal: &[u8]) -> Result<Bytes> {
 	out.put_u16(pps_nal.len() as u16);
 	out.put_slice(pps_nal);
 	Ok(out.freeze())
+}
+
+/// SPS and PPS NAL units extracted from an avcC.
+#[derive(Debug, Clone)]
+pub struct AvccParamSets {
+	/// NALU length size in bytes (typically 4).
+	pub length_size: usize,
+	pub sps: Vec<Bytes>,
+	pub pps: Vec<Bytes>,
+}
+
+/// Pull the SPS and PPS NAL units out of an AVCDecoderConfigurationRecord.
+pub fn parse_avcc_param_sets(avcc: &[u8]) -> Result<AvccParamSets> {
+	if avcc.len() < 7 {
+		return Err(Error::AvccTooShort);
+	}
+	let length_size = (avcc[4] & 0x03) as usize + 1;
+	let num_sps = (avcc[5] & 0x1f) as usize;
+
+	let mut pos = 6;
+	let sps = read_param_sets(avcc, &mut pos, num_sps)?;
+
+	if avcc.len() <= pos {
+		return Err(Error::AvccTruncated);
+	}
+	let num_pps = avcc[pos] as usize;
+	pos += 1;
+
+	let pps = read_param_sets(avcc, &mut pos, num_pps)?;
+
+	Ok(AvccParamSets { length_size, sps, pps })
+}
+
+/// Read `count` length-prefixed (u16) NAL units from `buf` starting at `*pos`,
+/// advancing `*pos` past the last one. All arithmetic is checked so malformed
+/// configs surface as errors rather than panics.
+fn read_param_sets(buf: &[u8], pos: &mut usize, count: usize) -> Result<Vec<Bytes>> {
+	let mut out = Vec::with_capacity(count);
+	for _ in 0..count {
+		let after_len = pos.checked_add(2).ok_or(Error::AvccTruncated)?;
+		if buf.len() < after_len {
+			return Err(Error::AvccTruncated);
+		}
+		let len = u16::from_be_bytes([buf[*pos], buf[*pos + 1]]) as usize;
+		let after_nal = after_len.checked_add(len).ok_or(Error::AvccTruncated)?;
+		if buf.len() < after_nal {
+			return Err(Error::AvccTruncated);
+		}
+		out.push(Bytes::copy_from_slice(&buf[after_len..after_nal]));
+		*pos = after_nal;
+	}
+	Ok(out)
 }
 
 /// Transform H.264 frames from Annex-B (inline SPS/PPS, "avc3") to

@@ -27,7 +27,7 @@ pub mod mkv;
 
 pub use consumer::Consumer;
 pub use producer::Producer;
-pub(crate) use source::{CatalogSource, ExportSource};
+pub(crate) use source::ExportSource;
 
 /// A decoded media frame: timestamp, payload bytes, keyframe flag.
 ///

@@ -3,10 +3,13 @@
 //! The H.265 analogue of [`crate::codec::h264`]. Parses SPS NAL units
 //! and HEVCDecoderConfigurationRecord blobs. The [`Hvc1`] transmuxer
 //! rewrites Annex-B input (inline VPS/SPS/PPS) as length-prefixed NALU
-//! + out-of-band hvcC. [`Import`] is the Annex-B importer.
+//! + out-of-band hvcC. [`Export`] is the single-rendition Annex-B
+//!   exporter; [`Import`] is the Annex-B importer.
 
+mod export;
 mod import;
 
+pub use export::*;
 pub use import::*;
 
 use bytes::{Buf, BufMut, Bytes, BytesMut};
@@ -43,11 +46,87 @@ pub enum Error {
 	#[error("missing timestamp")]
 	MissingTimestamp,
 
+	#[error("HEVCDecoderConfigurationRecord too short")]
+	HvccTooShort,
+
+	#[error("HEVCDecoderConfigurationRecord truncated")]
+	HvccTruncated,
+
+	#[error("hvc1 description for rendition {name:?} is missing VPS, SPS, or PPS (vps={vps}, sps={sps}, pps={pps})")]
+	MissingParamSets {
+		name: String,
+		vps: usize,
+		sps: usize,
+		pps: usize,
+	},
+
 	#[error("annexb: {0}")]
 	Annexb(#[from] crate::codec::annexb::Error),
 }
 
 pub type Result<T> = std::result::Result<T, Error>;
+
+/// VPS, SPS, and PPS NAL units extracted from an hvcC.
+#[derive(Debug, Clone)]
+pub struct HvccParamSets {
+	/// NALU length size in bytes (typically 4).
+	pub length_size: usize,
+	pub vps: Vec<Bytes>,
+	pub sps: Vec<Bytes>,
+	pub pps: Vec<Bytes>,
+}
+
+/// Pull the VPS/SPS/PPS NAL units out of an HEVCDecoderConfigurationRecord.
+pub fn parse_hvcc_param_sets(hvcc: &[u8]) -> Result<HvccParamSets> {
+	if hvcc.len() < 23 {
+		return Err(Error::HvccTooShort);
+	}
+	let length_size = (hvcc[21] & 0x3) as usize + 1;
+	let num_arrays = hvcc[22] as usize;
+
+	let mut vps = Vec::new();
+	let mut sps = Vec::new();
+	let mut pps = Vec::new();
+	let mut pos: usize = 23;
+
+	for _ in 0..num_arrays {
+		let after_hdr = pos.checked_add(3).ok_or(Error::HvccTruncated)?;
+		if hvcc.len() < after_hdr {
+			return Err(Error::HvccTruncated);
+		}
+		let nal_type = hvcc[pos] & 0x3f;
+		let num_nalus = u16::from_be_bytes([hvcc[pos + 1], hvcc[pos + 2]]) as usize;
+		pos = after_hdr;
+
+		for _ in 0..num_nalus {
+			let after_len = pos.checked_add(2).ok_or(Error::HvccTruncated)?;
+			if hvcc.len() < after_len {
+				return Err(Error::HvccTruncated);
+			}
+			let len = u16::from_be_bytes([hvcc[pos], hvcc[pos + 1]]) as usize;
+			let after_nal = after_len.checked_add(len).ok_or(Error::HvccTruncated)?;
+			if hvcc.len() < after_nal {
+				return Err(Error::HvccTruncated);
+			}
+			let bytes = Bytes::copy_from_slice(&hvcc[after_len..after_nal]);
+			pos = after_nal;
+
+			match NALUnitType::from(nal_type) {
+				NALUnitType::VpsNut => vps.push(bytes),
+				NALUnitType::SpsNut => sps.push(bytes),
+				NALUnitType::PpsNut => pps.push(bytes),
+				_ => {}
+			}
+		}
+	}
+
+	Ok(HvccParamSets {
+		length_size,
+		vps,
+		sps,
+		pps,
+	})
+}
 
 /// Annex-B → length-prefixed transmuxer; the H.265 analogue of
 /// [`crate::codec::h264::Avc1`].

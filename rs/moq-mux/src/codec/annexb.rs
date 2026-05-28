@@ -1,4 +1,4 @@
-use bytes::{Buf, Bytes};
+use bytes::{Buf, Bytes, BytesMut};
 
 pub const START_CODE: Bytes = Bytes::from_static(&[0, 0, 0, 1]);
 
@@ -11,9 +11,64 @@ pub enum Error {
 
 	#[error("invalid Annex B start code")]
 	InvalidStartCode,
+
+	#[error("invalid avc1/hvc1 length size {0}")]
+	InvalidLengthSize(usize),
+
+	#[error("truncated length-prefixed NAL unit")]
+	Truncated,
 }
 
 pub type Result<T> = std::result::Result<T, Error>;
+
+/// Convert a length-prefixed NALU payload (avc1 / hvc1 wire shape) to Annex-B,
+/// optionally prepending `prefix` bytes (typically VPS/SPS/PPS NAL units already
+/// in Annex-B form, for keyframe parameter-set injection).
+pub fn from_length_prefixed(payload: &[u8], length_size: usize, prefix: Option<&[u8]>) -> Result<Bytes> {
+	if !(1..=4).contains(&length_size) {
+		return Err(Error::InvalidLengthSize(length_size));
+	}
+
+	let mut out = BytesMut::with_capacity(payload.len() + prefix.map(|p| p.len()).unwrap_or(0) + 16);
+	if let Some(p) = prefix {
+		out.extend_from_slice(p);
+	}
+
+	let mut pos = 0;
+	while pos < payload.len() {
+		let after_prefix = pos.checked_add(length_size).ok_or(Error::Truncated)?;
+		if payload.len() < after_prefix {
+			return Err(Error::Truncated);
+		}
+		let mut len = 0usize;
+		for byte in &payload[pos..after_prefix] {
+			len = (len << 8) | (*byte as usize);
+		}
+		let after_nal = after_prefix.checked_add(len).ok_or(Error::Truncated)?;
+		if payload.len() < after_nal {
+			return Err(Error::Truncated);
+		}
+		out.extend_from_slice(&START_CODE);
+		out.extend_from_slice(&payload[after_prefix..after_nal]);
+		pos = after_nal;
+	}
+
+	Ok(out.freeze())
+}
+
+/// Concatenate `start_code | nal` for every NAL in `nals` and freeze the
+/// result. Used to build a keyframe parameter-set prefix for an Annex-B
+/// elementary stream.
+pub fn build_prefix<'a, I: IntoIterator<Item = &'a Bytes>>(nals: I) -> Bytes {
+	let nals: Vec<&Bytes> = nals.into_iter().collect();
+	let total: usize = nals.iter().map(|n| n.len() + START_CODE.len()).sum();
+	let mut out = BytesMut::with_capacity(total);
+	for nal in nals {
+		out.extend_from_slice(&START_CODE);
+		out.extend_from_slice(nal);
+	}
+	out.freeze()
+}
 
 pub struct NalIterator<'a, T: Buf + AsRef<[u8]> + 'a> {
 	buf: &'a mut T,
