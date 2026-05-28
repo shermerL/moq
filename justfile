@@ -1,8 +1,7 @@
 #!/usr/bin/env just --justfile
-
 # Using Just: https://github.com/casey/just?tab=readme-ov-file#installation
-
 # Per-language modules. Anything that's specific to one language lives in
+
 # its own justfile; the recipes below orchestrate across them.
 mod js
 mod rs
@@ -10,14 +9,11 @@ mod py
 mod kt
 mod swift
 mod go
-
 # Demos and infra.
 mod demo
 mod infra
-
 # GitHub Actions workflow linting.
 mod gh '.github'
-
 # Shortcuts to avoid `demo::` prefix.
 mod boy 'demo/boy'
 mod pub 'demo/pub'
@@ -34,6 +30,7 @@ dev:
     just demo
 
 # Install repo-wide tooling. Per-language deps install on first invocation
+
 # of `just <lang> check`.
 install:
     bun install
@@ -42,6 +39,7 @@ install:
 # Fast inner-loop checks. Runs JS, Rust, and Markdown lints.
 # Shell + workflow + TOML + Nix + justfile lints skip silently if their
 # binaries aren't on $PATH; `nix develop` provides them, and `just ci`
+
 # requires them.
 check *args:
     just js check
@@ -55,6 +53,7 @@ check *args:
 
 # Run every per-language `ci` with the diff vs BASE; each greps for its
 # own scope and skips when nothing relevant changed. Pass BASE="" to
+
 # default to $GITHUB_BASE_REF (CI) or origin/main (local).
 ci BASE="":
     #!/usr/bin/env bash
@@ -101,6 +100,7 @@ ci BASE="":
     just gh ci
 
 # Auto-fix linting/formatting issues across all languages.
+
 # shfmt / taplo / nixfmt / just --fmt skipped silently if missing locally.
 fix:
     just js fix

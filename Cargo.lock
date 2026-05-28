@@ -3741,7 +3741,6 @@ dependencies = [
 name = "moq-mux"
 version = "0.5.1"
 dependencies = [
- "anyhow",
  "base64 0.22.1",
  "bytes",
  "conducer",

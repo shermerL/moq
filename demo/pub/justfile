@@ -17,6 +17,7 @@ deploy:
 # Use ffmpeg to fragment before uploading:
 #	 ffmpeg -i input.mp4 -c copy -f mp4 \
 #		 -movflags cmaf+separate_moof+delay_moov+skip_trailer+frag_every_frame \
+
 # output.mp4
 upload file:
     bun install

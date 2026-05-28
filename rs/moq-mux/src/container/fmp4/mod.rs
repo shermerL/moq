@@ -27,11 +27,11 @@ use moq_net::Timestamp;
 
 use crate::container::{Container, Frame};
 
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug, Clone, thiserror::Error)]
 #[non_exhaustive]
 pub enum Error {
 	#[error("mp4: {0}")]
-	Mp4(#[from] mp4_atom::Error),
+	Mp4(std::sync::Arc<mp4_atom::Error>),
 
 	#[error("moq: {0}")]
 	Moq(#[from] moq_net::Error),
@@ -48,13 +48,13 @@ pub enum Error {
 	#[error("PTS overflow")]
 	PtsOverflow,
 
-	#[error("no moof found in CMAF frame data")]
+	#[error("missing moof")]
 	NoMoof,
 
-	#[error("no mdat found in CMAF frame data")]
+	#[error("missing mdat")]
 	NoMdat,
 
-	#[error("no moov found in init data")]
+	#[error("missing moov")]
 	NoMoov,
 
 	#[error("no tracks in moov")]
@@ -65,7 +65,72 @@ pub enum Error {
 
 	#[error("can't synthesize CMAF init for {0}")]
 	UnsupportedSynthesis(String),
+
+	#[error("subtitle tracks are not supported")]
+	UnsupportedSubtitle,
+
+	#[error("unknown track handler: {0:?}")]
+	UnknownTrackHandler([u8; 4]),
+
+	#[error("missing codec")]
+	MissingCodec,
+
+	#[error("multiple codecs")]
+	MultipleCodecs,
+
+	#[error("unknown codec: {0:?}")]
+	UnknownCodec(mp4_atom::FourCC),
+
+	#[error("unsupported codec: {0:?}")]
+	UnsupportedCodec(Box<mp4_atom::Codec>),
+
+	#[error("unsupported codec: MPEG2")]
+	UnsupportedMpeg2,
+
+	#[error("duplicate moof")]
+	DuplicateMoof,
+
+	#[error("missing trun")]
+	MissingTrun,
+
+	#[error("missing tfdt")]
+	MissingTfdt,
+
+	#[error("missing video config for synthesized init")]
+	MissingVideoConfig,
+
+	#[error("video track {0} missing in catalog")]
+	MissingVideoTrack(String),
+
+	#[error("audio track {0} missing in catalog")]
+	MissingAudioTrack(String),
+
+	#[error("invalid data offset")]
+	InvalidDataOffset,
+
+	#[error("unknown track {0}")]
+	UnknownTrack(u32),
+
+	#[error("no keyframe at start of group")]
+	NoKeyframe,
+
+	#[error("track sample range {start}..{end} is out of bounds of mdat (len {len})")]
+	SampleRangeOutOfBounds { start: usize, end: usize, len: usize },
+
+	#[error("no catalog snapshot")]
+	NoCatalogSnapshot,
+
+	#[error("encode_fragment called with no frames")]
+	NoFrames,
 }
+
+impl From<mp4_atom::Error> for Error {
+	fn from(err: mp4_atom::Error) -> Self {
+		Error::Mp4(std::sync::Arc::new(err))
+	}
+}
+
+pub type Result<T> = std::result::Result<T, Error>;
 
 /// CMAF container: encodes/decodes a single track's moof+mdat fragments.
 ///
@@ -86,7 +151,7 @@ impl Wire {
 	}
 
 	/// Parse a CMAF init segment (ftyp+moov), extracting the single track.
-	pub fn from_init(init_data: &[u8]) -> Result<Self, Error> {
+	pub fn from_init(init_data: &[u8]) -> Result<Self> {
 		use mp4_atom::DecodeMaybe;
 
 		let mut cursor = std::io::Cursor::new(init_data);
@@ -110,7 +175,7 @@ impl Wire {
 impl Container for Wire {
 	type Error = Error;
 
-	fn write(&self, group: &mut moq_net::GroupProducer, frames: &[Frame]) -> Result<(), Self::Error> {
+	fn write(&self, group: &mut moq_net::GroupProducer, frames: &[Frame]) -> std::result::Result<(), Self::Error> {
 		let timescale = moq_net::Timescale::new(self.trak.mdia.mdhd.timescale as u64)?;
 		let track_id = self.trak.tkhd.track_id;
 		encode(group, frames, timescale, track_id)
@@ -120,7 +185,7 @@ impl Container for Wire {
 		&self,
 		group: &mut moq_net::GroupConsumer,
 		waiter: &conducer::Waiter,
-	) -> Poll<Result<Option<Vec<Frame>>, Self::Error>> {
+	) -> Poll<std::result::Result<Option<Vec<Frame>>, Self::Error>> {
 		use std::task::ready;
 
 		let Some(data) = ready!(group.poll_read_frame(waiter)?) else {
@@ -132,7 +197,7 @@ impl Container for Wire {
 	}
 }
 
-pub(crate) fn decode(data: Bytes, timescale: moq_net::Timescale) -> Result<Vec<Frame>, Error> {
+pub(crate) fn decode(data: Bytes, timescale: moq_net::Timescale) -> Result<Vec<Frame>> {
 	use mp4_atom::DecodeMaybe;
 
 	let mut cursor = std::io::Cursor::new(&data);
@@ -166,7 +231,11 @@ pub(crate) fn decode(data: Bytes, timescale: moq_net::Timescale) -> Result<Vec<F
 			let end = offset + size;
 
 			if end > mdat_data.len() {
-				return Ok(frames);
+				return Err(Error::SampleRangeOutOfBounds {
+					start: offset,
+					end,
+					len: mdat_data.len(),
+				});
 			}
 
 			let cts = entry.cts.unwrap_or_default() as i64;
@@ -197,7 +266,7 @@ pub(crate) fn encode(
 	frames: &[Frame],
 	timescale: moq_net::Timescale,
 	track_id: u32,
-) -> Result<(), Error> {
+) -> Result<()> {
 	if frames.is_empty() {
 		return Ok(());
 	}
@@ -224,7 +293,7 @@ pub(crate) fn encode_fragment(
 	timescale: moq_net::Timescale,
 	sequence_number: u32,
 	frames: &[Frame],
-) -> Result<Bytes, Error> {
+) -> Result<Bytes> {
 	use mp4_atom::Encode;
 
 	if frames.is_empty() {
@@ -296,7 +365,7 @@ pub(crate) fn synthesize_video_trak(
 	timescale: u64,
 	config: &VideoConfig,
 	description: &[u8],
-) -> Result<mp4_atom::Trak, Error> {
+) -> Result<mp4_atom::Trak> {
 	let width = config.coded_width.unwrap_or(0) as u16;
 	let height = config.coded_height.unwrap_or(0) as u16;
 	let visual = mp4_atom::Visual {
@@ -309,7 +378,7 @@ pub(crate) fn synthesize_video_trak(
 	let sample_entry = match &config.codec {
 		VideoCodec::H264(_) => {
 			let mut cursor = std::io::Cursor::new(description);
-			let avcc = mp4_atom::Avcc::decode_body(&mut cursor).map_err(Error::Mp4)?;
+			let avcc = mp4_atom::Avcc::decode_body(&mut cursor).map_err(Error::from)?;
 			mp4_atom::Codec::from(mp4_atom::Avc1 {
 				visual,
 				avcc,
@@ -318,7 +387,7 @@ pub(crate) fn synthesize_video_trak(
 		}
 		VideoCodec::H265(h265) => {
 			let mut cursor = std::io::Cursor::new(description);
-			let hvcc = mp4_atom::Hvcc::decode_body(&mut cursor).map_err(Error::Mp4)?;
+			let hvcc = mp4_atom::Hvcc::decode_body(&mut cursor).map_err(Error::from)?;
 			// `in_band` (catalog) ↔ hev1 sample entry; otherwise hvc1.
 			if h265.in_band {
 				mp4_atom::Codec::from(mp4_atom::Hev1 {
@@ -341,11 +410,7 @@ pub(crate) fn synthesize_video_trak(
 }
 
 /// Synthesize a CMAF `Trak` for an audio rendition that has no init segment.
-pub(crate) fn synthesize_audio_trak(
-	track_id: u32,
-	timescale: u64,
-	config: &AudioConfig,
-) -> Result<mp4_atom::Trak, Error> {
+pub(crate) fn synthesize_audio_trak(track_id: u32, timescale: u64, config: &AudioConfig) -> Result<mp4_atom::Trak> {
 	let audio = mp4_atom::Audio {
 		data_reference_index: 1,
 		channel_count: config.channel_count as u16,
