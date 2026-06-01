@@ -467,6 +467,16 @@ impl<S: web_transport_trait::Session> Publisher<S> {
 			Compression::None
 		};
 
+		// Per-frame timestamps require both a publisher-advertised timescale and
+		// a wire format that carries it. Older drafts ignore `track.timescale`
+		// (the field never lands on the wire) and stream untimed frames; Lite05+
+		// honors `Some(_)` and skips the timestamp byte for `None`.
+		let timescale = if version.has_timestamps() {
+			track.timescale
+		} else {
+			None
+		};
+
 		let info = lite::SubscribeOk {
 			priority: subscribe.priority,
 			ordered: false,
@@ -474,6 +484,7 @@ impl<S: web_transport_trait::Session> Publisher<S> {
 			start_group: None,
 			end_group: None,
 			compression,
+			timescale,
 		};
 
 		stream.writer.encode(&lite::SubscribeResponse::Ok(info)).await?;
@@ -494,6 +505,7 @@ impl<S: web_transport_trait::Session> Publisher<S> {
 			track_priority: track_priority_rx,
 			version,
 			compression,
+			timescale,
 		};
 
 		// `end_group` is a serving cap, not a subscription terminator: groups with
@@ -531,6 +543,10 @@ struct Subscription<S: web_transport_trait::Session> {
 	/// Codec announced in SUBSCRIBE_OK; every frame on this subscription is
 	/// compressed with it before hitting the wire.
 	compression: Compression,
+	/// Negotiated timestamp scale for this track. `Some(_)` iff
+	/// [`Version::has_timestamps`] is true for `version` (gated in
+	/// `run_subscribe`); used to validate per-frame timestamps before encoding.
+	timescale: Option<crate::Timescale>,
 }
 
 impl<S: web_transport_trait::Session> Subscription<S> {
@@ -625,8 +641,13 @@ impl<S: web_transport_trait::Session> Subscription<S> {
 		stream.encode(&msg).await?;
 		self.track_stats.group();
 
+		// Lite05+ delta-encodes per-frame timestamps within the group. The first
+		// frame's delta is its absolute value (against an implicit prev_ts of 0),
+		// every subsequent delta is signed against the previous frame.
+		let mut prev_ts: u64 = 0;
 		while let Some(frame) = self.next_frame(&mut stream, &mut priority, &mut group).await? {
-			self.serve_frame(&mut stream, &mut priority, frame).await?;
+			self.serve_frame(&mut stream, &mut priority, frame, &mut prev_ts)
+				.await?;
 		}
 
 		stream.finish()?;
@@ -646,7 +667,27 @@ impl<S: web_transport_trait::Session> Subscription<S> {
 		stream: &mut Writer<S::SendStream, Version>,
 		priority: &mut PriorityHandle,
 		mut frame: FrameConsumer,
+		prev_ts: &mut u64,
 	) -> Result<(), Error> {
+		// Per-frame wire layout when `self.timescale` is Some:
+		// `[zigzag-delta timestamp][size][payload]`. With `None`, the timestamp
+		// is omitted entirely — saves a byte per frame on tracks where timing
+		// isn't meaningful (catalogs, control channels, IETF transport).
+		//
+		// The model layer (`GroupProducer::append_frame`) already enforced that
+		// `frame.timestamp` matches the track timescale, so the unwraps below
+		// are infallible at this point.
+		if self.timescale.is_some() {
+			let ts = frame.timestamp.expect("model layer validated timestamp presence");
+			let curr = ts.value();
+			let delta: i64 = (curr as i128 - *prev_ts as i128)
+				.try_into()
+				.map_err(|_| Error::BoundsExceeded(crate::coding::BoundsExceeded))?;
+			let zz = crate::coding::VarInt::from_zigzag(delta).map_err(crate::coding::EncodeError::from)?;
+			stream.encode(&zz).await?;
+			*prev_ts = curr;
+		}
+
 		match self.compression {
 			Compression::None => {
 				stream.encode(&frame.size).await?;

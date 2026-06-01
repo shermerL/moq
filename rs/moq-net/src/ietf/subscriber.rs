@@ -732,7 +732,10 @@ impl<S: web_transport_trait::Session> Subscriber<S> {
 			if size == 0 {
 				let status: u64 = stream.decode().await?;
 				if status == 0 {
-					let mut frame = producer.create_frame(Frame { size: 0 })?;
+					let mut frame = producer.create_frame(Frame {
+						size: 0,
+						timestamp: None,
+					})?;
 					frame.finish()?;
 				} else if status == 3 && !group.flags.has_end {
 					break;
@@ -743,7 +746,7 @@ impl<S: web_transport_trait::Session> Subscriber<S> {
 				if size > MAX_FRAME_SIZE {
 					return Err(Error::FrameTooLarge);
 				}
-				let mut frame = producer.create_frame(Frame { size })?;
+				let mut frame = producer.create_frame(Frame { size, timestamp: None })?;
 
 				if let Err(err) = self.run_frame(stream, frame.clone()).await {
 					let _ = frame.abort(err.clone());

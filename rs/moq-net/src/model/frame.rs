@@ -5,7 +5,7 @@ use std::task::{Poll, ready};
 use bytes::buf::UninitSlice;
 use bytes::{BufMut, Bytes};
 
-use crate::{Error, Result};
+use crate::{Error, Result, Timestamp};
 
 /// Maximum payload size accepted for a single frame on the wire.
 ///
@@ -18,15 +18,23 @@ use crate::{Error, Result};
 // making the constructor fallible (returning [Result]), which is an API break.
 pub(crate) const MAX_FRAME_SIZE: u64 = 16 * 1024 * 1024;
 
-/// A chunk of data with an upfront size.
+/// A chunk of data with an upfront size and optional presentation timestamp.
 ///
 /// Note that this is just the header.
 /// You use [FrameProducer] and [FrameConsumer] to deal with the frame payload, potentially chunked.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Frame {
 	/// Total payload size in bytes. Declared up front so consumers can preallocate.
 	pub size: u64,
+	/// Presentation timestamp in the parent track's timescale.
+	///
+	/// `None` means no timestamp is attached to this frame, which is the case for
+	/// pre-Lite05 moq-lite streams and IETF moq-transport streams that haven't
+	/// negotiated a timescale. On Lite05+, producers must set `Some(ts)` whose
+	/// scale matches the track's [`crate::Track::timescale`]; the publisher
+	/// surfaces a `ProtocolViolation` otherwise.
+	pub timestamp: Option<Timestamp>,
 }
 
 impl Frame {
@@ -38,25 +46,34 @@ impl Frame {
 
 impl From<usize> for Frame {
 	fn from(size: usize) -> Self {
-		Self { size: size as u64 }
+		Self {
+			size: size as u64,
+			timestamp: None,
+		}
 	}
 }
 
 impl From<u64> for Frame {
 	fn from(size: u64) -> Self {
-		Self { size }
+		Self { size, timestamp: None }
 	}
 }
 
 impl From<u32> for Frame {
 	fn from(size: u32) -> Self {
-		Self { size: size as u64 }
+		Self {
+			size: size as u64,
+			timestamp: None,
+		}
 	}
 }
 
 impl From<u16> for Frame {
 	fn from(size: u16) -> Self {
-		Self { size: size as u64 }
+		Self {
+			size: size as u64,
+			timestamp: None,
+		}
 	}
 }
 
@@ -448,7 +465,11 @@ mod test {
 
 	#[test]
 	fn single_chunk_roundtrip() {
-		let mut producer = Frame { size: 5 }.produce();
+		let mut producer = Frame {
+			size: 5,
+			timestamp: None,
+		}
+		.produce();
 		producer.write(Bytes::from_static(b"hello")).unwrap();
 		producer.finish().unwrap();
 
@@ -459,7 +480,11 @@ mod test {
 
 	#[test]
 	fn multi_chunk_read_all() {
-		let mut producer = Frame { size: 10 }.produce();
+		let mut producer = Frame {
+			size: 10,
+			timestamp: None,
+		}
+		.produce();
 		producer.write(Bytes::from_static(b"hello")).unwrap();
 		producer.write(Bytes::from_static(b"world")).unwrap();
 		producer.finish().unwrap();
@@ -471,7 +496,11 @@ mod test {
 
 	#[test]
 	fn read_chunk_sequential() {
-		let mut producer = Frame { size: 10 }.produce();
+		let mut producer = Frame {
+			size: 10,
+			timestamp: None,
+		}
+		.produce();
 		producer.write(Bytes::from_static(b"hello")).unwrap();
 		// Each read_chunk returns whatever is new since the last call,
 		// which may span multiple writes.
@@ -490,7 +519,11 @@ mod test {
 
 	#[test]
 	fn read_all_chunks() {
-		let mut producer = Frame { size: 10 }.produce();
+		let mut producer = Frame {
+			size: 10,
+			timestamp: None,
+		}
+		.produce();
 		producer.write(Bytes::from_static(b"hello")).unwrap();
 		producer.write(Bytes::from_static(b"world")).unwrap();
 		producer.finish().unwrap();
@@ -503,7 +536,11 @@ mod test {
 
 	#[test]
 	fn finish_checks_remaining() {
-		let mut producer = Frame { size: 5 }.produce();
+		let mut producer = Frame {
+			size: 5,
+			timestamp: None,
+		}
+		.produce();
 		producer.write(Bytes::from_static(b"hi")).unwrap();
 		let err = producer.finish().unwrap_err();
 		assert!(matches!(err, Error::WrongSize));
@@ -511,14 +548,22 @@ mod test {
 
 	#[test]
 	fn write_too_many_bytes() {
-		let mut producer = Frame { size: 3 }.produce();
+		let mut producer = Frame {
+			size: 3,
+			timestamp: None,
+		}
+		.produce();
 		let err = producer.write(Bytes::from_static(b"toolong")).unwrap_err();
 		assert!(matches!(err, Error::WrongSize));
 	}
 
 	#[test]
 	fn abort_propagates() {
-		let mut producer = Frame { size: 5 }.produce();
+		let mut producer = Frame {
+			size: 5,
+			timestamp: None,
+		}
+		.produce();
 		let mut consumer = producer.consume();
 		producer.abort(Error::Cancel).unwrap();
 
@@ -528,7 +573,11 @@ mod test {
 
 	#[test]
 	fn empty_frame() {
-		let mut producer = Frame { size: 0 }.produce();
+		let mut producer = Frame {
+			size: 0,
+			timestamp: None,
+		}
+		.produce();
 		producer.finish().unwrap();
 
 		let mut consumer = producer.consume();
@@ -538,7 +587,11 @@ mod test {
 
 	#[tokio::test]
 	async fn pending_then_ready() {
-		let mut producer = Frame { size: 5 }.produce();
+		let mut producer = Frame {
+			size: 5,
+			timestamp: None,
+		}
+		.produce();
 		let mut consumer = producer.consume();
 
 		// Consumer blocks because no data yet.
@@ -554,7 +607,11 @@ mod test {
 	#[test]
 	fn buf_mut_roundtrip() {
 		// Exercise the BufMut path that the receive loop uses via `read_buf`.
-		let mut producer = Frame { size: 12 }.produce();
+		let mut producer = Frame {
+			size: 12,
+			timestamp: None,
+		}
+		.produce();
 		assert_eq!(producer.remaining_mut(), 12);
 		producer.put_slice(b"hello");
 		assert_eq!(producer.remaining_mut(), 7);
@@ -570,14 +627,22 @@ mod test {
 	#[test]
 	#[should_panic(expected = "advance_mut past frame.size")]
 	fn buf_mut_advance_past_capacity_panics() {
-		let mut producer = Frame { size: 4 }.produce();
+		let mut producer = Frame {
+			size: 4,
+			timestamp: None,
+		}
+		.produce();
 		// Safety violation on purpose: cnt > remaining_mut().
 		unsafe { producer.advance_mut(5) };
 	}
 
 	#[test]
 	fn read_chunk_streams_partial_writes() {
-		let mut producer = Frame { size: 6 }.produce();
+		let mut producer = Frame {
+			size: 6,
+			timestamp: None,
+		}
+		.produce();
 		let mut consumer = producer.consume();
 
 		producer.write(Bytes::from_static(b"foo")).unwrap();
@@ -597,7 +662,11 @@ mod test {
 
 	#[test]
 	fn cloned_consumer_independent_cursor() {
-		let mut producer = Frame { size: 10 }.produce();
+		let mut producer = Frame {
+			size: 10,
+			timestamp: None,
+		}
+		.produce();
 		let mut c1 = producer.consume();
 		producer.write(Bytes::from_static(b"hello")).unwrap();
 

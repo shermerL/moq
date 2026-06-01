@@ -48,9 +48,15 @@ impl Frame {
 		let mut header = BytesMut::new();
 		value.encode_quic(&mut header).map_err(moq_net::Error::from)?;
 
-		let size = header.len() + self.payload.len();
+		let size = (header.len() + self.payload.len()) as u64;
 
-		let mut chunked = group.create_frame(size.into())?;
+		// Stamp the moq-net frame timestamp too so Lite05+ can delta-encode it on the
+		// wire independently of the container-level prefix.
+		let net_frame = moq_net::Frame {
+			size,
+			timestamp: Some(timestamp),
+		};
+		let mut chunked = group.create_frame(net_frame)?;
 		chunked.write(header.freeze())?;
 		chunked.write(self.payload.clone())?;
 		chunked.finish()?;

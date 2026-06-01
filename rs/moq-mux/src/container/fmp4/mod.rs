@@ -281,7 +281,7 @@ pub(crate) fn encode(
 
 	let sequence_number = group.frame_count() as u32;
 	let bytes = encode_fragment(track_id, timescale, sequence_number, frames)?;
-	let mut writer = group.create_frame(bytes.len().into())?;
+	let mut writer = group.create_frame(bytes.len())?;
 	writer.write(bytes)?;
 	writer.finish()?;
 

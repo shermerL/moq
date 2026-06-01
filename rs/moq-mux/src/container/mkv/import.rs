@@ -285,18 +285,20 @@ impl Import {
 			}
 		};
 
-		let net_track = self.broadcast.unique_track(suffix)?;
+		let track = self.broadcast.create_track(
+			moq_net::Track::new(self.broadcast.unique_name(suffix)).with_timescale(hang::container::TIMESCALE),
+		)?;
 		let mut catalog = self.catalog.clone();
 		let mut catalog = catalog.lock();
 
 		match kind {
 			TrackKind::Video => {
 				let config = build_video_config(&codec_id, codec_private.as_ref(), video_children.as_deref())?;
-				catalog.video.renditions.insert(net_track.name.clone(), config);
+				catalog.video.renditions.insert(track.name.clone(), config);
 			}
 			TrackKind::Audio => {
 				let config = build_audio_config(&codec_id, codec_private.as_ref(), audio_children.as_deref())?;
-				catalog.audio.renditions.insert(net_track.name.clone(), config);
+				catalog.audio.renditions.insert(track.name.clone(), config);
 			}
 		}
 
@@ -306,7 +308,7 @@ impl Import {
 			track_number,
 			MkvTrack {
 				kind,
-				track: crate::container::Producer::new(net_track, crate::catalog::hang::Container::Legacy),
+				track: crate::container::Producer::new(track, crate::catalog::hang::Container::Legacy),
 				group: None,
 				last_emitted_ticks: None,
 			},

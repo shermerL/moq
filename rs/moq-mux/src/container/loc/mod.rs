@@ -29,7 +29,7 @@ impl Container for Wire {
 			let timestamp = frame.timestamp.convert(DEFAULT_TIMESCALE).map_err(hang::Error::from)?;
 			let data = moq_loc::encode(timestamp.value(), &frame.payload)?;
 
-			let mut chunked = group.create_frame(data.len().into())?;
+			let mut chunked = group.create_frame(data.len())?;
 			chunked.write(data)?;
 			chunked.finish()?;
 		}
