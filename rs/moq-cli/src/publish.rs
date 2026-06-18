@@ -80,7 +80,10 @@ pub struct CaptureArgs {
 }
 
 enum PublishDecoder {
-	Avc3(Box<moq_mux::codec::h264::Import>),
+	Avc3 {
+		split: moq_mux::codec::h264::Split,
+		import: Box<moq_mux::codec::h264::Import>,
+	},
 	Fmp4(Box<fmp4::Import>),
 	Ts(Box<ts::Import>),
 	Flv(Box<flv::Import>),
@@ -89,14 +92,28 @@ enum PublishDecoder {
 
 impl PublishDecoder {
 	/// Decode a chunk of bytes from stdin (Avc3, Fmp4, Ts, or Flv).
-	fn decode_buf(&mut self, buffer: &mut bytes::BytesMut) -> anyhow::Result<()> {
+	fn decode_buf(&mut self, data: &[u8]) -> anyhow::Result<()> {
 		match self {
-			Self::Avc3(d) => Ok(d.decode_stream(buffer, None)?),
-			Self::Fmp4(d) => Ok(d.decode(buffer)?),
-			Self::Ts(d) => Ok(d.decode(buffer)?),
-			Self::Flv(d) => Ok(d.decode(buffer)?),
+			Self::Avc3 { split, import } => {
+				let frames = split.decode(data, None)?;
+				import.decode(frames)?;
+				Ok(())
+			}
+			Self::Fmp4(d) => Ok(d.decode(data)?),
+			Self::Ts(d) => Ok(d.decode(data)?),
+			Self::Flv(d) => Ok(d.decode(data)?),
 			Self::Hls(_) => unreachable!(),
 		}
+	}
+
+	/// Flush any in-flight access unit at end of stream. The avc3 split holds the
+	/// final AU until the next start code, so stdin EOF must flush it.
+	fn finish(&mut self) -> anyhow::Result<()> {
+		if let Self::Avc3 { split, import } = self {
+			let tail = split.flush(None)?;
+			import.decode(tail)?;
+		}
+		Ok(())
 	}
 }
 
@@ -130,9 +147,13 @@ impl Publish {
 
 		let source = match format {
 			PublishFormat::Avc3 => {
-				let avc3 = moq_mux::codec::h264::Import::new(broadcast.clone(), catalog.clone())
-					.with_mode(moq_mux::codec::h264::Mode::Avc3)?;
-				Source::Stream(PublishDecoder::Avc3(Box::new(avc3)))
+				let track = moq_mux::import::unique_track(&mut broadcast, ".avc3")?;
+				let import = moq_mux::codec::h264::Import::new(track, catalog.clone());
+				let split = moq_mux::codec::h264::Split::new();
+				Source::Stream(PublishDecoder::Avc3 {
+					split,
+					import: Box::new(import),
+				})
 			}
 			PublishFormat::Fmp4 => {
 				let fmp4 = fmp4::Import::new(broadcast.clone(), catalog.clone());
@@ -177,11 +198,13 @@ impl Publish {
 				let mut buffer = bytes::BytesMut::new();
 
 				loop {
+					buffer.clear();
 					let n = tokio::io::AsyncReadExt::read_buf(&mut stdin, &mut buffer).await?;
 					if n == 0 {
+						decoder.finish()?;
 						return Ok(());
 					}
-					decoder.decode_buf(&mut buffer)?;
+					decoder.decode_buf(&buffer)?;
 				}
 			}
 			#[cfg(feature = "capture")]

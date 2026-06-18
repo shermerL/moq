@@ -391,20 +391,16 @@ impl Import {
 		let map = self.find_map(playlist).ok_or(Error::MissingMap)?;
 
 		let url = resolve_uri(&track.playlist, &map.uri)?;
-		let mut bytes = self.fetch_bytes(url).await?;
+		let bytes = self.fetch_bytes(url).await?;
 		let importer = match kind {
 			TrackKind::Video(index) => self.ensure_video_importer_for(index),
 			TrackKind::Audio => self.ensure_audio_importer(),
 		};
 
-		importer.decode(&mut bytes)?;
-
-		if !bytes.is_empty() {
-			return Err(Error::InitNotConsumed);
-		}
-		if !importer.is_initialized() {
-			return Err(Error::InitNotInitialized);
-		}
+		// The importer buffers internally, so a fully-parsed init segment leaves it
+		// initialized; any trailing partial atom just waits for the next segment. A
+		// segment that never yields a moov surfaces later as a decode error.
+		importer.decode(&bytes)?;
 
 		track.init_ready = true;
 		info!(?kind, "loaded HLS init segment");
@@ -423,7 +419,7 @@ impl Import {
 		}
 
 		let url = resolve_uri(&track.playlist, &segment.uri)?;
-		let mut bytes = self.fetch_bytes(url).await?;
+		let bytes = self.fetch_bytes(url).await?;
 
 		// Ensure the importer is initialized before processing fragments
 		// Use track.init_ready to avoid borrowing issues
@@ -439,12 +435,7 @@ impl Import {
 			TrackKind::Audio => self.ensure_audio_importer(),
 		};
 
-		// Final check after ensuring init segment
-		if !importer.is_initialized() {
-			return Err(Error::ImporterNotInitialized(format!("{:?}", kind)));
-		}
-
-		importer.decode(&mut bytes)?;
+		importer.decode(&bytes)?;
 		track.next_sequence = Some(sequence + 1);
 
 		Ok(())

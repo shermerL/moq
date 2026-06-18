@@ -13,12 +13,11 @@ use std::collections::{HashMap, HashSet};
 use std::io::Read;
 use std::sync::{Arc, Mutex};
 
-use bytes::{Buf, BytesMut};
+use bytes::BytesMut;
 use mpeg2ts::es::StreamType;
 use mpeg2ts::pes::PesHeader;
 use mpeg2ts::ts::payload::Pes;
 use mpeg2ts::ts::{Pid, ReadTsPacket, TsPacket, TsPacketReader, TsPayload};
-use tokio::io::{AsyncRead, AsyncReadExt};
 
 use super::adts;
 use super::scte35;
@@ -110,35 +109,11 @@ impl<E: scte35::Catalog> Import<E> {
 		}
 	}
 
-	/// True once the stream layout (PMT) has been discovered.
-	pub fn is_initialized(&self) -> bool {
-		self.initialized
-	}
-
-	/// Decode from an asynchronous reader, driving [`Self::decode`] in a loop.
-	pub async fn decode_from<T: AsyncRead + Unpin>(&mut self, reader: &mut T) -> anyhow::Result<()> {
-		let mut chunk = BytesMut::with_capacity(64 * 1024);
-		loop {
-			chunk.clear();
-			let n = reader.read_buf(&mut chunk).await?;
-			if n == 0 {
-				break;
-			}
-			self.decode(&mut chunk)?;
-		}
-		Ok(())
-	}
-
 	/// Append `buf` to the internal scratch and demux every whole TS packet it
 	/// now completes. The buffer is fully consumed; a trailing partial packet
 	/// (< 188 bytes) is retained for the next call.
-	pub fn decode<T: Buf + AsRef<[u8]>>(&mut self, buf: &mut T) -> anyhow::Result<()> {
-		while buf.has_remaining() {
-			let chunk = buf.chunk();
-			self.scratch.extend_from_slice(chunk);
-			let len = chunk.len();
-			buf.advance(len);
-		}
+	pub fn decode(&mut self, data: &[u8]) -> anyhow::Result<()> {
+		self.scratch.extend_from_slice(data);
 
 		// Route one whole packet at a time. SCTE-35 PIDs are intercepted here (the
 		// reader would PES-parse their sections and abort); every other packet is
@@ -262,17 +237,21 @@ impl<E: scte35::Catalog> Import<E> {
 
 		let stream = match stream_type {
 			StreamType::H264 => {
-				let import =
-					h264::Import::new(self.broadcast.clone(), self.catalog.clone()).with_mode(h264::Mode::Avc3)?;
+				let track = crate::import::unique_track(&mut self.broadcast, ".avc3")?;
 				Stream::H264 {
-					import: Box::new(import),
+					split: h264::Split::new(),
+					import: Box::new(h264::Import::new(track, self.catalog.clone())),
 					unwrap: PtsUnwrap::default(),
 				}
 			}
-			StreamType::H265 => Stream::H265 {
-				import: Box::new(h265::Import::new(self.broadcast.clone(), self.catalog.clone())),
-				unwrap: PtsUnwrap::default(),
-			},
+			StreamType::H265 => {
+				let track = crate::import::unique_track(&mut self.broadcast, ".hev1")?;
+				Stream::H265 {
+					split: h265::Split::new(),
+					import: Box::new(h265::Import::new(track, self.catalog.clone())),
+					unwrap: PtsUnwrap::default(),
+				}
+			}
 			// Only ADTS-framed AAC (0x0F). 0x11 is LATM/LOAS, which uses a different
 			// framing and syncword, so it falls through to the ignored arm below.
 			StreamType::AdtsAac => Stream::Aac(Box::new(AacStream {
@@ -713,10 +692,12 @@ impl ScteReassembler {
 /// One elementary stream's codec importer plus PTS-unwrap state.
 enum Stream<E: CatalogExt = ()> {
 	H264 {
+		split: h264::Split,
 		import: Box<h264::Import<E>>,
 		unwrap: PtsUnwrap,
 	},
 	H265 {
+		split: h265::Split,
 		import: Box<h265::Import<E>>,
 		unwrap: PtsUnwrap,
 	},
@@ -731,13 +712,23 @@ enum Stream<E: CatalogExt = ()> {
 impl<E: CatalogExt> Stream<E> {
 	fn write(&mut self, pending: Pending, burst: Option<u64>) -> anyhow::Result<()> {
 		match self {
-			Stream::H264 { import, unwrap } => {
+			Stream::H264 { split, import, unwrap } => {
 				let pts = unwrap_pts(unwrap, pending.pts)?;
-				Ok(import.decode_frame(&mut pending.data.as_slice(), pts)?)
+				skip_missing_keyframe((|| {
+					// Each PES is one access unit, so flush to emit it immediately.
+					let mut frames = split.decode(&pending.data, pts)?;
+					frames.extend(split.flush(pts)?);
+					import.decode(frames)
+				})())
 			}
-			Stream::H265 { import, unwrap } => {
+			Stream::H265 { split, import, unwrap } => {
 				let pts = unwrap_pts(unwrap, pending.pts)?;
-				Ok(import.decode_frame(&mut pending.data.as_slice(), pts)?)
+				skip_missing_keyframe((|| {
+					// Each PES is one access unit, so flush to emit it immediately.
+					let mut frames = split.decode(&pending.data, pts)?;
+					frames.extend(split.flush(pts)?);
+					import.decode(frames)
+				})())
 			}
 			Stream::Aac(stream) => stream.write(pending, burst),
 			Stream::Legacy(stream) => stream.write(pending),
@@ -747,8 +738,14 @@ impl<E: CatalogExt> Stream<E> {
 
 	fn seek(&mut self, sequence: u64) -> anyhow::Result<()> {
 		match self {
-			Stream::H264 { import, .. } => Ok(import.seek(sequence)?),
-			Stream::H265 { import, .. } => Ok(import.seek(sequence)?),
+			Stream::H264 { split, import, .. } => {
+				split.reset();
+				Ok(import.seek(sequence)?)
+			}
+			Stream::H265 { split, import, .. } => {
+				split.reset();
+				Ok(import.seek(sequence)?)
+			}
 			Stream::Aac(stream) => stream.seek(sequence),
 			Stream::Legacy(stream) => stream.seek(sequence),
 			Stream::Clock | Stream::Ignored => Ok(()),
@@ -805,12 +802,10 @@ impl<E: CatalogExt> AacStream<E> {
 					// downstream consumers that need out-of-band config (fMP4/MKV export,
 					// WebCodecs) can configure the decoder. TS itself carries it inline.
 					let description = config.encode();
-					let import = aac::Import::new(self.broadcast.clone(), self.catalog.clone(), config)?;
-					let name = import.track().name().to_string();
-					if let Some(rendition) = self.catalog.lock().audio.renditions.get_mut(&name) {
-						rendition.description = Some(description);
-					}
-					self.import.insert(import)
+					let track = crate::import::unique_track(&mut self.broadcast, ".aac")?;
+					let mut aac = aac::Import::new(track, self.catalog.clone(), config)?;
+					aac.update_rendition(|rendition| rendition.description = Some(description));
+					self.import.insert(aac)
 				}
 			};
 
@@ -825,8 +820,7 @@ impl<E: CatalogExt> AacStream<E> {
 				other => other,
 			};
 
-			let mut raw = &data[offset + header.header_len..end];
-			import.decode(&mut raw, pts)?;
+			import.decode(&data[offset + header.header_len..end], pts)?;
 
 			offset = end;
 			index += 1;
@@ -868,11 +862,8 @@ impl<E: CatalogExt> AacStream<E> {
 		}
 		self.jitter = Some(jitter);
 
-		if let Some(import) = &self.import {
-			let name = import.track().name().to_string();
-			if let Some(rendition) = self.catalog.lock().audio.renditions.get_mut(&name) {
-				rendition.jitter = Some(jitter.into());
-			}
+		if let Some(import) = &mut self.import {
+			import.update_rendition(|rendition| rendition.jitter = Some(jitter.into()));
 		}
 		Ok(())
 	}
@@ -958,14 +949,13 @@ impl<E: CatalogExt> LegacyStream<E> {
 						sample_rate: header.sample_rate,
 						channel_count: header.channel_count,
 					};
-					let import =
-						legacy::Import::new(self.descriptor, self.broadcast.clone(), self.catalog.clone(), config)?;
-					self.import.insert(import)
+					let track = crate::import::unique_track(&mut self.broadcast, self.descriptor.track_suffix)?;
+					let legacy = legacy::Import::new(self.descriptor, track, self.catalog.clone(), config);
+					self.import.insert(legacy)
 				}
 			};
 
-			let mut frame = &data[offset..end];
-			import.decode(&mut frame, pts)?;
+			import.decode(&data[offset..end], pts)?;
 
 			pts = match pts {
 				// `pts` is a 90 kHz PES PTS; rescale the sample-rate advance to match
@@ -1033,6 +1023,16 @@ fn pes_data_len(header: &PesHeader, pes_packet_len: u16) -> Option<usize> {
 /// Convert a raw 90 kHz PTS to a microsecond [`Timestamp`], unwrapping the
 /// 33-bit field. Returns `None` when the PES carried no PTS (the codec layer
 /// then falls back to a wall-clock timestamp).
+/// Swallow a [`MissingKeyframe`](crate::container::MissingKeyframe) from a video
+/// decode: a TS capture can join mid-GOP, so the deltas before the first keyframe
+/// have no group to anchor and are simply dropped rather than aborting the demux.
+fn skip_missing_keyframe(result: crate::Result<()>) -> anyhow::Result<()> {
+	match result {
+		Ok(()) | Err(crate::Error::MissingKeyframe(_)) => Ok(()),
+		Err(e) => Err(e.into()),
+	}
+}
+
 fn unwrap_pts(unwrap: &mut PtsUnwrap, pts: Option<u64>) -> anyhow::Result<Option<Timestamp>> {
 	let Some(raw) = pts else {
 		return Ok(None);
@@ -1336,7 +1336,7 @@ mod test {
 		let mut bytes = bytes::BytesMut::new();
 		bytes.extend_from_slice(&synth_pmt(&[(StreamType::Dts8ChannelLosslessAudio, 0x21)], true));
 		bytes.extend_from_slice(&packet(true, 0, 0, &CUE));
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 		import.finish().unwrap();
 
 		assert_eq!(
@@ -1359,7 +1359,7 @@ mod test {
 		let mut bytes = bytes::BytesMut::new();
 		bytes.extend_from_slice(&synth_pmt(&[(StreamType::Dts8ChannelLosslessAudio, 0x21)], true));
 		bytes.extend_from_slice(&packet(true, 0, 0, &CUE));
-		import.decode(&mut bytes).unwrap(); // must not abort on the private section
+		import.decode(&bytes).unwrap(); // must not abort on the private section
 		import.finish().unwrap();
 
 		assert!(import.scte.is_empty(), "no cue stream is created for a base catalog");
@@ -1404,7 +1404,7 @@ mod test {
 			&[(StreamType::Dts8ChannelLosslessAudio, SECTION_PID)],
 			false,
 		));
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 		assert!(
 			matches!(import.streams.get(&pid), Some(super::Stream::Ignored)),
 			"pre-CUEI PMT routes the PID to Ignored"
@@ -1414,7 +1414,7 @@ mod test {
 		let mut bytes = bytes::BytesMut::new();
 		bytes.extend_from_slice(&synth_pmt(&[(StreamType::Dts8ChannelLosslessAudio, SECTION_PID)], true));
 		bytes.extend_from_slice(&packet(true, 0, 0, &CUE));
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 		import.finish().unwrap();
 
 		assert!(
@@ -1488,19 +1488,19 @@ mod test {
 			],
 			true,
 		));
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 
 		// Private before video: no clock yet.
-		import.decode(&mut pes_packet(PRIVATE_PID, 1_000).as_slice()).unwrap();
+		import.decode(pes_packet(PRIVATE_PID, 1_000).as_slice()).unwrap();
 		assert!(import.last_pts.is_none(), "a private PES must not start the clock");
 
 		// Video sets the clock.
-		import.decode(&mut pes_packet(VIDEO_PID, 90_000).as_slice()).unwrap();
+		import.decode(pes_packet(VIDEO_PID, 90_000).as_slice()).unwrap();
 		let after_video = import.last_pts;
 		assert!(after_video.is_some(), "MPEG-2 video PTS must set the clock");
 
 		// Private after video: must NOT overwrite it.
-		import.decode(&mut pes_packet(PRIVATE_PID, 270_000).as_slice()).unwrap();
+		import.decode(pes_packet(PRIVATE_PID, 270_000).as_slice()).unwrap();
 		assert_eq!(
 			import.last_pts, after_video,
 			"a later private PES must not overwrite the clock"
@@ -1570,7 +1570,7 @@ mod test {
 		aac.extend_from_slice(&[0u8; 8]);
 		bytes.extend_from_slice(&audio_pes_packet(AAC_PID, 0, 270_000, &aac));
 
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 		import.finish().unwrap();
 
 		let snap = catalog.snapshot();
@@ -1626,7 +1626,7 @@ mod test {
 		let mut import = super::Import::new(broadcast, catalog.clone());
 
 		let pmt = synth_pmt(&[(StreamType::Mpeg1Audio, MP2_PID)], false);
-		import.decode(&mut bytes::BytesMut::from(&pmt[..])).unwrap();
+		import.decode(&bytes::BytesMut::from(&pmt[..])).unwrap();
 
 		// Two 96-byte MP2 frames with distinct payloads; frame A is cut at byte 50.
 		let mut frame_a = vec![0xFF, 0xFD, 0x14, 0x00];
@@ -1637,10 +1637,10 @@ mod test {
 		let mut second = frame_a[50..].to_vec();
 		second.extend_from_slice(&frame_b);
 		import
-			.decode(&mut audio_pes_packet(MP2_PID, 0, 90_000, &frame_a[..50]).as_slice())
+			.decode(audio_pes_packet(MP2_PID, 0, 90_000, &frame_a[..50]).as_slice())
 			.unwrap();
 		import
-			.decode(&mut audio_pes_packet(MP2_PID, 1, 270_000, &second).as_slice())
+			.decode(audio_pes_packet(MP2_PID, 1, 270_000, &second).as_slice())
 			.unwrap();
 		import.finish().unwrap();
 
@@ -1672,7 +1672,7 @@ mod test {
 		let mut import = super::Import::new(broadcast, catalog.clone());
 
 		let pmt = synth_pmt(&[(StreamType::Mpeg1Audio, MP2_PID)], false);
-		import.decode(&mut bytes::BytesMut::from(&pmt[..])).unwrap();
+		import.decode(&bytes::BytesMut::from(&pmt[..])).unwrap();
 
 		let mut frame_a = vec![0xFF, 0xFD, 0x14, 0x00];
 		frame_a.resize(96, 0x55);
@@ -1683,11 +1683,11 @@ mod test {
 		let mut first = frame_a.clone();
 		first.extend_from_slice(&frame_b[..2]);
 		import
-			.decode(&mut audio_pes_packet(MP2_PID, 0, 90_000, &first).as_slice())
+			.decode(audio_pes_packet(MP2_PID, 0, 90_000, &first).as_slice())
 			.unwrap();
 		// PES 2: the rest of frame B, under a far-off PTS that must NOT apply to it.
 		import
-			.decode(&mut audio_pes_packet(MP2_PID, 1, 900_000, &frame_b[2..]).as_slice())
+			.decode(audio_pes_packet(MP2_PID, 1, 900_000, &frame_b[2..]).as_slice())
 			.unwrap();
 		import.finish().unwrap();
 
@@ -1730,7 +1730,7 @@ mod test {
 		));
 		bytes.extend_from_slice(&pes_packet(VIDEO_PID, 90_000)); // video sets the clock
 		bytes.extend_from_slice(&packet(true, 0, 0, &CUE)); // then the SCTE-35 section
-		import.decode(&mut bytes).unwrap();
+		import.decode(&bytes).unwrap();
 		let clock = import.last_pts.expect("video set the media clock");
 		import.finish().unwrap();
 
@@ -1783,7 +1783,7 @@ mod test {
 		));
 		bytes.extend_from_slice(&packet(true, 0, 0, &CUE)); // a private section on 0x21
 		bytes.extend_from_slice(&pes_packet(VIDEO_PID, 90_000)); // valid video after it
-		import.decode(&mut bytes).unwrap(); // must NOT abort
+		import.decode(&bytes).unwrap(); // must NOT abort
 
 		assert!(
 			import.last_pts.is_some(),

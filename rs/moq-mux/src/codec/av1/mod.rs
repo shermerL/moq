@@ -5,8 +5,10 @@
 //! raw AV1 bitstreams (OBU-framed) to a moq broadcast.
 
 mod import;
+mod split;
 
 pub use import::*;
+pub use split::*;
 
 use hang::catalog::AV1;
 
@@ -22,9 +24,6 @@ pub enum Error {
 
 	#[error("not initialized")]
 	NotInitialized,
-
-	#[error("fixed track cannot be reconfigured")]
-	FixedTrackReconfigured,
 
 	#[error("expected sequence header before any frames")]
 	MissingSequenceHeader,

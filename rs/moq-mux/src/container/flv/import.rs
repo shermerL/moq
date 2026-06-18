@@ -11,7 +11,6 @@
 
 use bytes::{Buf, Bytes, BytesMut};
 use hang::catalog::{AAC, AudioConfig, Container, H264, VideoConfig};
-use tokio::io::{AsyncRead, AsyncReadExt};
 
 use super::{
 	AAC_RAW, AAC_SEQUENCE_HEADER, AUDIO_FORMAT_AAC, AVC_NALU, AVC_SEQUENCE_HEADER, FILE_HEADER_LEN, FRAME_TYPE_KEY,
@@ -66,35 +65,11 @@ impl Import {
 		}
 	}
 
-	/// True once at least one stream's sequence header has been parsed.
-	pub fn is_initialized(&self) -> bool {
-		self.video.is_some() || self.audio.is_some()
-	}
-
-	/// Decode from an asynchronous reader, driving [`Self::decode`] in a loop.
-	pub async fn decode_from<T: AsyncRead + Unpin>(&mut self, reader: &mut T) -> anyhow::Result<()> {
-		let mut chunk = BytesMut::with_capacity(64 * 1024);
-		loop {
-			chunk.clear();
-			let n = reader.read_buf(&mut chunk).await?;
-			if n == 0 {
-				break;
-			}
-			self.decode(&mut chunk)?;
-		}
-		Ok(())
-	}
-
 	/// Append `buf` to the internal scratch and demux every whole tag it now
 	/// completes. The buffer is fully consumed; a trailing partial tag is retained
 	/// for the next call.
-	pub fn decode<T: Buf + AsRef<[u8]>>(&mut self, buf: &mut T) -> anyhow::Result<()> {
-		while buf.has_remaining() {
-			let chunk = buf.chunk();
-			self.buffer.extend_from_slice(chunk);
-			let len = chunk.len();
-			buf.advance(len);
-		}
+	pub fn decode(&mut self, data: &[u8]) -> anyhow::Result<()> {
+		self.buffer.extend_from_slice(data);
 
 		self.drain()
 	}
@@ -178,13 +153,18 @@ impl Import {
 				// FLV stores DTS in the tag; PTS is DTS plus the composition offset.
 				let pts_ms = (timestamp as i64) + (composition_time as i64);
 				anyhow::ensure!(pts_ms >= 0, "negative AVC presentation timestamp");
-				stream.track.write(Frame {
+				// Live FLV can join mid-GOP: a leading delta before the first
+				// keyframe has no group to anchor, so the producer reports
+				// MissingKeyframe and we drop it rather than abort.
+				match stream.track.write(Frame {
 					timestamp: Timestamp::from_millis(pts_ms as u64)?,
 					duration: None,
 					payload: Bytes::copy_from_slice(data),
 					keyframe: frame_type == FRAME_TYPE_KEY,
-				})?;
-				Ok(())
+				}) {
+					Ok(()) | Err(crate::Error::MissingKeyframe(_)) => Ok(()),
+					Err(e) => Err(e.into()),
+				}
 			}
 			// AVCPacketType 2 is "end of sequence"; nothing to emit.
 			_ => Ok(()),
@@ -252,9 +232,9 @@ impl Import {
 			.renditions
 			.insert(net_track.name().to_string(), config);
 		self.video = Some(Stream {
-			// Live FLV can join mid-GOP; tolerate leading deltas before the first keyframe.
-			track: crate::container::Producer::new(net_track, crate::catalog::hang::Container::Legacy)
-				.with_lenient_start(),
+			// Leading deltas before the first keyframe are skipped at the write
+			// site (the producer reports MissingKeyframe), so a mid-GOP join works.
+			track: crate::container::Producer::new(net_track, crate::catalog::hang::Container::Legacy),
 			description: Bytes::copy_from_slice(avcc_bytes),
 		});
 		Ok(())
