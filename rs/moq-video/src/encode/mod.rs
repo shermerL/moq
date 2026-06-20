@@ -11,8 +11,8 @@
 //! - [`Producer`] alone publishes packets you already encoded.
 //!
 //! [`Options`] / [`Kind`] / [`Config`] configure them. The decode/consume
-//! counterpart (mirror of `moq-audio`'s consumer) will land in a sibling
-//! `decode` module.
+//! counterpart (mirror of `moq-audio`'s consumer) lives in the sibling
+//! [`decode`](crate::decode) module.
 
 mod backend;
 mod encoder;
