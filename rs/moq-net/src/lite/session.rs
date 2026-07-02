@@ -112,15 +112,13 @@ pub fn start<S: web_transport_trait::Session>(
 	}
 	let peer_setup = peer_setup_slot;
 
-	// Advertise our own capabilities on a uni Setup Stream, then FIN.
+	// Advertise our own capabilities on a uni Setup Stream, then FIN. Best-effort:
+	// a failure here just means the peer falls back to "no capabilities" for us.
 	if version.has_setup_stream() {
 		let session = session.clone();
 		web_async::spawn(async move {
 			if let Err(err) = send_setup(&session, our_setup, version).await {
-				// The peer gates serving on our SETUP, so a failure to send it must
-				// tear the session down rather than leave the peer waiting.
-				tracing::warn!(%err, "failed to send setup stream");
-				session.close(err.to_code(), &err.to_string());
+				tracing::debug!(%err, "failed to send setup");
 			}
 		});
 	}
