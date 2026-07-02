@@ -253,7 +253,9 @@ prepare_c() {
     }
     case "$(uname -s)" in
         Darwin) os_libs=(-framework CoreFoundation -framework Security -framework CoreServices) ;;
-        *) os_libs=(-ldl -lm -lpthread) ;;
+        # libmoq.a bundles openh264 (C++) and, on Linux, moq-vaapi (libva), so
+        # the static link needs their runtimes alongside the usual system libs.
+        *) os_libs=(-ldl -lm -lpthread -lstdc++ -lva -lva-drm) ;;
     esac
     C_SMOKE="$TMP/c-smoke"
     if ! "$cc" "$CLIENTS/c/subscribe.c" -I"$TARGET_BASE/include" -L"$TARGET_BASE/$PROFILE" -lmoq "${os_libs[@]}" -o "$C_SMOKE" >"$TMP/c-compile.log" 2>&1; then
@@ -390,7 +392,7 @@ run_subscriber() {
             # SIGTERM that fires when no data arrives within the timeout.
             local n
             n=$(timeout -k 3 "$TIMEOUT" "$MOQ" --client-connect "$URL" --broadcast "$broadcast" \
-                export fmp4 2>/dev/null | head -c 1 | wc -c | tr -d ' ' || true)
+                export fmp4 | head -c 1 | wc -c | tr -d ' ' || true)
             [[ "${n:-0}" -ge 1 ]]
             ;;
         python)
@@ -460,7 +462,7 @@ run_round() {
         echo "  WARN  publisher '$pub' exited early:"
         sed 's/^/        /' "$TMP/pub-$pub.log" 2>/dev/null || true
     fi
-    local want_pass=1 got
+    local want_pass=1 got round_pass=0
     [[ "$NEGATIVE" -eq 1 ]] && want_pass=0
     # ${arr[@]+...} guard: a round may have no live subscribers (all broken),
     # and bash 3.2 (macOS) errors on "${!pids[@]}" for an empty array under `set -u`.
@@ -468,12 +470,19 @@ run_round() {
         if wait "${pids[$i]}"; then got=1; else got=0; fi
         if [[ "$got" -eq "$want_pass" ]]; then
             echo "  PASS  $pub -> ${names[$i]}"
+            round_pass=1
         else
             echo "  FAIL  $pub -> ${names[$i]}"
             sed 's/^/        /' "$TMP/$pub-${names[$i]}.log" 2>/dev/null || true
             overall=1
         fi
     done
+    # Every leg failing points at the publisher; surface its log even when the
+    # process is still alive (e.g. connected and announcing but producing nothing).
+    if [[ "$NEGATIVE" -eq 0 && "$round_pass" -eq 0 && ${#pids[@]} -gt 0 && -n "$pub_pid" ]]; then
+        echo "  INFO  publisher '$pub' log:"
+        sed 's/^/        /' "$TMP/pub-$pub.log" 2>/dev/null || true
+    fi
     if [[ -n "$pub_pid" ]]; then
         kill_tree "$pub_pid"
         wait "$pub_pid" 2>/dev/null || true
