@@ -165,6 +165,12 @@
             gzip
           ];
 
+        # Developer workflow tooling not needed for builds: the GitHub CLI
+        # for opening/reviewing PRs from the dev shell.
+        devTools = with pkgs; [
+          gh
+        ];
+
         # Linters / formatters required by `just ci`; `just check` and
         # `just fix` guard each tool with `command -v` so they skip
         # silently when the binary isn't on $PATH.
@@ -175,6 +181,21 @@
           taplo
           nixfmt
         ];
+
+        # Dependencies for building the OBS plugin (`just obs build`).
+        # Linux-only: nixpkgs marks obs-studio broken on Darwin, so macOS
+        # and Windows fetch libobs/Qt6 via the OBS buildspec instead (see
+        # cpp/obs/buildspec.json and doc/bin/obs.md). ffmpeg + cmake come from
+        # rustDeps. clang-tools/gersemi back `just obs check`.
+        obsDeps =
+          with pkgs;
+          lib.optionals (!stdenv.isDarwin) [
+            obs-studio
+            qt6.qtbase
+            ninja
+            clang-tools
+            gersemi
+          ];
 
         # Apply our overlay to get the package definitions
         overlayPkgs = pkgs.extend self.overlays.default;
@@ -235,7 +256,8 @@
         };
 
         devShells.default = pkgs.mkShell {
-          packages = rustDeps ++ jsDeps ++ pyDeps ++ cdnDeps ++ packagingDeps ++ lintDeps;
+          packages =
+            rustDeps ++ jsDeps ++ pyDeps ++ cdnDeps ++ packagingDeps ++ lintDeps ++ obsDeps ++ devTools;
 
           # jemalloc's configure uses -O0 test builds, which conflict with
           # Nix's _FORTIFY_SOURCE hardening (requires -O).
