@@ -144,9 +144,6 @@ Language-specific tooling (TypeScript/`bun`/Biome, JS async patterns, Web Compon
 
 - Run `just check` to execute all tests and linting.
 - Run `just fix` to automatically fix formating and easy things.
-- Rust tests are integrated within source files
-- Async tests that sleep should call `tokio::time::pause()` at the start to simulate time instantly
-- For UI / web changes (`js/watch`, `js/publish`, `demo/web`, anything touching playback or the `<moq-watch>`/`<moq-publish>` components), don't stop at unit tests: run `just dev` and exercise the change in a real browser via the Claude-in-Chrome plugin (if installed), since WebTransport + WebCodecs playback only surfaces at runtime. The Chrome plugin drives a real visible tab, so it avoids the headless-preview gotcha where `<moq-watch>` gates video download on a `hidden` tab.
 
 ## Cross-Package Sync
 
