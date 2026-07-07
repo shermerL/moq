@@ -1116,7 +1116,11 @@ struct GroupPublisher {
 	session_last: HashMap<String, Vec<u8>>,
 }
 
-type GroupedEntries<'a> = HashMap<PathOwned, Vec<(&'a PathOwned, &'a Vec<(Tier, Arc<TierCounters>)>)>>;
+type EntryTiers = Vec<(Tier, Arc<TierCounters>)>;
+type EntrySnapshots = Vec<(PathOwned, EntryTiers)>;
+type SessionRoots = Vec<(PathOwned, Arc<SessionCounters>)>;
+type SessionSnapshots = Vec<(Tier, SessionRoots)>;
+type GroupedEntries<'a> = HashMap<PathOwned, Vec<(&'a PathOwned, &'a EntryTiers)>>;
 type GroupedSessions<'a> = HashMap<PathOwned, Vec<(&'a PathOwned, &'a Arc<SessionCounters>)>>;
 
 impl GroupPublisher {
@@ -1247,7 +1251,7 @@ async fn run_publisher(
 			return;
 		};
 
-		let entries: Vec<(PathOwned, Vec<(Tier, Arc<TierCounters>)>)> = {
+		let entries: EntrySnapshots = {
 			let map = shared.entries.lock();
 			map.iter()
 				.map(|(path, entry)| {
@@ -1263,7 +1267,7 @@ async fn run_publisher(
 				.collect()
 		};
 
-		let sessions: Vec<(Tier, Vec<(PathOwned, Arc<SessionCounters>)>)> = {
+		let sessions: SessionSnapshots = {
 			let map = shared.sessions.lock();
 			map.iter()
 				.map(|(tier, roots)| {
