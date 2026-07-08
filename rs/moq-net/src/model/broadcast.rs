@@ -19,12 +19,20 @@ pub struct Info {
 	/// [`crate::Origin`] when forwarding, so the list is used for loop detection and
 	/// shortest-path preference.
 	pub hops: OriginList,
+
+	/// The origin this broadcast belongs to (its identity, and the cache pool its
+	/// tracks and groups inherit). A track reaches its pool by walking up this link,
+	/// so the pool has a single home on the origin rather than being copied per
+	/// broadcast. Defaults to an unknown origin with an unbounded pool (a standalone
+	/// broadcast with no relay origin).
+	pub origin: super::origin::Info,
 }
 
 impl Default for Info {
 	fn default() -> Self {
 		Self {
 			hops: OriginList::new(),
+			origin: super::origin::Info::default(),
 		}
 	}
 }
@@ -429,7 +437,8 @@ impl Consumer {
 		}
 
 		// Allocate the name once and share the same Arc across the request, the
-		// requests map, and the FIFO order.
+		// requests map, and the FIFO order. The request inherits the broadcast's
+		// cache pool through its `Arc<Info>`, same as a producer-created track.
 		let name: Arc<str> = name.into();
 		let request = track::Request::new(self.info.clone(), name.clone());
 		let consumer = request.consume();

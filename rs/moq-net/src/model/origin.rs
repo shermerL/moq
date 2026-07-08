@@ -1,4 +1,4 @@
-use crate::{broadcast, track};
+use crate::{broadcast, cache, track};
 use std::{
 	collections::{BTreeMap, HashMap, VecDeque},
 	fmt,
@@ -74,7 +74,64 @@ impl Origin {
 		self.id
 	}
 
-	/// Consume this [Origin] to create a producer that carries its id.
+	/// Consume this [Origin] to create a producer that carries its id, with an
+	/// unbounded cache pool. Use [`Info::produce`] to configure the pool.
+	pub fn produce(self) -> Producer {
+		Info::new(self).produce()
+	}
+}
+
+/// An origin's identity plus the cache pool its broadcasts inherit.
+///
+/// Doubles as the construction config for an [origin `Producer`](Producer) and as the
+/// parent handle every broadcast carries ([`broadcast::Info::origin`]): the origin owns
+/// the [`cache::Pool`] every group in the tree registers with, so a relay configures one
+/// bounded pool here and every broadcast, track, and group beneath it reaches that single
+/// budget by walking up the ownership chain. Defaults to an unbounded pool
+/// ([`Origin::produce`] is the shorthand for that). Cheap to clone (a `Copy` id plus an
+/// `Arc`-handle bump), so it's stored by value rather than behind another `Arc`.
+#[derive(Clone, Debug)]
+#[non_exhaustive]
+pub struct Info {
+	/// The origin's wire identity, appended to broadcast hop chains for loop
+	/// detection and shortest-path routing.
+	pub id: Origin,
+
+	/// The cache pool broadcasts under this origin register their groups with. It
+	/// flows down the ownership chain (origin -> broadcast -> track -> group), so a
+	/// group reaches it via `track.broadcast.origin.pool`. Unbounded by default; a
+	/// relay sets a bounded one (via [`Self::with_pool`]) so cached groups across the
+	/// whole process share one memory budget.
+	pub pool: cache::Pool,
+}
+
+impl Default for Info {
+	/// An unknown origin (id `0`, no loop detection) with an unbounded pool. This is
+	/// what a standalone broadcast (no relay origin) inherits.
+	fn default() -> Self {
+		Self {
+			id: Origin::UNKNOWN,
+			pool: cache::Pool::default(),
+		}
+	}
+}
+
+impl Info {
+	/// Config for the given origin id with an unbounded cache pool.
+	pub fn new(id: Origin) -> Self {
+		Self {
+			id,
+			pool: cache::Pool::default(),
+		}
+	}
+
+	/// Set the cache pool this origin's broadcasts inherit, returning `self` for chaining.
+	pub fn with_pool(mut self, pool: cache::Pool) -> Self {
+		self.pool = pool;
+		self
+	}
+
+	/// Consume this config to create an origin [`Producer`].
 	pub fn produce(self) -> Producer {
 		Producer::new(self)
 	}
@@ -774,6 +831,10 @@ pub struct Producer {
 	// `nodes` because dynamic broadcasts are never announced: they only resolve a
 	// consumer's `request_broadcast` when no live announcement exists.
 	dynamic: kio::Producer<OriginDynamicState>,
+
+	// The cache pool inherited by broadcasts created under this origin (sessions
+	// mint their remote broadcasts with it). Unbounded by default.
+	pool: cache::Pool,
 }
 
 impl std::ops::Deref for Producer {
@@ -785,14 +846,25 @@ impl std::ops::Deref for Producer {
 }
 
 impl Producer {
-	/// Build a producer for the given origin id with no scoped prefix and no
-	/// pre-existing broadcasts. Prefer [`Origin::produce`].
-	pub fn new(info: Origin) -> Self {
+	/// Build a producer from an [`Info`] (identity + cache pool) with no scoped
+	/// prefix and no pre-existing broadcasts. Prefer [`Info::produce`] /
+	/// [`Origin::produce`].
+	pub fn new(info: Info) -> Self {
 		Self {
-			info,
+			info: info.id,
 			nodes: OriginNodes::default(),
 			root: PathOwned::default(),
 			dynamic: kio::Producer::default(),
+			pool: info.pool,
+		}
+	}
+
+	/// This origin's [`Info`] (identity + cache pool), the parent handle a broadcast
+	/// created under this origin carries (see [`broadcast::Info::origin`]).
+	pub fn info(&self) -> Info {
+		Info {
+			id: self.info,
+			pool: self.pool.clone(),
 		}
 	}
 
@@ -806,6 +878,7 @@ impl Producer {
 			nodes: OriginNodes { nodes: Vec::new() },
 			root: PathOwned::default(),
 			dynamic: kio::Producer::default(),
+			pool: cache::Pool::default(),
 		}
 	}
 
@@ -816,7 +889,11 @@ impl Producer {
 	/// unannounces the broadcast. See [`publish_broadcast`](Self::publish_broadcast) for the
 	/// error cases.
 	pub fn create_broadcast(&self, path: impl AsPath) -> Result<Broadcast, Error> {
-		let producer = broadcast::Info::new().produce();
+		let producer = broadcast::Info {
+			origin: self.info(),
+			..Default::default()
+		}
+		.produce();
 		let publish = self.publish_broadcast(path, &producer)?;
 		Ok(Broadcast { producer, publish })
 	}
@@ -881,6 +958,7 @@ impl Producer {
 			nodes: self.nodes.select(&prefixes)?,
 			root: self.root.clone(),
 			dynamic: self.dynamic.clone(),
+			pool: self.pool.clone(),
 		})
 	}
 
@@ -925,6 +1003,7 @@ impl Producer {
 			root: self.root.join(&prefix).to_owned(),
 			nodes: self.nodes.root(&prefix)?,
 			dynamic: self.dynamic.clone(),
+			pool: self.pool.clone(),
 		})
 	}
 
@@ -1974,6 +2053,7 @@ mod tests {
 		// `a` carries one hop; `b` has none, so `b` wins the route and replaces it.
 		let a = broadcast::Info {
 			hops: OriginList::try_from(vec![Origin::new(1u64).unwrap()]).unwrap(),
+			..Default::default()
 		}
 		.produce();
 		let b = broadcast::Info::new().produce();
@@ -1995,6 +2075,7 @@ mod tests {
 		// `a` carries one hop; `b` has none, so `b` wins the route and replaces it.
 		let a = broadcast::Info {
 			hops: OriginList::try_from(vec![Origin::new(1u64).unwrap()]).unwrap(),
+			..Default::default()
 		}
 		.produce();
 		let b = broadcast::Info::new().produce();
@@ -2045,7 +2126,11 @@ mod tests {
 					.collect::<Vec<_>>(),
 			)
 			.unwrap();
-			broadcast::Info { hops }.produce()
+			broadcast::Info {
+				hops,
+				..Default::default()
+			}
+			.produce()
 		}
 
 		// Resolve the active route for "test" after publishing both routes in the given order.

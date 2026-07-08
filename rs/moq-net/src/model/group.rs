@@ -8,10 +8,12 @@
 //! The reader can be cloned, in which case each reader receives a copy of each frame. (fanout)
 //!
 //! The stream is closed with [Error] when all writers or readers are dropped.
+use crate::cache;
 use crate::frame::{self, Frame, FrameBuf};
 use crate::{Timescale, track};
 use std::collections::VecDeque;
 use std::mem::MaybeUninit;
+use std::sync::Arc;
 use std::task::{Poll, ready};
 
 use bytes::Bytes;
@@ -101,6 +103,10 @@ pub(crate) struct GroupState {
 	// The total size (in bytes) of all cached frames plus any in-flight frame.
 	pub(crate) cache: u64,
 
+	// This group's registration in the track's cache pool; mirrors `cache` so the
+	// pool can evict the least-recently-read groups under memory pressure.
+	charge: cache::Charge,
+
 	// Whether the group has been finalized (no more frames).
 	pub(crate) fin: bool,
 
@@ -117,6 +123,7 @@ impl GroupState {
 		}
 		let local = index - self.offset;
 		if let Some(f) = self.frames.get(local) {
+			self.charge.touch();
 			let info = frame::Info {
 				size: f.payload.len() as u64,
 				timestamp: f.timestamp,
@@ -126,12 +133,16 @@ impl GroupState {
 		if local == self.frames.len()
 			&& let Some(p) = &self.partial
 		{
+			self.charge.touch();
 			let info = frame::Info {
 				size: p.buf.capacity() as u64,
 				timestamp: p.timestamp,
 			};
 			return Poll::Ready(Ok(Some((info, frame::Source::Partial(p.buf.clone())))));
 		}
+		// `abort` is checked before `fin`: an evicted group is both finished and
+		// aborted with its frames cleared, and the reader must see the abort rather
+		// than a clean end-of-group at the wrong index.
 		if let Some(err) = &self.abort {
 			return Poll::Ready(Err(err.clone()));
 		}
@@ -142,10 +153,12 @@ impl GroupState {
 	}
 
 	fn poll_finished(&self) -> Poll<Result<u64>> {
-		if self.fin {
-			Poll::Ready(Ok((self.offset + self.frames.len()) as u64))
-		} else if let Some(err) = &self.abort {
+		if let Some(err) = &self.abort {
+			// Checked before `fin`: an evicted group is both finished and aborted,
+			// and its cleared frames would report a bogus count.
 			Poll::Ready(Err(err.clone()))
+		} else if self.fin {
+			Poll::Ready(Ok((self.offset + self.frames.len()) as u64))
 		} else {
 			Poll::Pending
 		}
@@ -157,14 +170,36 @@ impl GroupState {
 			let Some(frame) = self.frames.pop_front() else {
 				break;
 			};
-			self.cache -= frame.payload.len() as u64;
+			let size = frame.payload.len() as u64;
+			self.cache -= size;
+			self.charge.sub(size);
 			self.offset += 1;
 		}
+	}
+
+	/// Drop the cached frames (and any in-flight tail) and release their pool charge.
+	fn release(&mut self) {
+		self.frames.clear();
+		self.partial = None;
+		self.cache = 0;
+		self.charge.clear();
 	}
 }
 
 fn modify(state: &kio::Producer<GroupState>) -> Result<kio::Mut<'_, GroupState>> {
 	state.write().map_err(|r| r.abort.clone().unwrap_or(Error::Dropped))
+}
+
+/// The pool's eviction hook: abort the group with [`Error::Evicted`], freeing its
+/// frames immediately. A no-op once the group is already aborted or fully dropped.
+fn evict(state: &kio::Weak<GroupState>) {
+	let Ok(mut state) = state.write() else { return };
+	if state.abort.is_some() {
+		return;
+	}
+	state.abort = Some(Error::Evicted);
+	state.release();
+	state.close();
 }
 
 /// Writes frames to a group in order.
@@ -198,16 +233,20 @@ impl std::ops::Deref for Producer {
 impl Producer {
 	/// Create a group producer bound to its parent track's [`track::Info`].
 	///
-	/// Crate-private: groups are only constructed via [`track::Producer`],
-	/// which threads its [`track::Info`] down so properties like the timescale are
-	/// inherited rather than passed in. Every frame added to this group is
-	/// normalized to the track's timescale by [`Self::create_frame`].
+	/// Crate-private: groups are only constructed via [`track::Producer`], which
+	/// threads its [`track::Info`] down so properties like the timescale are inherited
+	/// rather than passed in. Every frame added to this group is normalized to the
+	/// track's timescale by [`Self::create_frame`].
+	///
+	/// Registers the group in the shared cache pool reached through the track's
+	/// broadcast (`track.broadcast.origin.pool`), so its cached bytes count against
+	/// the budget and it can be evicted under memory pressure.
 	pub(crate) fn new(info: Info, track: track::Info) -> Self {
-		Self {
-			info,
-			state: kio::Producer::default(),
-			track,
-		}
+		let state = kio::Producer::<GroupState>::default();
+		let weak = state.weak();
+		let charge = track.broadcast.origin.pool.register(Box::new(move || evict(&weak)));
+		state.write().ok().expect("a new group is open").charge = charge;
+		Self { info, state, track }
 	}
 
 	/// The group header.
@@ -241,9 +280,16 @@ impl Producer {
 			return Err(Error::Closed);
 		}
 		debug_assert!(state.partial.is_none(), "a frame is already open");
-		state.cache += payload.len() as u64;
+		let size = payload.len() as u64;
+		state.cache += size;
+		state.charge.add(size);
 		state.frames.push_back(Frame { timestamp, payload });
 		state.evict();
+
+		// The pool evicts other groups' state, so trigger it only after releasing our
+		// lock. Reached via the parent chain; a no-op when the pool is unbounded.
+		drop(state);
+		self.track.broadcast.origin.pool.evict();
 		Ok(())
 	}
 
@@ -278,12 +324,17 @@ impl Producer {
 		}
 		debug_assert!(state.partial.is_none(), "a frame is already open");
 		state.cache += frame.size;
+		state.charge.add(frame.size);
 		state.partial = Some(Partial {
 			timestamp,
 			buf: buf.clone(),
 		});
 		state.evict();
+
+		// The pool evicts other groups' state, so trigger it only after releasing our
+		// lock. Reached via the parent chain; a no-op when the pool is unbounded.
 		drop(state);
+		self.track.broadcast.origin.pool.evict();
 
 		let info = frame::Info {
 			size: frame.size,
@@ -310,7 +361,8 @@ impl Producer {
 	/// Commit the in-flight frame as a completed frame (called by [`frame::Producer::finish`]).
 	pub(crate) fn frame_commit(&mut self, frame: Frame) -> Result<()> {
 		let mut state = modify(&self.state)?;
-		// Bytes were already counted against the cache when the frame was created.
+		// Bytes were already counted against the cache (and the pool charge) when the
+		// frame was created; committing just moves the tail into the completed set.
 		state.partial = None;
 		state.frames.push_back(frame);
 		Ok(())
@@ -343,11 +395,21 @@ impl Producer {
 	pub fn abort(&mut self, err: Error) -> Result<()> {
 		let mut guard = modify(&self.state)?;
 		guard.abort = Some(err);
-		guard.frames.clear();
-		guard.partial = None;
-		guard.cache = 0;
+		guard.release();
 		guard.close();
 		Ok(())
+	}
+
+	/// Whether the group has been aborted (including pool eviction). The track's
+	/// read paths treat an aborted cached group as absent.
+	pub(crate) fn is_aborted(&self) -> bool {
+		self.state.read().abort.is_some()
+	}
+
+	/// This group's cache pool registration, used by the track to pin the latest
+	/// group. `None` when the pool is detached (the unbounded default).
+	pub(crate) fn cache_entry(&self) -> Option<Arc<cache::Entry>> {
+		self.state.read().charge.entry()
 	}
 
 	/// Create a new consumer for the group.
@@ -355,7 +417,7 @@ impl Producer {
 		Consumer {
 			info: self.info,
 			state: self.state.consume(),
-			track: self.track,
+			track: self.track.clone(),
 			index: 0,
 			prefetch: Prefetch::default(),
 		}
@@ -381,7 +443,7 @@ impl Clone for Producer {
 		Self {
 			info: self.info,
 			state: self.state.clone(),
-			track: self.track,
+			track: self.track.clone(),
 		}
 	}
 }
@@ -403,9 +465,7 @@ impl Drop for Producer {
 				sequence = self.info.sequence,
 				"group::Producer dropped without finish() or abort()"
 			);
-			state.frames.clear();
-			state.partial = None;
-			state.cache = 0;
+			state.release();
 		}
 	}
 }
@@ -496,7 +556,7 @@ impl Clone for Consumer {
 		Self {
 			state: self.state.clone(),
 			info: self.info,
-			track: self.track,
+			track: self.track.clone(),
 			index: self.index,
 			prefetch: Prefetch::default(),
 		}
@@ -581,6 +641,10 @@ impl Consumer {
 			let local = (index - state.offset).min(state.frames.len());
 			prefetch.fill(state.frames.range(local..).cloned());
 			if prefetch.len > 0 {
+				// Mark the group recently read so the cache pool keeps it over staler
+				// groups. Touching once per batch fill is enough; the drained pops that
+				// follow serve from the prefetch without re-locking.
+				state.charge.touch();
 				return Poll::Ready(Ok(()));
 			}
 			// Nothing completed at `index`: an in-flight tail waits, otherwise resolve
