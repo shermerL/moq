@@ -49,7 +49,8 @@ impl Message for Track<'_> {
 pub struct TrackInfo {
 	/// The publisher's tie-break priority for this track.
 	pub priority: u8,
-	/// The publisher's group ordering preference (newest-first when `false`).
+	/// Whether groups are prioritized in sequence order. Groups may always arrive
+	/// out-of-order (or not at all) over the network.
 	pub ordered: bool,
 	/// Publisher Max Latency: an upper bound on how long the publisher caches a
 	/// non-latest group past the arrival of a newer one. Encoded as milliseconds.
@@ -125,6 +126,21 @@ mod test {
 		let mut info = info_sample();
 		info.timescale = Timescale::default();
 		assert_eq!(info_roundtrip(Version::Lite05, &info).timescale, Timescale::MILLI);
+	}
+
+	#[test]
+	fn track_info_defaults_match_cross_language_wire_bytes() {
+		let info = crate::track::Info::default();
+		let info = TrackInfo {
+			priority: info.priority,
+			ordered: info.ordered,
+			cache: info.cache,
+			timescale: info.timescale,
+		};
+		let mut buf = Vec::new();
+		info.encode(&mut buf, Version::Lite05).unwrap();
+
+		assert_eq!(buf, [0x06, 0x00, 0x00, 0x53, 0x88, 0x43, 0xe8]);
 	}
 
 	#[test]

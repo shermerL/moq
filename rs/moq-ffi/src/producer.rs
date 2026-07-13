@@ -10,14 +10,15 @@ use crate::media::MoqInit;
 /// Publisher-side track properties, mirroring [`moq_net::track::Info`].
 ///
 /// Construct with the fields you care about; the rest use raw-track defaults
-/// (priority 0, ordered, default cache, microsecond timescale).
+/// (priority 0, unordered, default cache, microsecond timescale).
 #[derive(Clone, uniffi::Record)]
 pub struct MoqTrackInfo {
 	/// Priority, used only to break ties between subscriptions of equal subscriber priority.
 	#[uniffi(default = 0)]
 	pub priority: u8,
-	/// Whether groups are delivered in sequence order.
-	#[uniffi(default = true)]
+	/// Whether groups are prioritized in sequence order. Groups may always arrive
+	/// out-of-order (or not at all) over the network. Defaults to false.
+	#[uniffi(default = false)]
 	pub ordered: bool,
 	/// How long the relay should cache past groups, in milliseconds. Null uses the default.
 	#[uniffi(default = None)]
@@ -646,7 +647,7 @@ impl MoqTrackProducer {
 	/// Create a consumer that reads from this producer's track.
 	///
 	/// Useful for local pub/sub without going through an origin/broadcast. `subscription`
-	/// tunes delivery (priority, ordering, group range); omit for defaults.
+	/// tunes delivery priority, group ordering priority, and group range; omit for defaults.
 	pub fn consume(&self, subscription: Option<MoqSubscription>) -> Result<Arc<MoqTrackConsumer>, MoqError> {
 		let _guard = crate::ffi::RUNTIME.enter();
 		let guard = self.inner.lock().unwrap();
