@@ -366,7 +366,11 @@ export class Publisher {
 		// first group is known, SUBSCRIBE_END when the track finishes.
 		const emitRange = supportsTrackStream(this.version);
 		let startSent = false;
-		let lastSequence = 0;
+
+		// The exclusive end of the delivered range. recvGroup is arrival-ordered rather than
+		// sequence-ordered, so this tracks the max and not the last group seen. 0 is already
+		// the encoding for a track that produced no groups.
+		let end = 0;
 
 		try {
 			for (;;) {
@@ -381,13 +385,13 @@ export class Publisher {
 					startSent = true;
 					await encodeSubscribeResponse(stream, { start: new SubscribeStart(group.sequence) }, this.version);
 				}
-				lastSequence = group.sequence;
+				end = Math.max(end, group.sequence + 1);
 
 				void this.#runGroup(sub, group, timescale);
 			}
 
 			if (emitRange) {
-				await encodeSubscribeResponse(stream, { end: new SubscribeEnd(lastSequence) }, this.version);
+				await encodeSubscribeResponse(stream, { end: new SubscribeEnd(end) }, this.version);
 			}
 
 			console.debug(`publish close: broadcast=${broadcast} track=${track.name}`);
