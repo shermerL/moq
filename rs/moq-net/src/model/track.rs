@@ -638,6 +638,7 @@ impl Producer {
 		}
 	}
 
+	/// The track's name, unique within its broadcast.
 	pub fn name(&self) -> &str {
 		&self.name
 	}
@@ -965,6 +966,9 @@ impl Producer {
 		snapshot_subscription(&subs, bound)
 	}
 
+	/// Poll counterpart to [`subscription_changed`](Self::subscription_changed): the
+	/// aggregate subscription whenever it changes, or `None` once nobody is subscribed.
+	/// Errors once the track is aborted.
 	pub fn poll_subscription_changed(&mut self, waiter: &kio::Waiter) -> Poll<Result<Option<Subscription>>> {
 		// Surface an abort as the stream ending. `poll_closed` parks on the closed
 		// waiters, so per-group churn on the track state never wakes this poll.
@@ -1085,6 +1089,7 @@ impl Dynamic {
 		Self { name, state, fetch }
 	}
 
+	/// The track's name, unique within its broadcast.
 	pub fn name(&self) -> &str {
 		&self.name
 	}
@@ -1098,6 +1103,7 @@ impl Dynamic {
 		kio::wait(|waiter| self.poll_requested_group(waiter)).await
 	}
 
+	/// Poll counterpart to [`requested_group`](Self::requested_group).
 	pub fn poll_requested_group(&self, waiter: &kio::Waiter) -> Poll<Result<GroupRequest>> {
 		poll_requested_group(&self.state, &self.fetch, waiter)
 	}
@@ -1525,6 +1531,8 @@ enum SubscribingKind {
 }
 
 impl Subscribing {
+	/// Poll until the peer confirms the subscription, yielding the [`Subscriber`].
+	/// Errors if the track is aborted or not found.
 	pub fn poll_ok(&self, waiter: &kio::Waiter) -> Poll<Result<Subscriber>> {
 		match &self.inner {
 			SubscribingKind::Plain(state) => {
@@ -1591,6 +1599,7 @@ enum QueryingKind {
 }
 
 impl Querying {
+	/// Poll until the track's [`Info`] is known, without subscribing to its groups.
 	pub fn poll_ok(&self, waiter: &kio::Waiter) -> Poll<Result<Info>> {
 		match &self.inner {
 			QueryingKind::Plain(state) => {
@@ -1913,6 +1922,7 @@ impl Subscriber {
 		&self.info
 	}
 
+	/// The track's name, unique within its broadcast.
 	pub fn name(&self) -> &str {
 		&self.name
 	}
@@ -2112,6 +2122,17 @@ impl Subscriber {
 	}
 }
 
+/// A subscriber asked for a track this broadcast doesn't have yet.
+///
+/// Yielded by [`broadcast::Dynamic::requested_track`](crate::broadcast::Dynamic::requested_track),
+/// or created up front with [`broadcast::Producer::reserve_track`](crate::broadcast::Producer::reserve_track).
+/// Subscribers block until the request is
+/// resolved: call [`accept`](Self::accept) to serve it with a [`Producer`], or
+/// [`reject`](Self::reject) to fail them. Dropping it without either rejects with
+/// [`Error::Dropped`].
+///
+/// Concurrent requests for one name are coalesced, so exactly one of these exists per
+/// name at a time.
 pub struct Request {
 	name: Arc<str>,
 	// The parent broadcast's info, threaded into the [`Producer`] on accept.
@@ -2150,6 +2171,7 @@ impl Request {
 		&self.name
 	}
 
+	/// A [`Consumer`] for the eventual track, usable before the request is accepted.
 	pub fn consume(&self) -> Consumer {
 		Consumer::plain(self.name.clone(), self.state.consume())
 	}
@@ -2196,6 +2218,8 @@ impl Request {
 		}
 	}
 
+	/// The delivery preferences aggregated across everyone waiting on this request,
+	/// or `None` if nobody is waiting. Useful for sizing the track before accepting.
 	pub fn subscription(&self) -> Option<Subscription> {
 		let state = self.state.read();
 		let (subs, bound) = (state.subscriptions.clone(), state.latency_bound());
@@ -2203,10 +2227,13 @@ impl Request {
 		snapshot_subscription(&subs, bound)
 	}
 
+	/// Block until the aggregate [`subscription`](Self::subscription) changes,
+	/// yielding `None` once nobody is waiting.
 	pub async fn subscription_changed(&mut self) -> Option<Subscription> {
 		kio::wait(|waiter| self.poll_subscription_changed(waiter)).await
 	}
 
+	/// Poll counterpart to [`subscription_changed`](Self::subscription_changed).
 	pub fn poll_subscription_changed(&mut self, waiter: &kio::Waiter) -> Poll<Option<Subscription>> {
 		let state = self.state.read();
 		let (subs, bound) = (state.subscriptions.clone(), state.latency_bound());
@@ -2242,6 +2269,7 @@ impl Request {
 use futures::FutureExt;
 
 #[cfg(test)]
+#[allow(missing_docs)] // test-only assertion helpers
 impl Subscriber {
 	pub fn assert_group(&mut self) -> group::Consumer {
 		self.recv_group()

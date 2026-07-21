@@ -28,7 +28,7 @@ use std::time::Duration;
 
 use moq_mux::catalog::{self, CatalogFormat, Stream};
 
-pub use playlist::{Segment, Snapshot, render_media};
+pub(crate) use playlist::render_media;
 pub use rendition::{Kind, Rendition};
 
 /// How long to wait before retrying the initial catalog subscription.
@@ -71,7 +71,7 @@ pub struct Broadcaster {
 
 impl Broadcaster {
 	/// Resolve `source`'s catalog broadcast and start tracking its renditions.
-	pub async fn new(source: moq_mux::Source, config: Config) -> Result<Arc<Self>, moq_mux::Error> {
+	pub async fn new(source: moq_mux::Source, config: Config) -> crate::Result<Arc<Self>> {
 		let broadcast = source.broadcast().await?;
 		let renditions = renditions::Producer::new();
 		let broadcaster = Arc::new(Self {
@@ -233,6 +233,7 @@ mod tests {
 		let mut registration = reserved.video("video0");
 		let mut config = hang::catalog::VideoConfig::new(hang::catalog::VideoCodec::VP8);
 		config.framerate = Some(30.0);
+		config.timeline = Some(catalog.timeline("video0").section());
 		registration.set(config);
 		drop(reserved);
 
@@ -301,6 +302,7 @@ mod tests {
 		let mut registration = reserved.video("video0");
 		let mut config = hang::catalog::VideoConfig::new(hang::catalog::VideoCodec::VP8);
 		config.framerate = Some(30.0);
+		config.timeline = Some(catalog.timeline("video0").section());
 		registration.set(config);
 		drop(reserved);
 
@@ -393,6 +395,7 @@ mod tests {
 		let mut registration = reserved.video("video0");
 		let mut config = hang::catalog::VideoConfig::new(hang::catalog::VideoCodec::VP8);
 		config.framerate = Some(30.0);
+		config.timeline = Some(catalog.timeline("video0").section());
 		registration.set(config);
 		drop(reserved);
 
@@ -449,6 +452,7 @@ mod tests {
 		let mut registration = reserved.video("video0");
 		let mut config = hang::catalog::VideoConfig::new(hang::catalog::VideoCodec::VP8);
 		config.framerate = Some(30.0);
+		config.timeline = Some(catalog.timeline("video0").section());
 		registration.set(config);
 		drop(reserved);
 

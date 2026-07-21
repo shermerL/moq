@@ -239,7 +239,8 @@ impl<S: Stream> Client<S> {
 	///
 	/// This future resolves when the remote stream ends, so callers usually run it
 	/// on its own task.
-	pub async fn pull(mut self, stream_key: &str, origin: &origin::Producer, path: &str) -> Result<()> {
+	pub async fn pull(mut self, stream_key: &str, origin: &origin::Producer, path: impl moq_net::AsPath) -> Result<()> {
+		let path = path.as_path();
 		let request = self
 			.session
 			.request_playback(stream_key.to_string())
@@ -249,7 +250,7 @@ impl<S: Stream> Client<S> {
 
 		tracing::info!(%stream_key, %path, "rtmp play accepted by remote");
 
-		let mut publisher = Publisher::new(origin, path)?;
+		let mut publisher = Publisher::new(origin, path.as_str())?;
 
 		let result = self.pull_media(&mut publisher).await;
 		match &result {
@@ -436,8 +437,8 @@ async fn client_handshake<S: Stream>(stream: &mut S) -> anyhow::Result<Vec<u8>> 
 }
 
 /// An active pull: the moq-mux FLV importer publishing into the origin. Mirrors the
-/// server's publisher; a deliberate [`Self::finish`] unannounces immediately,
-/// while dropping it lets the origin linger briefly for a reconnect.
+/// server's publisher; either [`Self::finish`] or dropping it unannounces the
+/// path, the former without the dropped-without-finish warning.
 struct Publisher {
 	importer: FlvImport,
 	// A clone of the importer's producer, so a deliberate end can finish() the
