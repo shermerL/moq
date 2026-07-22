@@ -25,8 +25,8 @@ export type ReloadDelay = {
 	timeout?: DOMHighResTimeStamp;
 };
 
-/** Options for {@link Reload}: connect options plus reactive URL/enabled signals and backoff tuning. */
-export type ReloadProps = ConnectProps & {
+/** Connection and retry options for {@link Reload}. */
+export type ReloadProps = Omit<ConnectProps, "signal"> & {
 	/** Whether to reload the connection when it disconnects (default: true). */
 	enabled?: boolean | Signal<boolean>;
 
@@ -147,27 +147,27 @@ export class Reload {
 
 		effect.set(this.status, "connecting", "disconnected");
 
+		// This run's teardown, handed to connect() so a rerun cancels the attempt in flight.
+		const signal = effect.abort;
+
 		effect.spawn(async () => {
 			// Set once the session is live, so #retry can tell a healthy session that
 			// later dropped from a connect failure or a peer that flaps immediately.
 			let connected: DOMHighResTimeStamp | undefined;
 
 			try {
-				const pending = connect(url, {
+				const connection = await connect(url, {
 					websocket: this.websocket,
 					webtransport: this.webtransport,
 					discovery: this.discovery,
+					signal,
 				});
 
-				const connection = await Promise.race([effect.cancel, pending]);
-				if (!connection) {
-					pending.then((conn) => conn.close()).catch(() => {});
-					return;
-				}
+				// Hand the connection to the effect, which closes it now if this run is already over.
+				effect.cleanup(() => connection.close());
+				if (signal.aborted) return;
 
 				effect.set(this.established, connection);
-				effect.cleanup(() => connection.close());
-
 				effect.set(this.status, "connected", "disconnected");
 
 				connected = performance.now();
@@ -180,6 +180,9 @@ export class Reload {
 				console.warn("connection closed, reconnecting");
 				this.#retry(effect, connected);
 			} catch (err) {
+				// Treat teardown as cancellation, not a connection failure.
+				if (signal.aborted) return;
+
 				console.warn("connection error:", err);
 				this.#retry(effect, connected, err);
 			}
