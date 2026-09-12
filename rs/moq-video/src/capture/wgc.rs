@@ -192,6 +192,7 @@ impl Capture {
 		// The guard below owns the apartment even on setup failure. Release
 		// temporary COM references before transferring that ownership.
 		drop(winrt);
+		drop(dxgi);
 		drop(interop);
 		drop(output);
 		let mut capture = Self {
