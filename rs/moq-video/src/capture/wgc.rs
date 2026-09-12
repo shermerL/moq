@@ -189,6 +189,11 @@ impl Capture {
 				.CreateCaptureSession(&item)
 				.map_err(|e| error("WGC CreateCaptureSession", e))?,
 		);
+		// The guard below owns the apartment even on setup failure. Release
+		// temporary COM references before transferring that ownership.
+		drop(winrt);
+		drop(interop);
+		drop(output);
 		let mut capture = Self {
 			resources,
 			item,
