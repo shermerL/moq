@@ -17,7 +17,7 @@ use zune_jpeg::zune_core::bytestream::ZCursor;
 
 use super::channel::FrameChannel;
 use super::pump::{self, Geometry};
-use super::{Config, FrameStream};
+use super::{Config, Stream};
 use crate::Error;
 use crate::frame::{I420, Surface};
 
@@ -58,7 +58,7 @@ pub(super) fn cameras() -> Result<Vec<super::Camera>, Error> {
 }
 
 /// Open a V4L2 camera and stream its frames over a pump thread.
-pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameStream, Error> {
+pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<Stream, Error> {
 	let config = config.clone();
 	// The camera opens on the pump thread, so the selector has to be owned.
 	let device = device.map(str::to_string);
@@ -79,7 +79,7 @@ pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameS
 	)
 	.await?;
 
-	Ok(FrameStream::new(
+	Ok(Stream::new(
 		chan,
 		geo.width,
 		geo.height,

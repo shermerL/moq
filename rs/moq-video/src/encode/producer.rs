@@ -418,7 +418,7 @@ async fn capture_loop<E: CatalogExt>(
 		// Force an IDR on the first frame of each (re)open so a viewer subscribing
 		// after an idle gap can start decoding immediately.
 		let mut force_keyframe = true;
-		tracing::info!(encoder = encoder.name(), device = camera.device(), "capturing");
+		tracing::info!(encoder = encoder.name(), device = camera.label(), "capturing");
 
 		// Rate control is per encoder: this one opened at the configured bitrate,
 		// so the policy's ceiling is that rate and the target starts there. A
@@ -451,10 +451,10 @@ async fn capture_loop<E: CatalogExt>(
 				frame = camera.read() => frame,
 			};
 
-			let Some(surface) = frame else { break }; // device stopped producing frames
+			let Some(surface) = frame? else { return Ok(()) }; // capture target closed
 
-			// Stamp at capture, so a backend that buffers still publishes each
-			// access unit at the time the picture was grabbed.
+			// Stamp when consuming the frame using the shared publication clock.
+			// Surface does not carry the backend's capture timestamp.
 			let frame = Frame::new(surface, Timestamp::from_micros(clock.micros())?);
 			if force_keyframe {
 				encoder.keyframe();

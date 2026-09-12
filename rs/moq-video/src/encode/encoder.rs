@@ -793,7 +793,11 @@ mod tests {
 		let mut frames = Vec::new();
 		let mut textures = 0;
 		for i in 0..30 {
-			let surface = camera.read().await.expect("frame, not end of stream");
+			let surface = camera
+				.read()
+				.await
+				.expect("capture frame")
+				.expect("frame, not end of stream");
 			if matches!(surface, Surface::Texture(_)) {
 				textures += 1;
 			}

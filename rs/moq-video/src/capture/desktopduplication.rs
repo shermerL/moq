@@ -27,7 +27,7 @@ use windows::core::Interface;
 
 use super::channel::FrameChannel;
 use super::pump::{self, Geometry};
-use super::{Config, FrameStream};
+use super::{Config, Stream};
 use crate::Error;
 use crate::frame::{I420, Surface, d3d11};
 
@@ -74,7 +74,7 @@ pub(super) fn displays() -> Result<Vec<super::Display>, Error> {
 }
 
 /// Open a display capture and stream its frames over a pump thread.
-pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameStream, Error> {
+pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<Stream, Error> {
 	let config = config.clone();
 	// The device opens on the pump thread, so the selector has to be owned.
 	let device = device.map(str::to_string);
@@ -95,7 +95,7 @@ pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameS
 	)
 	.await?;
 
-	Ok(FrameStream::new(
+	Ok(Stream::new(
 		chan,
 		geo.width,
 		geo.height,
@@ -317,7 +317,7 @@ impl Drop for UnmapGuard<'_> {
 }
 
 /// Which monitor to capture: a bare index or the `display:{index}` form that
-/// [`FrameStream::device`](super::FrameStream) reports; `None` is the first one.
+/// [`Stream::label`](super::Stream::label) reports; `None` is the first one.
 fn select_output(selector: Option<&str>) -> Result<u32, Error> {
 	match selector {
 		None => Ok(0),

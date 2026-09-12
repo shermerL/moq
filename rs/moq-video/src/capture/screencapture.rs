@@ -30,7 +30,7 @@ use objc2_screen_capture_kit::{
 };
 
 use super::surface::surface_frame;
-use super::{App, Config, Display, FrameChannel, FrameStream, Window};
+use super::{App, Config, Display, FrameChannel, Stream, Window};
 use crate::Error;
 
 const DEFAULT_FRAMERATE: i32 = 30;
@@ -43,7 +43,7 @@ const ASYNC_TIMEOUT: Duration = Duration::from_secs(5);
 const NORMAL_WINDOW_LAYER: isize = 0;
 
 /// Open a whole-display capture. `device` is a display index (`None` = main).
-pub(super) async fn open_display(config: &Config, device: Option<&str>) -> Result<FrameStream, Error> {
+pub(super) async fn open_display(config: &Config, device: Option<&str>) -> Result<Stream, Error> {
 	init_core_graphics();
 	let content = shareable_content().await?;
 	let display = find_display(&content, device)?;
@@ -60,7 +60,7 @@ pub(super) async fn open_display(config: &Config, device: Option<&str>) -> Resul
 }
 
 /// Open a single-window capture. Follows the window as it moves and resizes.
-pub(super) async fn open_window(config: &Config, id: &str) -> Result<FrameStream, Error> {
+pub(super) async fn open_window(config: &Config, id: &str) -> Result<Stream, Error> {
 	init_core_graphics();
 	let content = shareable_content().await?;
 	let window = find_window(&content, id)?;
@@ -74,7 +74,7 @@ pub(super) async fn open_window(config: &Config, id: &str) -> Result<FrameStream
 
 /// Open an application capture: every window owned by `id` (a bundle
 /// identifier), including ones opened later.
-pub(super) async fn open_app(config: &Config, id: &str) -> Result<FrameStream, Error> {
+pub(super) async fn open_app(config: &Config, id: &str) -> Result<Stream, Error> {
 	init_core_graphics();
 	let content = shareable_content().await?;
 	let app = find_app(&content, id)?;
@@ -120,7 +120,7 @@ fn init_core_graphics() {
 
 /// Start a stream for `filter`. `size` is the source's native pixel size, used
 /// unless the caller overrode width/height.
-async fn open(config: &Config, filter: &SCContentFilter, size: (u32, u32)) -> Result<FrameStream, Error> {
+async fn open(config: &Config, filter: &SCContentFilter, size: (u32, u32)) -> Result<Stream, Error> {
 	let fps = config.framerate.map(|f| f as i32).unwrap_or(DEFAULT_FRAMERATE).max(1);
 	let configuration = unsafe { SCStreamConfiguration::new() };
 	// `size` is already even; an override might not be.
@@ -155,7 +155,7 @@ async fn open(config: &Config, filter: &SCContentFilter, size: (u32, u32)) -> Re
 	start_capture(&stream).await?;
 
 	// The stream keeps capturing until dropped; this guard stops it and closes
-	// the channel when the FrameStream goes away.
+	// the channel when the Stream goes away.
 	let guard = StreamGuard {
 		stream,
 		chan: chan.clone(),
@@ -165,8 +165,9 @@ async fn open(config: &Config, filter: &SCContentFilter, size: (u32, u32)) -> Re
 
 	let label = config.source.label();
 	let first = match tokio::time::timeout(FIRST_FRAME_TIMEOUT, chan.recv()).await {
-		Ok(Some(frame)) => frame,
-		Ok(None) | Err(_) => {
+		Ok(Ok(Some(frame))) => frame,
+		Ok(Err(error)) => return Err(error),
+		Ok(Ok(None)) | Err(_) => {
 			return Err(Error::Codec(anyhow::anyhow!(
 				"no frames from {label} within {FIRST_FRAME_TIMEOUT:?} (screen recording permission?)"
 			)));
@@ -176,7 +177,7 @@ async fn open(config: &Config, filter: &SCContentFilter, size: (u32, u32)) -> Re
 
 	tracing::info!(source = %label, width, height, "opened screen capture (ScreenCaptureKit)");
 
-	Ok(FrameStream::new(
+	Ok(Stream::new(
 		chan,
 		width,
 		height,

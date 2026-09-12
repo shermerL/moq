@@ -37,7 +37,7 @@ use spa::param::video::{VideoFormat, VideoInfoRaw};
 
 use super::channel::FrameChannel;
 use super::pump::Geometry;
-use super::{Config, FrameStream};
+use super::{Config, Stream};
 use crate::frame::{DmaBuf, DmaBufFrame, DmaBufPlane, DrmFormat, I420, Surface, wait_dma_buf_readable};
 use crate::{Color, Error, Size};
 
@@ -55,7 +55,7 @@ const FIRST_FRAME_TIMEOUT: Duration = Duration::from_secs(5);
 
 /// The portal restore token from the last grant, replayed on the next [`open`]
 /// so a demand-driven reopen skips the picker dialog. Process-wide because the
-/// capture session (and its `FrameStream`) is torn down between opens.
+/// capture session (and its `Stream`) is torn down between opens.
 static RESTORE_TOKEN: Mutex<Option<String>> = Mutex::new(None);
 
 fn err(ctx: &str, e: impl std::fmt::Display) -> Error {
@@ -63,7 +63,7 @@ fn err(ctx: &str, e: impl std::fmt::Display) -> Error {
 }
 
 /// Open a portal screen capture and stream its frames from a PipeWire loop thread.
-pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameStream, Error> {
+pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<Stream, Error> {
 	if let Some(device) = device {
 		tracing::debug!(%device, "portal screen capture ignores the device selector; the picker owns selection");
 	}
@@ -136,8 +136,9 @@ pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameS
 	};
 
 	let first = match tokio::time::timeout(FIRST_FRAME_TIMEOUT, chan.recv()).await {
-		Ok(Some(frame)) => frame,
-		Ok(None) | Err(_) => {
+		Ok(Ok(Some(frame))) => frame,
+		Ok(Err(error)) => return Err(error),
+		Ok(Ok(None)) | Err(_) => {
 			return Err(Error::Codec(anyhow::anyhow!(
 				"no frames from the compositor within {FIRST_FRAME_TIMEOUT:?}"
 			)));
@@ -151,7 +152,7 @@ pub(super) async fn open(config: &Config, device: Option<&str>) -> Result<FrameS
 		"opened screen capture (PipeWire)"
 	);
 
-	Ok(FrameStream::new(
+	Ok(Stream::new(
 		chan,
 		geo.width,
 		geo.height,
@@ -1096,7 +1097,7 @@ fn run_loop(args: CaptureLoop) -> Result<(), Error> {
 		.into_result()
 		.map_err(|e| err("pipewire timer", e))?;
 
-	// Quit when the FrameStream drops.
+	// Quit when the Stream drops.
 	let _quit = quit_rx.attach(mainloop.loop_(), {
 		let mainloop = mainloop.downgrade();
 		move |_| {
@@ -1935,7 +1936,11 @@ mod tests {
 		assert!(stream.height() >= 2 && stream.height().is_multiple_of(2), "bad height");
 
 		for i in 0..5 {
-			let frame = stream.read().await.unwrap_or_else(|| panic!("no frame {i}"));
+			let frame = stream
+				.read()
+				.await
+				.unwrap_or_else(|error| panic!("capture frame {i}: {error}"))
+				.unwrap_or_else(|| panic!("no frame {i}"));
 			assert_eq!(frame.width(), stream.width());
 			assert_eq!(frame.height(), stream.height());
 		}

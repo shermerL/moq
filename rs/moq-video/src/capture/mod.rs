@@ -200,8 +200,11 @@ impl App {
 pub struct Config {
 	/// What to capture.
 	pub source: Source,
+	/// Preferred width in pixels, if supported by the source.
 	pub width: Option<u32>,
+	/// Preferred height in pixels, if supported by the source.
 	pub height: Option<u32>,
+	/// Requested frames per second.
 	pub framerate: Option<u32>,
 	/// Draw the mouse cursor into captured frames. Screen/window/app sources
 	/// only; ignored by cameras. Defaults to `true`.
@@ -228,12 +231,13 @@ impl Default for Config {
 /// Media Foundation pump thread). That is the whole point: because `read` is a
 /// real await, cancelling the capture future drops this and the camera turns off
 /// promptly, with no blocking task left pinned to the runtime.
-pub(crate) struct FrameStream {
+pub struct Stream {
 	chan: Arc<FrameChannel>,
 	width: u32,
 	height: u32,
 	framerate: Option<u32>,
 	device: String,
+	color: Option<crate::Color>,
 	/// First frame captured during [`open`] (some backends learn their geometry
 	/// only from a frame); returned by the first [`read`](Self::read).
 	pending: Option<Surface>,
@@ -242,7 +246,7 @@ pub(crate) struct FrameStream {
 	_backend: Keepalive,
 }
 
-impl FrameStream {
+impl Stream {
 	/// Build a stream from a backend's channel, geometry, and keep-alive guard.
 	fn new(
 		chan: Arc<FrameChannel>,
@@ -255,6 +259,7 @@ impl FrameStream {
 	) -> Self {
 		Self {
 			chan,
+			color: pending.as_ref().and_then(Surface::color),
 			width,
 			height,
 			framerate,
@@ -264,40 +269,43 @@ impl FrameStream {
 		}
 	}
 
-	/// Await the next frame, or `None` once the source ends. Cancel-safe: drop
-	/// the future to stop reading and release the device.
-	pub(crate) async fn read(&mut self) -> Option<Surface> {
+	/// Await the latest frame or terminal error; `None` means the source ended.
+	/// Cancelling the read is safe. Drop the stream to release the device.
+	pub async fn read(&mut self) -> Result<Option<Surface>, Error> {
 		if let Some(frame) = self.pending.take() {
-			return Some(frame);
+			return Ok(Some(frame));
 		}
 		self.chan.recv().await
 	}
 
-	pub(crate) fn width(&self) -> u32 {
+	/// Negotiated frame width in pixels.
+	pub fn width(&self) -> u32 {
 		self.width
 	}
 
-	pub(crate) fn height(&self) -> u32 {
+	/// Negotiated frame height in pixels.
+	pub fn height(&self) -> u32 {
 		self.height
 	}
 
 	/// The negotiated frame rate, or `None` if the source doesn't report one.
-	pub(crate) fn framerate(&self) -> Option<u32> {
+	pub fn framerate(&self) -> Option<u32> {
 		self.framerate
 	}
 
 	/// The first frame's declared color space, when its capture backend knows it.
-	pub(crate) fn color(&self) -> Option<crate::Color> {
-		self.pending.as_ref().and_then(Surface::color)
+	pub fn color(&self) -> Option<crate::Color> {
+		self.color
 	}
 
-	pub(crate) fn device(&self) -> &str {
+	/// Human-readable label for the opened source.
+	pub fn label(&self) -> &str {
 		&self.device
 	}
 }
 
 /// Open the capture source described by `config`.
-pub(crate) async fn open(config: &Config) -> Result<FrameStream, Error> {
+pub async fn open(config: &Config) -> Result<Stream, Error> {
 	match &config.source {
 		Source::Camera(device) => {
 			let _ = device;
