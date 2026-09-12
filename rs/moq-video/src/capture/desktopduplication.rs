@@ -318,7 +318,7 @@ impl Drop for UnmapGuard<'_> {
 
 /// Which monitor to capture: a bare index or the `display:{index}` form that
 /// [`Stream::label`](super::Stream::label) reports; `None` is the first one.
-fn select_output(selector: Option<&str>) -> Result<u32, Error> {
+pub(super) fn select_output(selector: Option<&str>) -> Result<u32, Error> {
 	match selector {
 		None => Ok(0),
 		Some(spec) => spec
@@ -330,7 +330,7 @@ fn select_output(selector: Option<&str>) -> Result<u32, Error> {
 }
 
 /// Get the `index`th output (monitor) attached to the device's adapter.
-fn enumerate_output(device: &ID3D11Device, index: u32) -> Result<IDXGIOutput1, Error> {
+pub(super) fn enumerate_output(device: &ID3D11Device, index: u32) -> Result<IDXGIOutput1, Error> {
 	let adapter = adapter(device)?;
 	let output = unsafe {
 		adapter

@@ -59,6 +59,19 @@ where
 	I: FnOnce() -> Result<(S, Geometry), Error> + Send + 'static,
 	R: FnMut(&mut S) -> Result<Option<Surface>, Error> + Send + 'static,
 {
+	spawn_cancellable(chan, init, move |source, _stop| read(source)).await
+}
+
+/// Like `spawn`, with a stop flag for event-driven sources that may stay idle.
+pub(super) async fn spawn_cancellable<S, I, R>(
+	chan: Arc<FrameChannel>,
+	init: I,
+	mut read: R,
+) -> Result<(Geometry, PumpGuard), Error>
+where
+	I: FnOnce() -> Result<(S, Geometry), Error> + Send + 'static,
+	R: FnMut(&mut S, &AtomicBool) -> Result<Option<Surface>, Error> + Send + 'static,
+{
 	let stop = Arc::new(AtomicBool::new(false));
 	let (geo_tx, geo_rx) = tokio::sync::oneshot::channel();
 
@@ -79,7 +92,7 @@ where
 			}
 
 			while !stop.load(Ordering::SeqCst) {
-				match read(&mut source) {
+				match read(&mut source, &stop) {
 					Ok(Some(frame)) => chan.push(frame),
 					Ok(None) => break, // device stopped producing frames
 					Err(err) => {

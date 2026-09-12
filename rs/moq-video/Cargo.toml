@@ -164,6 +164,13 @@ objc2-video-toolbox = "0.3.2"
 # vendor SDK. The Direct3D11 / Dxgi features cover the shared D3D11 device and
 # the `IMFDXGIBuffer` surfaces wrapping each captured texture.
 windows = { version = "0.62", features = [
+    "Foundation",
+    "Foundation_Metadata",
+    "Graphics_Capture",
+    "Graphics_DirectX_Direct3D11",
+    "Win32_System_WinRT",
+    "Win32_System_WinRT_Direct3D11",
+    "Win32_System_WinRT_Graphics_Capture",
     "Win32_Foundation",
     "Win32_System_Com",
     "Win32_Media_MediaFoundation",

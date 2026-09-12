@@ -5,7 +5,7 @@
 //! - Linux camera -> native V4L2 (YUYV / MJPEG -> CPU I420), screen ->
 //!   xdg-desktop-portal + PipeWire (RGB -> CPU I420, `pipewire` feature).
 //! - Windows camera -> native Media Foundation (`IMFSourceReader`), screen ->
-//!   DXGI Desktop Duplication (BGRA -> CPU I420).
+//!   DXGI Desktop Duplication or opt-in WGC (BGRA -> CPU I420).
 //!
 //! [`encode::publish_capture`](crate::encode::publish_capture) consumes [`Config`].
 
@@ -51,6 +51,12 @@ mod mediafoundation;
 // DXGI Desktop Duplication screen capture on Windows.
 #[cfg(target_os = "windows")]
 mod desktopduplication;
+
+#[cfg(target_os = "windows")]
+mod wgc;
+
+#[cfg(any(target_os = "windows", test))]
+mod wgc_state;
 
 // Blocking-device -> async-channel bridge used by V4L2 / Media Foundation.
 #[cfg(any(target_os = "linux", target_os = "windows"))]
@@ -200,15 +206,28 @@ impl App {
 pub struct Config {
 	/// What to capture.
 	pub source: Source,
-	/// Preferred width in pixels, if supported by the source.
+	/// Preferred width in pixels; WGC treats it as the expected content width.
 	pub width: Option<u32>,
-	/// Preferred height in pixels, if supported by the source.
+	/// Preferred height in pixels; WGC treats it as the expected content height.
 	pub height: Option<u32>,
-	/// Requested frames per second.
+	/// Requested frames per second, between 1 and 1,000,000.
 	pub framerate: Option<u32>,
 	/// Draw the mouse cursor into captured frames. Screen/window/app sources
 	/// only; ignored by cameras. Defaults to `true`.
 	pub cursor: bool,
+	/// Windows display capture implementation. Other platforms accept only Legacy.
+	pub windows_backend: WindowsBackend,
+}
+
+/// Windows display capture implementation, independent of the selected source.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+#[non_exhaustive]
+pub enum WindowsBackend {
+	/// Use the existing native backend (DXGI for displays).
+	#[default]
+	Legacy,
+	/// Use Windows Graphics Capture for a display. Requires Windows 10 2004.
+	Wgc,
 }
 
 impl Default for Config {
@@ -219,6 +238,7 @@ impl Default for Config {
 			height: None,
 			framerate: None,
 			cursor: true,
+			windows_backend: WindowsBackend::Legacy,
 		}
 	}
 }
@@ -306,6 +326,14 @@ impl Stream {
 
 /// Open the capture source described by `config`.
 pub async fn open(config: &Config) -> Result<Stream, Error> {
+	if matches!(config.framerate, Some(0 | 1_000_001..)) {
+		return Err(Error::InvalidFramerate(config.framerate.unwrap()));
+	}
+	if config.windows_backend == WindowsBackend::Wgc
+		&& (!cfg!(target_os = "windows") || !matches!(config.source, Source::Display(_)))
+	{
+		return Err(Error::Unsupported("WGC requires a Windows display source".into()));
+	}
 	match &config.source {
 		Source::Camera(device) => {
 			let _ = device;
@@ -334,7 +362,10 @@ pub async fn open(config: &Config) -> Result<Stream, Error> {
 			}
 			#[cfg(target_os = "windows")]
 			{
-				desktopduplication::open(config, device.as_deref()).await
+				match config.windows_backend {
+					WindowsBackend::Legacy => desktopduplication::open(config, device.as_deref()).await,
+					WindowsBackend::Wgc => wgc::open(config, device.as_deref()).await,
+				}
 			}
 			#[cfg(all(target_os = "linux", feature = "pipewire"))]
 			{
