@@ -193,7 +193,7 @@ impl Camera {
 			device = %device_name,
 			width,
 			height,
-			framerate,
+			framerate = framerate.map(|rate| rate.as_f64()),
 			gpu = device.is_some(),
 			"opened Media Foundation capture"
 		);
