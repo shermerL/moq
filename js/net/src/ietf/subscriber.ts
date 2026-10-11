@@ -1195,7 +1195,12 @@ export class Subscriber {
 			if (!group.flags.firstObject) {
 				let id: bigint | undefined;
 				try {
-					id = await stream.peekU62();
+					const peek = await race([stream.peekU62(), track.closed]);
+					if (typeof peek !== "bigint") {
+						stream.stop(peek ?? new StreamError(StreamCode.Cancel));
+						return;
+					}
+					id = peek;
 				} catch (err: unknown) {
 					if (!(err instanceof UnexpectedEnd)) throw err;
 				}
@@ -1219,9 +1224,11 @@ export class Subscriber {
 				// cache.
 				const frame =
 					stream.tryDecode(decode) ??
-					(await (producer
-						? race([stream.decodeMaybe(decode), producer.closed])
-						: stream.decodeMaybe(decode)));
+					(await race([stream.decodeMaybe(decode), producer?.closed ?? track.closed]));
+				if (!producer && (frame === null || frame instanceof Error)) {
+					stream.stop(frame ?? new StreamError(StreamCode.Cancel));
+					return;
+				}
 				if (!frame || frame instanceof Error) break;
 
 				if (frame.endOfTrack) {
