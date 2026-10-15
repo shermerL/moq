@@ -1,6 +1,14 @@
 name: moq-cli
 
 on:
+  pull_request:
+    paths:
+      - "rs/moq-cli/**"
+      - "rs/justfile"
+      - "sh/rs/cli-capture-*"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - ".github/workflows/moq-cli.yml"
   push:
     tags:
       - "moq-cli-v*"
@@ -18,6 +26,7 @@ permissions:
 
 jobs:
   release:
+    if: github.event_name != 'pull_request'
     uses: ./.github/workflows/release-binary.yml
     with:
       crate: moq-cli
@@ -25,3 +34,37 @@ jobs:
     permissions:
       contents: write
       actions: write
+
+  capture-linux:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/just
+      - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # stable
+        with:
+          toolchain: "1.98.1"
+          components: clippy
+      - uses: taiki-e/install-action@e407f7bafb71fd004bc5c2da3032e5470cbb6ef0 # v2.87.24
+        with:
+          tool: nextest@0.9.146
+      # Native distro linkage keeps the test package usable without Nix.
+      - name: Install capture build dependencies
+        run: just rs cli-capture-deps
+      - name: Test capture arguments without PipeWire
+        run: just rs test -p moq-cli --no-default-features --features capture,websocket -E 'test(capture_window)'
+      - name: Test capture arguments with PipeWire
+        run: just rs test -p moq-cli --no-default-features --features capture,pipewire,websocket -E 'test(capture_window)'
+      - name: Build Linux capture test package
+        run: just rs cli-capture-package
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: moq-cli-capture-linux-x86_64
+          path: |
+            dist/cli-capture/moq-cli-capture-linux-x86_64.tar.gz
+            dist/cli-capture/moq-cli-capture-linux-x86_64.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 14

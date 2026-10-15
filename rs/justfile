@@ -269,6 +269,14 @@ gpu:
 play *args:
     just rs test -p moq-cli --features play "$@"
 
+# Distro-linked CLI capture artifacts for manual Linux desktop testing.
+cli-capture-deps:
+    sudo apt-get update
+    sudo apt-get install -y --no-install-recommends pkg-config clang libclang-dev libasound2-dev libpipewire-0.3-dev nasm ffmpeg
+
+cli-capture-package:
+    bash sh/rs/cli-capture-package.sh
+
 # Compile and run the `/// ```` examples, which nextest skips.
 [positional-arguments]
 doctest *args:
