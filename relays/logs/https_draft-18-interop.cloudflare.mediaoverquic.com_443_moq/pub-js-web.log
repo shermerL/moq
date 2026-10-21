@@ -1,6 +1,6 @@
-publishing smoke-js-web-4952-17218.hang (fake camera, vite) to https://draft-18-interop.cloudflare.mediaoverquic.com:443/moq
+publishing smoke-js-web-4924-21439.hang (fake camera, vite) to https://draft-18-interop.cloudflare.mediaoverquic.com:443/moq
 [page] negotiated protocol: moqt-18
 [page] subscribe_namespace written: requestId=2
-[page] announced: broadcast=smoke-js-web-4952-17218.hang active=true
-[page] publish ok: broadcast=smoke-js-web-4952-17218.hang track=catalog.json
-[page] publish ok: broadcast=smoke-js-web-4952-17218.hang track=video
+[page] announced: broadcast=smoke-js-web-4924-21439.hang active=true
+[page] publish ok: broadcast=smoke-js-web-4924-21439.hang track=catalog.json
+[page] publish ok: broadcast=smoke-js-web-4924-21439.hang track=video
