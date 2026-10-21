@@ -1,0 +1,36 @@
+[2m2026-10-21T02:52:42.100858Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m8817841814710241 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-21T02:52:42.106678Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-21T02:52:42.106694Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m4194304
+[2m2026-10-21T02:52:42.112254Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-21T02:52:42.113639Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:42.210374Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-21T02:52:42.210403Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:42.213359Z[0m [33m WARN[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:42.213407Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m session severed immediately, retrying [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:42.213425Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m reconnecting after backoff [3mwait[0m[2m=[0m758.244373ms
+[2m2026-10-21T02:52:42.972862Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:42.988830Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-21T02:52:42.988861Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:42.988986Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: closed
+[2m2026-10-21T02:52:42.989011Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m session severed immediately, retrying [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:42.989020Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m reconnecting after backoff [3mwait[0m[2m=[0m1.562223757s
+[2m2026-10-21T02:52:44.552448Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:44.562115Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-21T02:52:44.562130Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:44.562408Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m session severed immediately, retrying [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:44.562423Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m reconnecting after backoff [3mwait[0m[2m=[0m2.304689543s
+[2m2026-10-21T02:52:44.562532Z[0m [33m WARN[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:46.868765Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:46.878056Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-21T02:52:46.878082Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:46.878326Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: closed
+[2m2026-10-21T02:52:46.878362Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m session severed immediately, retrying [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:46.878373Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m reconnecting after backoff [3mwait[0m[2m=[0m2.928249611s
+[2m2026-10-21T02:52:49.807090Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:49.816956Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-21T02:52:49.816970Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com
+[2m2026-10-21T02:52:49.817265Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: closed
+[2m2026-10-21T02:52:49.817307Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m session severed immediately, retrying [3mpeer[0m[2m=[0mhttps://draft-16.cloudflare.mediaoverquic.com [3merr[0m[2m=[0mprotocol violation
+[2m2026-10-21T02:52:49.817318Z[0m [33m WARN[0m [2mmoq_tokio::connection[0m[2m:[0m reconnecting after backoff [3mwait[0m[2m=[0m2.296317015s
+[2m2026-10-21T02:52:52.114391Z[0m [31mERROR[0m [2mmoq_tokio::connection[0m[2m:[0m connection loop exited [3merr[0m[2m=[0mreconnect timed out after 10s: protocol violation
+Error: reconnect timed out after 10s: protocol violation
