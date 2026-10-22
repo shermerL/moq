@@ -1,18 +1,19 @@
 [page] negotiated protocol: moqt-22
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-rust-4924-3165.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-rust-4924-3165.hang track=catalog.json
+[page] announced: broadcast=smoke-rust-4898-17097.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-4898-17097.hang track=catalog.json
+[page] announced: broadcast=simulcast active=true
 [page] announced: broadcast=demo active=true
 [page] announced: broadcast=video active=true
-[page] announced: broadcast=simulcast active=true
-[page] subscribe written: id=2 broadcast=smoke-rust-4924-3165.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-rust-4924-3165.hang track=catalog.json
-[page] received catalog hang smoke-rust-4924-3165.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-rust-4924-3165.hang track=0.avc3
-[page] subscribe written: id=4 broadcast=smoke-rust-4924-3165.hang track=0.avc3
-[page] subscribe ok: id=4 broadcast=smoke-rust-4924-3165.hang track=0.avc3
-[page] dropping a group with no head: alias=373 group=2
-[page] dropping a group with no head: alias=373 group=2
-[page] dropping a group with no head: alias=373 group=2
-[page] dropping a group with no head: alias=373 group=2
-decoded 2 frames from smoke-rust-4924-3165.hang (vite)
+[page] subscribe written: id=2 broadcast=smoke-rust-4898-17097.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-4898-17097.hang track=catalog.json
+[page] received catalog hang smoke-rust-4898-17097.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-rust-4898-17097.hang track=0.avc3
+[page] subscribe written: id=4 broadcast=smoke-rust-4898-17097.hang track=0.avc3
+[page] subscribe ok: id=4 broadcast=smoke-rust-4898-17097.hang track=0.avc3
+[page] dropping a group with no head: alias=580 group=2
+[page] dropping a group with no head: alias=580 group=2
+[page] dropping a group with no head: alias=580 group=2
+[page] dropping a group with no head: alias=580 group=2
+[page] received catalog hang smoke-rust-4898-17097.hang {video: Object, audio: Object, archive: Object, clock: Object}
+decoded 9 frames from smoke-rust-4898-17097.hang (vite)

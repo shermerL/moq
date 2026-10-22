@@ -1,15 +1,16 @@
-[2m2026-10-21T13:35:19.508446Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m3906339264555336 [3mconfigured[0m[2m=[0mfalse
-[2m2026-10-21T13:35:19.511814Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-10-21T13:35:19.511832Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-[2m2026-10-21T13:35:19.514979Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-10-21T13:35:19.514970Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://moqt.nokiaresearch.com:4443
-[2m2026-10-21T13:35:20.015054Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
-[2m2026-10-21T13:35:20.015115Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://moqt.nokiaresearch.com:4443
-[2m2026-10-21T13:35:20.291513Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4924-3165.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-21T13:35:21.506361Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4924-3165.hang [3mtrack[0m[2m=[0m0.avc3
-[2m2026-10-21T13:35:22.543544Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4924-3165.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-21T13:35:22.543585Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4924-3165.hang [3mtrack[0m[2m=[0m0.avc3
-[2m2026-10-21T13:35:22.677671Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-[2m2026-10-21T13:35:22.677909Z[0m [33m WARN[0m [2mmoq_net::ietf::session[0m[2m:[0m subscribe_namespace failed, continuing without [3merr[0m[2m=[0mtransport: invalid RESET_STREAM: 386759528
-[2m2026-10-21T13:35:22.951893Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
+[2m2026-10-22T01:38:24.761421Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m3005003457008765 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-22T01:38:24.765154Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-22T01:38:24.765169Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
+[2m2026-10-22T01:38:24.769579Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-22T01:38:24.772774Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://moqt.nokiaresearch.com:4443
+[2m2026-10-22T01:38:25.336946Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
+[2m2026-10-22T01:38:25.336973Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://moqt.nokiaresearch.com:4443
+[2m2026-10-22T01:38:25.639373Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4898-17097.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-22T01:38:26.808853Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4898-17097.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-10-22T01:38:28.813721Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4898-17097.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-22T01:38:28.813760Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4898-17097.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-10-22T01:38:28.966480Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
+[2m2026-10-22T01:38:28.966499Z[0m [33m WARN[0m [2mmoq_net::ietf::session[0m[2m:[0m goaway error [3merr[0m[2m=[0mtransport: invalid RESET_STREAM: 386759528
+[2m2026-10-22T01:38:28.966543Z[0m [33m WARN[0m [2mmoq_net::ietf::session[0m[2m:[0m subscribe_namespace failed, continuing without [3merr[0m[2m=[0mtransport: invalid RESET_STREAM: 386759528
+[2m2026-10-22T01:38:29.282950Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
 Error: Broken pipe (os error 32)
