@@ -1,14 +1,20 @@
 [page] negotiated protocol: moqt-22
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-rust-4914-5316.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-rust-4914-5316.hang track=catalog.json
+[page] announced: broadcast=smoke-rust-5121-19743.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-5121-19743.hang track=catalog.json
 [page] announced: broadcast=demo active=true
 [page] announced: broadcast=video active=true
 [page] announced: broadcast=simulcast active=true
-[page] subscribe written: id=2 broadcast=smoke-rust-4914-5316.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-rust-4914-5316.hang track=catalog.json
-[page] received catalog hang smoke-rust-4914-5316.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-rust-4914-5316.hang track=0.avc3
-[page] subscribe written: id=4 broadcast=smoke-rust-4914-5316.hang track=0.avc3
-[page] subscribe ok: id=4 broadcast=smoke-rust-4914-5316.hang track=0.avc3
-decoded 21 frames from smoke-rust-4914-5316.hang (vite)
+[page] subscribe written: id=2 broadcast=smoke-rust-5121-19743.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-5121-19743.hang track=catalog.json
+[page] received catalog hang smoke-rust-5121-19743.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-rust-5121-19743.hang track=0.avc3
+[page] subscribe written: id=4 broadcast=smoke-rust-5121-19743.hang track=0.avc3
+[page] subscribe ok: id=4 broadcast=smoke-rust-5121-19743.hang track=0.avc3
+[page] spawn error Error: object IDs must start at 0 and increment by 1, got a delta of 2
+    at e.decode (http://localhost:43271/assets/index--FgKhKy7.js:1:177558)
+    at a (http://localhost:43271/assets/index--FgKhKy7.js:1:225643)
+    at #f (http://localhost:43271/assets/index--FgKhKy7.js:1:100769)
+    at Os.decode (http://localhost:43271/assets/index--FgKhKy7.js:1:100373)
+    at Os.decodeMaybe (http://localhost:43271/assets/index--FgKhKy7.js:1:100579)
+decoded 17 frames from smoke-rust-5121-19743.hang (vite)

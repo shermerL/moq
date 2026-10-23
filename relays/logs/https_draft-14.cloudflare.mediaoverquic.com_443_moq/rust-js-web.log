@@ -1,7 +1,2 @@
 [page] subscribe_namespace written: requestId=0
-[page] connection closed, reconnecting
-[page] adapter: close() called
-[page] fatal error running connection WebTransportError: Connection lost.
-[page] subscribe_namespace error: Connection lost. (source=session)
-[page] subscribe_namespace written: requestId=0
-decoded 0 frames from smoke-rust-4914-28945.hang (vite)
+decoded 0 frames from smoke-rust-5121-28691.hang (vite)

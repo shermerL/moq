@@ -1,7 +1,7 @@
 [
   {
-    "generated": "2026-10-23T09:40:08Z",
-    "run_url": "https://github.com/shermerL/moq/actions/runs/39932220902",
+    "generated": "2026-10-23T13:21:54Z",
+    "run_url": "https://github.com/shermerL/moq/actions/runs/39958411395",
     "endpoints": {
       "moqt://aiomoqt-relay.marzresearch.net:4443": {
         "ok": true,
