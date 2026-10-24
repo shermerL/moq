@@ -1,7 +1,7 @@
 [
   {
-    "generated": "2026-10-24T02:06:44Z",
-    "run_url": "https://github.com/shermerL/moq/actions/runs/40051996543",
+    "generated": "2026-10-24T06:28:51Z",
+    "run_url": "https://github.com/shermerL/moq/actions/runs/40069615256",
     "endpoints": {
       "moqt://aiomoqt-relay.marzresearch.net:4443": {
         "ok": true,
@@ -24,7 +24,7 @@
         "versions": [
           "moq-transport-22"
         ],
-        "passed": 3,
+        "passed": 0,
         "total": 6
       },
       "moqt://lminiero.it:9000": {
