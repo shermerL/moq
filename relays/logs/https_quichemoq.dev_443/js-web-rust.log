@@ -1,7 +1,7 @@
-[2m2026-10-24T06:27:11.768908Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m4215710926536744 [3mconfigured[0m[2m=[0mfalse
-[2m2026-10-24T06:27:11.774960Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-10-24T06:27:11.774980Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-[2m2026-10-24T06:27:11.780089Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://quichemoq.dev
-[2m2026-10-24T06:27:11.782135Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-10-24T06:27:21.781480Z[0m [31mERROR[0m [2mmoq_tokio::connection[0m[2m:[0m connection loop exited [3merr[0m[2m=[0mreconnect timed out after 10s: timed out connecting to https://quichemoq.dev
+[2m2026-10-24T12:36:08.807231Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m3039482105868981 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-24T12:36:08.810990Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-24T12:36:08.811016Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
+[2m2026-10-24T12:36:08.815805Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-24T12:36:08.816782Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://quichemoq.dev
+[2m2026-10-24T12:36:18.818566Z[0m [31mERROR[0m [2mmoq_tokio::connection[0m[2m:[0m connection loop exited [3merr[0m[2m=[0mreconnect timed out after 10s: timed out connecting to https://quichemoq.dev
 Error: reconnect timed out after 10s: timed out connecting to https://quichemoq.dev

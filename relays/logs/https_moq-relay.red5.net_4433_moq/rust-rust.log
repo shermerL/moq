@@ -1,15 +1,15 @@
-[2m2026-10-24T06:27:43.961098Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m3882100716218930 [3mconfigured[0m[2m=[0mfalse
-[2m2026-10-24T06:27:43.969737Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-10-24T06:27:43.969754Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-[2m2026-10-24T06:27:43.977961Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://moq-relay.red5.net:4433
-[2m2026-10-24T06:27:43.981495Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-10-24T06:27:44.193106Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
-[2m2026-10-24T06:27:44.193129Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://moq-relay.red5.net:4433
-[2m2026-10-24T06:27:44.273199Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-5169-20349.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-24T06:27:44.354256Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-5169-20349.hang [3mtrack[0m[2m=[0m0.avc3
-[2m2026-10-24T06:27:44.858877Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-5169-20349.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-24T06:27:44.858924Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-5169-20349.hang [3mtrack[0m[2m=[0m0.avc3
-[2m2026-10-24T06:27:44.859008Z[0m [33m WARN[0m [2mmoq_net::model::frame[0m[2m:[0m frame::Producer dropped before writing all bytes [3mgroup[0m[2m=[0m1
-[2m2026-10-24T06:27:44.899637Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-[2m2026-10-24T06:27:44.899772Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
+[2m2026-10-24T12:36:40.473094Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m3115686060587319 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-24T12:36:40.479416Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-24T12:36:40.479436Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
+[2m2026-10-24T12:36:40.483900Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-24T12:36:40.485575Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://moq-relay.red5.net:4433
+[2m2026-10-24T12:36:40.616436Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
+[2m2026-10-24T12:36:40.616466Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://moq-relay.red5.net:4433
+[2m2026-10-24T12:36:40.660164Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4842-22774.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-24T12:36:40.706068Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-rust-4842-22774.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-10-24T12:36:40.789060Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4842-22774.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-24T12:36:40.789101Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-rust-4842-22774.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-10-24T12:36:40.789166Z[0m [33m WARN[0m [2mmoq_net::model::frame[0m[2m:[0m frame::Producer dropped before writing all bytes [3mgroup[0m[2m=[0m0
+[2m2026-10-24T12:36:40.812632Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
+[2m2026-10-24T12:36:40.812760Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
 Error: Broken pipe (os error 32)
