@@ -1,10 +1,17 @@
-publishing smoke-js-web-5121-5724.hang (fake camera, vite) to https://us-west-2.relay.quicr.org:33437/relay
-[page] negotiated protocol: moqt-18
-[page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=metrics/us-west-2.relay.public active=true
-[page] publish ok: broadcast=smoke-js-web-5121-5724.hang track=catalog.json
-[page] publish ok: broadcast=smoke-js-web-5121-5724.hang track=video
-[page] publish done: broadcast=smoke-js-web-5121-5724.hang track=video
-[page] publish error: broadcast=smoke-js-web-5121-5724.hang track=video error=subscription update failed
-[page] publish done: broadcast=smoke-js-web-5121-5724.hang track=catalog.json
-[page] publish error: broadcast=smoke-js-web-5121-5724.hang track=catalog.json error=subscription update failed
+publishing smoke-js-web-5093-11715.hang (fake camera, vite) to https://us-west-2.relay.quicr.org:33437/relay
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
+[page] Failed to establish a connection to https://us-west-2.relay.quicr.org:33437/relay: net::ERR_METHOD_NOT_SUPPORTED.
+[page] connection error: AggregateError: All promises were rejected
