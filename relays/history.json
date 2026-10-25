@@ -1,7 +1,7 @@
 [
   {
-    "generated": "2026-10-24T12:37:46Z",
-    "run_url": "https://github.com/shermerL/moq/actions/runs/40094019296",
+    "generated": "2026-10-25T13:09:49Z",
+    "run_url": "https://github.com/shermerL/moq/actions/runs/40195503798",
     "endpoints": {
       "moqt://aiomoqt-relay.marzresearch.net:4443": {
         "ok": true,
@@ -24,15 +24,15 @@
         "versions": [
           "moq-transport-22"
         ],
-        "passed": 3,
+        "passed": 0,
         "total": 6
       },
       "moqt://lminiero.it:9000": {
-        "ok": true,
+        "ok": false,
         "versions": [
           "moq-transport-22"
         ],
-        "passed": 1,
+        "passed": 0,
         "total": 1
       },
       "https://us-west-2.relay.quicr.org:33437/relay": {
