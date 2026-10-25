@@ -4,11 +4,11 @@ Running interop tests...
   Relay:  ghcr.io/eyevinn/mlmrel:latest
   Client: ghcr.io/englishm/moq-interop-runner-moq-dev-rs-client:latest
   URL:    moqt://relay:4443
-time="2026-10-24T12:47:50Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-24T12:47:50Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-24T12:47:50Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-24T12:47:50Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
-time="2026-10-24T12:47:50Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-25T13:17:21Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-25T13:17:21Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-25T13:17:21Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-25T13:17:21Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-25T13:17:21Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
  Container runner-upstream-relay-1  Recreate
  Container runner-upstream-relay-1  Recreated
  Container runner-upstream-test-client-1  Recreate
@@ -19,137 +19,139 @@ relay-1        |   Cert: /certs/cert.pem
 relay-1        |   Key:  /certs/priv.key
 relay-1        |   Mlog: /mlog
 relay-1        | WARNING: /mlog is not writable; qlog goes to stderr
-relay-1        | time=2026-10-24T12:47:50.606Z level=INFO msg="Starting MoQ server" addr=0.0.0.0:4443
-relay-1        | time=2026-10-24T12:47:50.607Z level=INFO msg="failed to sufficiently increase receive buffer size (was: 1024 kiB, wanted: 7168 kiB, got: 2048 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details."
+relay-1        | time=2026-10-25T13:17:22.146Z level=INFO msg="Starting MoQ server" addr=0.0.0.0:4443
+relay-1        | time=2026-10-25T13:17:22.146Z level=INFO msg="failed to sufficiently increase receive buffer size (was: 1024 kiB, wanted: 7168 kiB, got: 2048 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details."
 test-client-1  | TAP version 14
 test-client-1  | # moq-dev-rs-client v0.1.0 (moq-tokio 0.19.28)
 test-client-1  | # Relay: moqt://relay:4443
 test-client-1  | 1..8
 test-client-1  | ok 1 - setup-only
 test-client-1  |   ---
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846076260.507}}}
-test-client-1  |   duration_ms: 41
+test-client-1  |   duration_ms: 34
 test-client-1  |   negotiated: moq-transport-18
 test-client-1  |   ...
-relay-1        | time=2026-10-24T12:47:56.260Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.130134,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | time=2026-10-24T12:47:56.260Z level=ERROR msg="MoQ session initialization failed" error="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846076263.5703}}}
-relay-1        | time=2026-10-24T12:47:56.263Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.051697,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.323365,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 8292452775692436}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:56.263Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.706093,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
-relay-1        | time=2026-10-24T12:47:56.264Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
-relay-1        | {"time":0.785272,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934247770.4805}}}
+relay-1        | time=2026-10-25T13:17:27.770Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.147687,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.279651,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 3597481790020988}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:27.770Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | time=2026-10-25T13:17:27.771Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934247773.1675}}}
+relay-1        | time=2026-10-25T13:17:27.773Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.0472,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.073679,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 4370873601830827}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:27.773Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.377976,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
+relay-1        | time=2026-10-25T13:17:27.773Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
+relay-1        | {"time":0.429862,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
 test-client-1  | ok 2 - announce-only
 test-client-1  |   ---
 test-client-1  |   duration_ms: 503
 test-client-1  |   negotiated: moq-transport-18
 test-client-1  |   outcome: "namespace remained accepted"
 test-client-1  |   ...
-relay-1        | time=2026-10-24T12:47:56.764Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
-relay-1        | time=2026-10-24T12:47:56.764Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846076766.8628}}}
-relay-1        | time=2026-10-24T12:47:56.766Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.072948,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.124354,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 7300677502806433}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:56.767Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.480533,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
-relay-1        | time=2026-10-24T12:47:56.767Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
-relay-1        | {"time":0.570402,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | time=2026-10-24T12:47:57.269Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
+relay-1        | time=2026-10-25T13:17:28.274Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | time=2026-10-25T13:17:28.274Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934248276.7817}}}
+relay-1        | time=2026-10-25T13:17:28.276Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.072346,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.121293,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 6055831470384190}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:28.276Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.438299,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
+relay-1        | time=2026-10-25T13:17:28.277Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
+relay-1        | {"time":0.494922,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | time=2026-10-25T13:17:28.777Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
 test-client-1  | ok 3 - publish-namespace-done
 test-client-1  |   ---
-test-client-1  |   duration_ms: 705
+test-client-1  |   duration_ms: 704
 test-client-1  |   negotiated: moq-transport-18
 test-client-1  |   outcome: "namespace withdrawn cleanly"
 test-client-1  |   ...
-relay-1        | time=2026-10-24T12:47:57.470Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077472.758}}}
-relay-1        | time=2026-10-24T12:47:57.472Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.081984,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.513371,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 5155577676031548}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.473Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.74798,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","interop","subscribe-namespace-lifecycle","8-1792846077469929908"]}}}
-relay-1        | {"time":0.810968,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | time=2026-10-24T12:47:57.473Z level=INFO msg="namespace subscription" prefix="[moq-test interop subscribe-namespace-lifecycle 8-1792846077469929908]"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077474.946}}}
-relay-1        | time=2026-10-24T12:47:57.474Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.052828,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.096673,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 8197648151380433}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.475Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.428645,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop","subscribe-namespace-lifecycle","8-1792846077469929908"]}}}
-relay-1        | time=2026-10-24T12:47:57.475Z level=INFO msg="registered announcement" namespace="[moq-test interop subscribe-namespace-lifecycle 8-1792846077469929908]"
-relay-1        | {"time":0.50058,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | {"time":2.773774,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
-relay-1        | time=2026-10-24T12:47:57.476Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop subscribe-namespace-lifecycle 8-1792846077469929908]"
-relay-1        | {"time":3.317873,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace_done","track_namespace_suffix":[]}}}
+relay-1        | time=2026-10-25T13:17:28.979Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934248981.3374}}}
+relay-1        | time=2026-10-25T13:17:28.981Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.067088,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.209428,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 7925718498152595}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:28.981Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.389563,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","interop","subscribe-namespace-lifecycle","7-1792934248978811884"]}}}
+relay-1        | {"time":0.459245,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | time=2026-10-25T13:17:28.981Z level=INFO msg="namespace subscription" prefix="[moq-test interop subscribe-namespace-lifecycle 7-1792934248978811884]"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934248982.7903}}}
+relay-1        | time=2026-10-25T13:17:28.982Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.048871,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.079176,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 7800417354096741}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:28.982Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.317897,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop","subscribe-namespace-lifecycle","7-1792934248978811884"]}}}
+relay-1        | time=2026-10-25T13:17:28.983Z level=INFO msg="registered announcement" namespace="[moq-test interop subscribe-namespace-lifecycle 7-1792934248978811884]"
+relay-1        | {"time":0.439296,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | {"time":1.92484,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
+relay-1        | time=2026-10-25T13:17:28.983Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop subscribe-namespace-lifecycle 7-1792934248978811884]"
+relay-1        | {"time":2.269587,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace_done","track_namespace_suffix":[]}}}
 test-client-1  | ok 4 - subscribe-namespace-lifecycle
 test-client-1  |   ---
-test-client-1  |   duration_ms: 6
+test-client-1  |   duration_ms: 4
 test-client-1  |   negotiated: moq-transport-18
 test-client-1  |   outcome: "observed NAMESPACE followed by NAMESPACE_DONE"
 test-client-1  |   ...
 test-client-1  | ok 5 - subscribe-error # SKIP moq-net API requires namespace discovery before SUBSCRIBE
-relay-1        | time=2026-10-24T12:47:57.476Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | time=2026-10-24T12:47:57.476Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077478.824}}}
-relay-1        | time=2026-10-24T12:47:57.478Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.09078,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.159839,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 7134606596342924}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.479Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.650668,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
-relay-1        | time=2026-10-24T12:47:57.479Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
-relay-1        | {"time":0.74256,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077783.0874}}}
-relay-1        | time=2026-10-24T12:47:57.783Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.119864,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.190956,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 1774703974725490}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.783Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.593782,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","interop"]}}}
-relay-1        | {"time":0.64072,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | time=2026-10-24T12:47:57.783Z level=INFO msg="namespace subscription" prefix="[moq-test interop]"
-relay-1        | {"time":0.68372,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
-relay-1        | {"time":1.257986,"name":"moqt:control_message_parsed","data":{"stream_id":4,"message":{"type":"subscribe","request_id":2,"track_namespace":["moq-test","interop"],"track_name":{"length":10,"payload_length":10,"data":"746573742d747261636b"},"parameters":["{FORWARD: 1}","{SUBSCRIBER_PRIORITY: 255}","{SUBSCRIPTION_FILTER: [2]}","{GROUP_ORDER: 2}"]}}}
-relay-1        | {"time":305.611841,"name":"moqt:control_message_created","data":{"stream_id":1,"message":{"type":"subscribe","request_id":1,"track_namespace":["moq-test","interop"],"track_name":{"length":10,"payload_length":10,"data":"746573742d747261636b"}}}}
-relay-1        | {"time":306.053676,"name":"moqt:control_message_parsed","data":{"stream_id":1,"message":{"type":"subscribe_ok","track_alias":1,"track_properties":["{key: 8, value: 1000}","{key: 14, value: 128}","{key: 34, value: 2}"]}}}
-relay-1        | time=2026-10-24T12:47:57.784Z level=INFO msg="subscribed upstream" namespace="[moq-test interop]" track=test-track
-relay-1        | {"time":1.882583,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"subscribe_ok","track_alias":0,"track_properties":["{key: 8, value: 1000}","{key: 14, value: 128}","{key: 34, value: 2}"]}}}
-relay-1        | time=2026-10-24T12:47:57.785Z level=INFO msg="forwarding subscription" namespace="[moq-test interop]" track=test-track backlogObjects=0
+relay-1        | time=2026-10-25T13:17:28.983Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | time=2026-10-25T13:17:28.983Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934248985.8323}}}
+relay-1        | time=2026-10-25T13:17:28.985Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.050374,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.084094,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 4577549209210959}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:28.985Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.263222,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","interop"]}}}
+relay-1        | time=2026-10-25T13:17:28.986Z level=INFO msg="registered announcement" namespace="[moq-test interop]"
+relay-1        | {"time":0.300737,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934249289.831}}}
+relay-1        | time=2026-10-25T13:17:29.289Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.084184,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.345578,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 267900394009657}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:29.290Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.432926,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","interop"]}}}
+relay-1        | {"time":0.505293,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | time=2026-10-25T13:17:29.290Z level=INFO msg="namespace subscription" prefix="[moq-test interop]"
+relay-1        | {"time":0.637848,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
+relay-1        | {"time":0.974548,"name":"moqt:control_message_parsed","data":{"stream_id":4,"message":{"type":"subscribe","request_id":2,"track_namespace":["moq-test","interop"],"track_name":{"length":10,"payload_length":10,"data":"746573742d747261636b"},"parameters":["{FORWARD: 1}","{SUBSCRIBER_PRIORITY: 255}","{SUBSCRIPTION_FILTER: [2]}","{GROUP_ORDER: 2}"]}}}
+relay-1        | {"time":305.099842,"name":"moqt:control_message_created","data":{"stream_id":1,"message":{"type":"subscribe","request_id":1,"track_namespace":["moq-test","interop"],"track_name":{"length":10,"payload_length":10,"data":"746573742d747261636b"}}}}
+relay-1        | {"time":305.417529,"name":"moqt:control_message_parsed","data":{"stream_id":1,"message":{"type":"subscribe_ok","track_alias":1,"track_properties":["{key: 8, value: 1000}","{key: 14, value: 128}","{key: 34, value: 2}"]}}}
+relay-1        | time=2026-10-25T13:17:29.291Z level=INFO msg="subscribed upstream" namespace="[moq-test interop]" track=test-track
+relay-1        | {"time":1.4789,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"subscribe_ok","track_alias":0,"track_properties":["{key: 8, value: 1000}","{key: 14, value: 128}","{key: 34, value: 2}"]}}}
+relay-1        | time=2026-10-25T13:17:29.291Z level=INFO msg="forwarding subscription" namespace="[moq-test interop]" track=test-track backlogObjects=0
 test-client-1  | ok 6 - announce-subscribe
 test-client-1  |   ---
-test-client-1  |   duration_ms: 309
+test-client-1  |   duration_ms: 307
 test-client-1  |   negotiated: moq-transport-18
 test-client-1  |   outcome: "SUBSCRIBE_OK for moq-test/interop/test-track"
 test-client-1  |   ...
 test-client-1  | ok 7 - subscribe-before-announce # SKIP moq-net API requires namespace discovery before SUBSCRIBE
-relay-1        | time=2026-10-24T12:47:57.785Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
-relay-1        | time=2026-10-24T12:47:57.785Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"time":2.605457,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace_done","track_namespace_suffix":[]}}}
-relay-1        | time=2026-10-24T12:47:57.785Z level=INFO msg="upstream subscription ended" namespace="[moq-test interop]" track=test-track code=INTERNAL_ERROR reason="upstream ended"
-relay-1        | {"time":2.637309,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"publish_done","status_code":0,"stream_count":0,"error_reason":"upstream ended"}}}
-relay-1        | time=2026-10-24T12:47:57.786Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077788.2988}}}
-relay-1        | time=2026-10-24T12:47:57.788Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.052158,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.141706,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 2096864265686850}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.788Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.574676,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","data-subgroup-basic","15f08a858081c6706bf2fc1315c32076"]}}}
-relay-1        | time=2026-10-24T12:47:57.788Z level=INFO msg="registered announcement" namespace="[moq-test data-subgroup-basic 15f08a858081c6706bf2fc1315c32076]"
-relay-1        | {"time":0.681456,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792846077789.9316}}}
-relay-1        | time=2026-10-24T12:47:57.789Z level=INFO msg="starting MoQ session" perspective=server
-relay-1        | {"time":0.058831,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
-relay-1        | {"time":0.262923,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 866995241734023}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
-relay-1        | time=2026-10-24T12:47:57.790Z level=INFO msg="MoQ session established" version=moqt-18
-relay-1        | {"time":0.386536,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","data-subgroup-basic","15f08a858081c6706bf2fc1315c32076"]}}}
-relay-1        | {"time":0.426672,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
-relay-1        | time=2026-10-24T12:47:57.790Z level=INFO msg="namespace subscription" prefix="[moq-test data-subgroup-basic 15f08a858081c6706bf2fc1315c32076]"
-relay-1        | {"time":0.53794,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
-relay-1        | {"time":1.054255,"name":"moqt:control_message_parsed","data":{"stream_id":4,"message":{"type":"subscribe","request_id":2,"track_namespace":["moq-test","data-subgroup-basic","15f08a858081c6706bf2fc1315c32076","moq-test-00","0","0","0","2","4","5","64","32","2","1","1","0","-1","-1","0"],"track_name":{"length":5,"payload_length":5,"data":"747261636b"},"parameters":["{FORWARD: 1}","{SUBSCRIBER_PRIORITY: 255}","{SUBSCRIPTION_FILTER: [2]}","{GROUP_ORDER: 2}"]}}}
-relay-1        | time=2026-10-24T12:47:57.791Z level=INFO msg="rejecting subscription to unknown namespace" namespace="[moq-test data-subgroup-basic 15f08a858081c6706bf2fc1315c32076 moq-test-00 0 0 0 2 4 5 64 32 2 1 1 0 -1 -1 0]" track=track held=0s
-relay-1        | {"time":1.12662,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"request_error","error_code":16,"retry_interval":0,"error_reason":"unknown namespace"}}}
+relay-1        | time=2026-10-25T13:17:29.291Z level=INFO msg="upstream subscription ended" namespace="[moq-test interop]" track=test-track code=INTERNAL_ERROR reason="upstream ended"
+relay-1        | {"time":2.061922,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"publish_done","status_code":0,"stream_count":0,"error_reason":"upstream ended"}}}
+relay-1        | time=2026-10-25T13:17:29.291Z level=INFO msg="announcement withdrawn" namespace="[moq-test interop]"
+relay-1        | {"time":2.099968,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace_done","track_namespace_suffix":[]}}}
+relay-1        | time=2026-10-25T13:17:29.292Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | time=2026-10-25T13:17:29.292Z level=INFO msg="MoQ session ended" reason="connection closed: Application error 0x0 (remote): cancelled"
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934249294.0234}}}
+relay-1        | time=2026-10-25T13:17:29.294Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.04048,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.152755,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 6673572804621033}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:29.294Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.223394,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"publish_namespace","request_id":0,"track_namespace":["moq-test","data-subgroup-basic","3888bd9d16da4692c3968979ce4e3259"]}}}
+relay-1        | time=2026-10-25T13:17:29.294Z level=INFO msg="registered announcement" namespace="[moq-test data-subgroup-basic 3888bd9d16da4692c3968979ce4e3259]"
+relay-1        | {"time":0.284765,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | {"file_schema":"urn:ietf:params:qlog:file:sequential","serialization_format":"application/qlog+json-seq","title":"MoQ QLOG","description":"MoQ QLOG","event_schemas":["urn:ietf:params:qlog:events:moqt-00"],"trace":{"vantage_point":{"type":"server"},"common_fields":{"time_format":"relative","reference_time":1792934249296.3025}}}
+relay-1        | time=2026-10-25T13:17:29.296Z level=INFO msg="starting MoQ session" perspective=server
+relay-1        | {"time":0.044566,"name":"moqt:control_message_created","data":{"stream_id":3,"message":{"type":"setup","options":["{key: 7, value: '[69 121 101 118 105 110 110 47 109 111 113 108 105 118 101 109 111 99 107 47 109 108 109 114 101 108]'}"]}}}
+relay-1        | {"time":0.096272,"name":"moqt:control_message_parsed","data":{"stream_id":2,"message":{"type":"setup","options":["{key: 5, value: '[114 101 108 97 121 58 52 52 52 51]'}","{key: 7, value: '[109 111 113 45 108 105 116 101 45 114 115]'}","{key: 265044, value: 5148518843170419}","{key: 265050, value: 1}","{key: 265052, value: 1}"]}}}
+relay-1        | time=2026-10-25T13:17:29.296Z level=INFO msg="MoQ session established" version=moqt-18
+relay-1        | {"time":0.318278,"name":"moqt:control_message_parsed","data":{"stream_id":0,"message":{"type":"subscribe_namespace","request_id":0,"track_namespace_prefix":["moq-test","data-subgroup-basic","3888bd9d16da4692c3968979ce4e3259"]}}}
+relay-1        | {"time":0.35373,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"request_ok"}}}
+relay-1        | time=2026-10-25T13:17:29.296Z level=INFO msg="namespace subscription" prefix="[moq-test data-subgroup-basic 3888bd9d16da4692c3968979ce4e3259]"
+relay-1        | {"time":0.376954,"name":"moqt:control_message_created","data":{"stream_id":0,"message":{"type":"namespace","track_namespace_suffix":[]}}}
+relay-1        | {"time":0.723063,"name":"moqt:control_message_parsed","data":{"stream_id":4,"message":{"type":"subscribe","request_id":2,"track_namespace":["moq-test","data-subgroup-basic","3888bd9d16da4692c3968979ce4e3259","moq-test-00","0","0","0","2","4","5","64","32","2","1","1","0","-1","-1","0"],"track_name":{"length":5,"payload_length":5,"data":"747261636b"},"parameters":["{FORWARD: 1}","{SUBSCRIBER_PRIORITY: 255}","{SUBSCRIPTION_FILTER: [2]}","{GROUP_ORDER: 2}"]}}}
+relay-1        | time=2026-10-25T13:17:29.297Z level=INFO msg="rejecting subscription to unknown namespace" namespace="[moq-test data-subgroup-basic 3888bd9d16da4692c3968979ce4e3259 moq-test-00 0 0 0 2 4 5 64 32 2 1 1 0 -1 -1 0]" track=track held=0s
+relay-1        | {"time":0.773007,"name":"moqt:control_message_created","data":{"stream_id":4,"message":{"type":"request_error","error_code":16,"retry_interval":0,"error_reason":"unknown namespace"}}}
 test-client-1  | not ok 8 - data-subgroup-basic
 test-client-1  |   ---
 test-client-1  |   duration_ms: 5
