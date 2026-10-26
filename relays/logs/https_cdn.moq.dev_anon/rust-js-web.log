@@ -2,12 +2,13 @@
 [page] announced: prefix=
 [page] announce: prefix=
 [page] announced: broadcast=anon/doom/game/e1m1 active=true
+[page] announced: broadcast=boom-moq-bnsmoke1 active=true
+[page] announced: broadcast=boom-moq-s2 active=true
 [page] announced: broadcast=room/6add59f11d8068f32675c9f9.hang active=true
-[page] announced: broadcast=smoke-rust-5069-14746.hang active=true
-[page] subscribe start: id=0 broadcast=smoke-rust-5069-14746.hang track=catalog.json
-[page] subscribe ok: id=0 broadcast=smoke-rust-5069-14746.hang track=catalog.json
-[page] received catalog hang smoke-rust-5069-14746.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=1 broadcast=smoke-rust-5069-14746.hang track=0.avc3
-[page] subscribe ok: id=1 broadcast=smoke-rust-5069-14746.hang track=0.avc3
-[page] skipping slow groups: track=0.avc3 0 -> 1 count=1
-decoded 28 frames from smoke-rust-5069-14746.hang (vite)
+[page] announced: broadcast=smoke-rust-4872-7590.hang active=true
+[page] subscribe start: id=0 broadcast=smoke-rust-4872-7590.hang track=catalog.json
+[page] subscribe ok: id=0 broadcast=smoke-rust-4872-7590.hang track=catalog.json
+[page] received catalog hang smoke-rust-4872-7590.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=1 broadcast=smoke-rust-4872-7590.hang track=0.avc3
+[page] subscribe ok: id=1 broadcast=smoke-rust-4872-7590.hang track=0.avc3
+decoded 30 frames from smoke-rust-4872-7590.hang (vite)

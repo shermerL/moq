@@ -1,5 +1,3 @@
 [page] negotiated protocol: moqt-22
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-rust-5027-11605.hang active=true
-[page] announced: broadcast=smoke-rust-5027-11605.hang active=false
-decoded 0 frames from smoke-rust-5069-18594.hang (vite)
+decoded 0 frames from smoke-rust-4872-1653.hang (vite)

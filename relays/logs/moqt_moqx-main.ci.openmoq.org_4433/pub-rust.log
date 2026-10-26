@@ -1,12 +1,10 @@
-[2m2026-10-25T13:06:06.356031Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m7931891681112452 [3mconfigured[0m[2m=[0mfalse
-[2m2026-10-25T13:06:06.360904Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-10-25T13:06:06.360923Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-[2m2026-10-25T13:06:06.365674Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mmoqt://moqx-main.ci.openmoq.org:4433
-[2m2026-10-25T13:06:06.366098Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-10-25T13:06:06.417532Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
-[2m2026-10-25T13:06:06.417561Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mmoqt://moqx-main.ci.openmoq.org:4433
-[2m2026-10-25T13:06:06.476622Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m1 [3mbroadcast[0m[2m=[0msmoke-rust-5069-18001.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-25T13:06:06.485336Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m5 [3mbroadcast[0m[2m=[0msmoke-rust-5069-18001.hang [3mtrack[0m[2m=[0m0.avc3
-[2m2026-10-25T13:06:06.547573Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: session error: connection error: closed
-/home/runner/work/moq/moq/test/smoke/smoke.sh: line 728: 13939 Killed                  ffmpeg_h264
-     13941 Done                    | rust_moq "$URL" --broadcast "$broadcast" import avc3
+[2m2026-10-26T04:12:50.456288Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m5982943056707867 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-26T04:12:50.460088Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-26T04:12:50.460101Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
+[2m2026-10-26T04:12:50.465678Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mmoqt://moqx-main.ci.openmoq.org:4433
+[2m2026-10-26T04:12:50.465900Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-26T04:12:50.637412Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-16
+[2m2026-10-26T04:12:50.637429Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mmoqt://moqx-main.ci.openmoq.org:4433
+[2m2026-10-26T04:12:50.715892Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m1 [3mbroadcast[0m[2m=[0msmoke-rust-4872-8596.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-26T04:12:50.872667Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m5 [3mbroadcast[0m[2m=[0msmoke-rust-4872-8596.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-10-26T04:12:51.069817Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: session error: connection error: closed
