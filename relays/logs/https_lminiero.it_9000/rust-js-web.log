@@ -1,3 +1,23 @@
 [page] negotiated protocol: moqt-22
 [page] subscribe_namespace written: requestId=0
-decoded 0 frames from smoke-rust-4872-1653.hang (vite)
+[page] announced: broadcast=smoke-rust-4859-15211.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-4859-15211.hang track=catalog.json
+[page] subscribe written: id=2 broadcast=smoke-rust-4859-15211.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-4859-15211.hang track=catalog.json
+[page] announced: broadcast=moq-test/interop/announce-only active=true
+[page] announced: broadcast=moq-test/interop/announce-only active=false
+[page] announced: broadcast=moq-test/interop/publish-namespace-done active=true
+[page] announced: broadcast=moq-test/interop/publish-namespace-done active=false
+[page] announced: broadcast=moq-test/interop/announce-subscribe active=true
+[page] announced: broadcast=moq-test/interop/announce-subscribe active=false
+[page] announced: broadcast=moq-test/interop/subscribe-before-announce active=true
+[page] announced: broadcast=moq-test/interop/subscribe-before-announce active=false
+[page] announced: broadcast=moq-test/interop/announce-only active=true
+[page] announced: broadcast=moq-test/interop/publish-namespace-done active=true
+[page] announced: broadcast=moq-test/interop/publish-namespace-done active=false
+[page] announced: broadcast=moq-test/interop/announce-only active=false
+[page] announced: broadcast=moq-test/interop/announce-subscribe active=true
+[page] announced: broadcast=moq-test/interop/announce-subscribe active=false
+[page] announced: broadcast=moq-test/interop/subscribe-before-announce active=true
+[page] announced: broadcast=moq-test/interop/subscribe-before-announce active=false
+decoded 0 frames from smoke-rust-4859-15211.hang (vite)
