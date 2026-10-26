@@ -279,8 +279,8 @@
       "classification": "at",
       "mode": "docker",
       "target": "ghcr.io/eyevinn/mlmrel:latest",
-      "status": "fail",
-      "exit_code": 2,
+      "status": "pass",
+      "exit_code": 0,
       "negotiated_versions": []
     },
     {
@@ -428,5 +428,5 @@
     }
   ],
   "target_version": "draft-18",
-  "timestamp": "2026-10-26T04:19:05Z"
+  "timestamp": "2026-10-26T15:07:44Z"
 }
