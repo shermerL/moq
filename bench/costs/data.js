@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793025501693,
+  "lastUpdate": 1793108514133,
   "repoUrl": "https://github.com/shermerL/moq",
   "entries": {
     "MoQ nightly costs": [
@@ -19252,6 +19252,5388 @@ window.BENCHMARK_DATA = {
           {
             "name": "bench-js/js/varint/format=leading-ones/value=8-byte/op=encode/ns_per_op",
             "value": 59.5,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=8-byte/op=decode/ns_per_op",
+            "value": 21.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=8-byte/op=decode-varint/ns_per_op",
+            "value": 15.5,
+            "unit": "ns"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Luke Curley",
+            "username": "kixelated",
+            "email": "kixelated@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "62d1907afe0897ddb399bb3f59c81fbc107ffc09",
+          "message": "fix(net): align transport and reader behavior across runtimes (#6905)\n\nCo-authored-by: GPT-6 (Codex) <noreply@openai.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-27T09:51:15Z",
+          "url": "https://github.com/shermerL/moq/commit/62d1907afe0897ddb399bb3f59c81fbc107ffc09"
+        },
+        "date": 1793108513747,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "bench-js/js/arrivals/handles=1/backlog=0/ns_per_handle_write",
+            "value": 508,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=1/backlog=256/ns_per_handle_write",
+            "value": 280,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=1/backlog=4096/ns_per_handle_write",
+            "value": 586,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=4/backlog=0/ns_per_handle_write",
+            "value": 186,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=4/backlog=256/ns_per_handle_write",
+            "value": 145,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=4/backlog=4096/ns_per_handle_write",
+            "value": 162,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=16/backlog=0/ns_per_handle_write",
+            "value": 157,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=16/backlog=256/ns_per_handle_write",
+            "value": 109,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/arrivals/handles=16/backlog=4096/ns_per_handle_write",
+            "value": 120,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=120/warmup=0ms/ns_per_callback",
+            "value": 306.4,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=120/warmup=80ms/ns_per_callback",
+            "value": 329.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=960/warmup=0ms/ns_per_callback",
+            "value": 131.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=960/warmup=80ms/ns_per_callback",
+            "value": 84.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=2880/warmup=0ms/ns_per_callback",
+            "value": 157.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=1/frames=2880/warmup=80ms/ns_per_callback",
+            "value": 158.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=120/warmup=0ms/ns_per_callback",
+            "value": 36.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=120/warmup=80ms/ns_per_callback",
+            "value": 37.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=960/warmup=0ms/ns_per_callback",
+            "value": 35,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=960/warmup=80ms/ns_per_callback",
+            "value": 30.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=2880/warmup=0ms/ns_per_callback",
+            "value": 32.2,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=16/frames=2880/warmup=80ms/ns_per_callback",
+            "value": 44.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=120/warmup=0ms/ns_per_callback",
+            "value": 34.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=120/warmup=80ms/ns_per_callback",
+            "value": 36.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=960/warmup=0ms/ns_per_callback",
+            "value": 48,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=960/warmup=80ms/ns_per_callback",
+            "value": 49,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=2880/warmup=0ms/ns_per_callback",
+            "value": 29.8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/audio-warmup/decoders=64/frames=2880/warmup=80ms/ns_per_callback",
+            "value": 29.8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=8/observers=1/update_us",
+            "value": 298.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=8/observers=8/update_us",
+            "value": 691,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=8/observers=32/update_us",
+            "value": 1888.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=32/observers=1/update_us",
+            "value": 260.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=32/observers=8/update_us",
+            "value": 1374.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=32/observers=32/update_us",
+            "value": 5845.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=128/observers=1/update_us",
+            "value": 748.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=128/observers=8/update_us",
+            "value": 6227.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=unscoped/routes=128/observers=32/update_us",
+            "value": 22824.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=8/observers=1/update_us",
+            "value": 179.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=8/observers=8/update_us",
+            "value": 403.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=8/observers=32/update_us",
+            "value": 1447,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=32/observers=1/update_us",
+            "value": 219.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=32/observers=8/update_us",
+            "value": 1275.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=32/observers=32/update_us",
+            "value": 4396.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=128/observers=1/update_us",
+            "value": 584.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=128/observers=8/update_us",
+            "value": 4097.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=distinct-scopes/routes=128/observers=32/update_us",
+            "value": 16173.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=8/observers=1/update_us",
+            "value": 51.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=8/observers=8/update_us",
+            "value": 360,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=8/observers=32/update_us",
+            "value": 1296.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=32/observers=1/update_us",
+            "value": 176.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=32/observers=8/update_us",
+            "value": 1076.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=32/observers=32/update_us",
+            "value": 4455.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=128/observers=1/update_us",
+            "value": 646,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=128/observers=8/update_us",
+            "value": 4677.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=producer-scopes/routes=128/observers=32/update_us",
+            "value": 16570.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=8/observers=1/update_us",
+            "value": 106.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=8/observers=8/update_us",
+            "value": 344.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=8/observers=32/update_us",
+            "value": 1308.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=32/observers=1/update_us",
+            "value": 184.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=32/observers=8/update_us",
+            "value": 1167.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=32/observers=32/update_us",
+            "value": 4587.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=128/observers=1/update_us",
+            "value": 595.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=128/observers=8/update_us",
+            "value": 4317.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=rooted-producers/routes=128/observers=32/update_us",
+            "value": 18252.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/observers=1/demand_update_us",
+            "value": 14.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/observers=8/demand_update_us",
+            "value": 13.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/observers=32/demand_update_us",
+            "value": 8.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=32/observers=1/demand_update_us",
+            "value": 6.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=32/observers=8/demand_update_us",
+            "value": 5.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=32/observers=32/demand_update_us",
+            "value": 7.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/observers=1/demand_update_us",
+            "value": 5.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/observers=8/demand_update_us",
+            "value": 11,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/observers=32/demand_update_us",
+            "value": 13.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/listings=1/create_remove_and_read_us",
+            "value": 21.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/listings=8/create_remove_and_read_us",
+            "value": 15.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=8/listings=32/create_remove_and_read_us",
+            "value": 42.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/listings=1/create_remove_and_read_us",
+            "value": 3.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/listings=8/create_remove_and_read_us",
+            "value": 22.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=128/listings=32/create_remove_and_read_us",
+            "value": 31.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=1024/listings=1/create_remove_and_read_us",
+            "value": 3.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=1024/listings=8/create_remove_and_read_us",
+            "value": 7.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/tracks=1024/listings=32/create_remove_and_read_us",
+            "value": 30.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=8/readers=1/update_and_read_us",
+            "value": 113.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=8/readers=8/update_and_read_us",
+            "value": 45.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=8/readers=32/update_and_read_us",
+            "value": 50.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=32/readers=1/update_and_read_us",
+            "value": 23.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=32/readers=8/update_and_read_us",
+            "value": 26.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=32/readers=32/update_and_read_us",
+            "value": 40.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=128/readers=1/update_and_read_us",
+            "value": 22.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=128/readers=8/update_and_read_us",
+            "value": 30.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=unpinned/routes=128/readers=32/update_and_read_us",
+            "value": 40.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=8/readers=1/update_and_read_us",
+            "value": 17.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=8/readers=8/update_and_read_us",
+            "value": 12.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=8/readers=32/update_and_read_us",
+            "value": 25.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=32/readers=1/update_and_read_us",
+            "value": 11.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=32/readers=8/update_and_read_us",
+            "value": 14,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=32/readers=32/update_and_read_us",
+            "value": 23.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=128/readers=1/update_and_read_us",
+            "value": 18.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=128/readers=8/update_and_read_us",
+            "value": 26.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/request=pinned/routes=128/readers=32/update_and_read_us",
+            "value": 65.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=8/fetches=1/grant_update_us",
+            "value": 4.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=8/fetches=8/grant_update_us",
+            "value": 23.76,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=8/fetches=32/grant_update_us",
+            "value": 74.98,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=32/fetches=1/grant_update_us",
+            "value": 9.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=32/fetches=8/grant_update_us",
+            "value": 67.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=32/fetches=32/grant_update_us",
+            "value": 276.13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=128/fetches=1/grant_update_us",
+            "value": 34.73,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=128/fetches=8/grant_update_us",
+            "value": 268.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/auth=fetch/patterns=128/fetches=32/grant_update_us",
+            "value": 1132.95,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=8/readers=1/update_us",
+            "value": 416.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=8/readers=8/update_us",
+            "value": 180.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=8/readers=32/update_us",
+            "value": 121.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=32/readers=1/update_us",
+            "value": 296,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=32/readers=8/update_us",
+            "value": 284.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=32/readers=32/update_us",
+            "value": 337.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=128/readers=1/update_us",
+            "value": 679.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=128/readers=8/update_us",
+            "value": 1077,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/restart=restart/paths=128/readers=32/update_us",
+            "value": 548.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=8/consumers=8/update_and_consume_us",
+            "value": 2.31,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=8/consumers=32/update_and_consume_us",
+            "value": 3.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=8/consumers=128/update_and_consume_us",
+            "value": 11.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=32/consumers=8/update_and_consume_us",
+            "value": 1.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=32/consumers=32/update_and_consume_us",
+            "value": 1.29,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=32/consumers=128/update_and_consume_us",
+            "value": 2.03,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=128/consumers=8/update_and_consume_us",
+            "value": 1.28,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=128/consumers=32/update_and_consume_us",
+            "value": 1.92,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/subscriber=cache/announcements=128/consumers=128/update_and_consume_us",
+            "value": 1.36,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=8/consumers=1/duplicates=0/select_us",
+            "value": 5.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=8/consumers=8/duplicates=0/select_us",
+            "value": 21.94,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=8/consumers=32/duplicates=0/select_us",
+            "value": 85.18,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=32/consumers=1/duplicates=0/select_us",
+            "value": 2.24,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=32/consumers=8/duplicates=0/select_us",
+            "value": 18.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=32/consumers=32/duplicates=0/select_us",
+            "value": 73.58,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=128/consumers=1/duplicates=0/select_us",
+            "value": 2.56,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=128/consumers=8/duplicates=0/select_us",
+            "value": 18.22,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/alternation=alternation/announcements=128/consumers=32/duplicates=0/select_us",
+            "value": 85.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=8/consumers=1/stale=0/invalidate_us",
+            "value": 5.12,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=8/consumers=8/stale=0/invalidate_us",
+            "value": 20.14,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=8/consumers=32/stale=0/invalidate_us",
+            "value": 73.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=32/consumers=1/stale=0/invalidate_us",
+            "value": 2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=32/consumers=8/stale=0/invalidate_us",
+            "value": 15.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=32/consumers=32/stale=0/invalidate_us",
+            "value": 59.95,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=128/consumers=1/stale=0/invalidate_us",
+            "value": 2.23,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=128/consumers=8/stale=0/invalidate_us",
+            "value": 14.11,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/blind=blind/announcements=128/consumers=32/stale=0/invalidate_us",
+            "value": 80.98,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=8/consumers=1/refused=256/retire_us",
+            "value": 5.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=8/consumers=8/refused=2048/retire_us",
+            "value": 30.66,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=8/consumers=32/refused=8192/retire_us",
+            "value": 90.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=32/consumers=1/refused=256/retire_us",
+            "value": 6.51,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=32/consumers=8/refused=2048/retire_us",
+            "value": 62.68,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=32/consumers=32/refused=8192/retire_us",
+            "value": 95.96,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=128/consumers=1/refused=256/retire_us",
+            "value": 13.29,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=128/consumers=8/refused=2048/retire_us",
+            "value": 31.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/retirement=retirement/routes=128/consumers=32/refused=8192/retire_us",
+            "value": 107.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=8/observers=1/update_us",
+            "value": 447.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=8/observers=8/update_us",
+            "value": 150.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=8/observers=32/update_us",
+            "value": 264.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=32/observers=1/update_us",
+            "value": 62.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=32/observers=8/update_us",
+            "value": 302,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=32/observers=32/update_us",
+            "value": 955.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=128/observers=1/update_us",
+            "value": 148.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=128/observers=8/update_us",
+            "value": 786.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/broadcasts/scope=stalled-announce/routes=128/observers=32/update_us",
+            "value": 3183.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=1/viewers=1/catalog_publishes=2/subscribe_updates=2/unlimited_subscribe_updates=1000/elapsed_ms",
+            "value": 47,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=1/viewers=4/catalog_publishes=2/subscribe_updates=8/unlimited_subscribe_updates=4000/elapsed_ms",
+            "value": 37.6,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=1/viewers=16/catalog_publishes=2/subscribe_updates=32/unlimited_subscribe_updates=16000/elapsed_ms",
+            "value": 35.9,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=4/viewers=1/catalog_publishes=2/subscribe_updates=8/unlimited_subscribe_updates=4000/elapsed_ms",
+            "value": 50,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=4/viewers=4/catalog_publishes=2/subscribe_updates=32/unlimited_subscribe_updates=16000/elapsed_ms",
+            "value": 51.4,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=4/viewers=16/catalog_publishes=2/subscribe_updates=128/unlimited_subscribe_updates=64000/elapsed_ms",
+            "value": 53.2,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=16/viewers=1/catalog_publishes=2/subscribe_updates=32/unlimited_subscribe_updates=16000/elapsed_ms",
+            "value": 113.9,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=16/viewers=4/catalog_publishes=2/subscribe_updates=128/unlimited_subscribe_updates=64000/elapsed_ms",
+            "value": 115,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/catalog/tracks=16/viewers=16/catalog_publishes=2/subscribe_updates=512/unlimited_subscribe_updates=256000/elapsed_ms",
+            "value": 118.9,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=1/arm_us",
+            "value": 215.5199999999997,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=1/advance_us",
+            "value": 7.007999999999015,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=1/cancel_us",
+            "value": 218.41599999999949,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=10/arm_us",
+            "value": 93.60899999999894,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=10/advance_us",
+            "value": 12.575999999999254,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=10/cancel_us",
+            "value": 140.6470000000013,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=100/arm_us",
+            "value": 75.72299999999998,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=100/advance_us",
+            "value": 54.18099999999981,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=100/ready=100/cancel_us",
+            "value": 71.98700000000002,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1/arm_us",
+            "value": 731.6770000000013,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1/advance_us",
+            "value": 7.4550000000002115,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1/cancel_us",
+            "value": 1560.0510000000013,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=10/arm_us",
+            "value": 707.414,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=10/advance_us",
+            "value": 18.399000000002275,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=10/cancel_us",
+            "value": 1542.9630000000002,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=100/arm_us",
+            "value": 661.3929999999968,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=100/advance_us",
+            "value": 61.03600000000142,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=100/cancel_us",
+            "value": 1359.7759999999967,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1000/arm_us",
+            "value": 729.8449999999974,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1000/advance_us",
+            "value": 356.4630000000051,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=1000/ready=1000/cancel_us",
+            "value": 707.1499999999986,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1/arm_us",
+            "value": 9338.150999999982,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1/advance_us",
+            "value": 11.919000000006008,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1/cancel_us",
+            "value": 20757.60500000001,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=10/arm_us",
+            "value": 9093.569000000003,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=10/advance_us",
+            "value": 29.565999999988435,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=10/cancel_us",
+            "value": 23203.985000000044,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=100/arm_us",
+            "value": 9109.272000000034,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=100/advance_us",
+            "value": 149.00500000010197,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=100/cancel_us",
+            "value": 23246.078000000012,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1000/arm_us",
+            "value": 9300.363000000061,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1000/advance_us",
+            "value": 896.7369999999164,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=individual/armed=10000/ready=1000/cancel_us",
+            "value": 21893.445000000043,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=1/arm_us",
+            "value": 53.61199999993005,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=1/advance_us",
+            "value": 0.7679999999936626,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=1/cancel_us",
+            "value": 26.765999999952328,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=10/arm_us",
+            "value": 53.15700000005563,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=10/advance_us",
+            "value": 2.9920000000629443,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=10/cancel_us",
+            "value": 25.229999999965003,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=100/arm_us",
+            "value": 54.20400000002701,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=100/advance_us",
+            "value": 23.087000000032276,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=100/ready=100/cancel_us",
+            "value": 1.4800000000150249,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1/arm_us",
+            "value": 1728.9180000000215,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1/advance_us",
+            "value": 3.944000000046799,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1/cancel_us",
+            "value": 380.2610000000186,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=10/arm_us",
+            "value": 2748.7029999999777,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=10/advance_us",
+            "value": 12.951000000043678,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=10/cancel_us",
+            "value": 446.75199999994675,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=100/arm_us",
+            "value": 1715.4549999999062,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=100/advance_us",
+            "value": 54.36399999996411,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=100/cancel_us",
+            "value": 326.2409999999818,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1000/arm_us",
+            "value": 1800.1369999999497,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1000/advance_us",
+            "value": 396.19599999991806,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=1000/ready=1000/cancel_us",
+            "value": 8.576000000061867,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1/arm_us",
+            "value": 305356.46499999985,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1/advance_us",
+            "value": 18.262999999933527,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1/cancel_us",
+            "value": 13364.60500000021,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=10/arm_us",
+            "value": 307784.823,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=10/advance_us",
+            "value": 54.284000000279775,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=10/cancel_us",
+            "value": 13469.685000000027,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=100/arm_us",
+            "value": 313989.93799999973,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=100/advance_us",
+            "value": 360.86299999988114,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=100/cancel_us",
+            "value": 13194.103999999243,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1000/arm_us",
+            "value": 307106.97799999977,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1000/advance_us",
+            "value": 2765.0690000000395,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=jump/scope=shared/armed=10000/ready=1000/cancel_us",
+            "value": 10701.6679999997,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=1/arm_us",
+            "value": 80.98599999902945,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=1/advance_us",
+            "value": 50.244000000020606,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=1/cancel_us",
+            "value": 155.12499999931606,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=10/arm_us",
+            "value": 58.61999999979162,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=10/advance_us",
+            "value": 156.39700000065204,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=10/cancel_us",
+            "value": 126.79100000059407,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=100/arm_us",
+            "value": 61.84399999983725,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=100/advance_us",
+            "value": 689.5030000014231,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=100/ready=100/cancel_us",
+            "value": 67.67600000057428,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1/arm_us",
+            "value": 907.2479999995267,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1/advance_us",
+            "value": 45.87600000013481,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1/cancel_us",
+            "value": 1512.5410000000556,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=10/arm_us",
+            "value": 657.4980000004871,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=10/advance_us",
+            "value": 135.00699999895005,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=10/cancel_us",
+            "value": 1530.667999999423,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=100/arm_us",
+            "value": 618.7799999988783,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=100/advance_us",
+            "value": 811.3100000009581,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=100/cancel_us",
+            "value": 1485.1510000007693,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1000/arm_us",
+            "value": 639.9149999997462,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1000/advance_us",
+            "value": 7408.309000000372,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=1000/ready=1000/cancel_us",
+            "value": 767.2660000007454,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1/arm_us",
+            "value": 13072.235999999975,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1/advance_us",
+            "value": 105.88800000004994,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1/cancel_us",
+            "value": 16724.746999998388,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=10/arm_us",
+            "value": 11525.609999998778,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=10/advance_us",
+            "value": 219.85700000004726,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=10/cancel_us",
+            "value": 17487.388999999894,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=100/arm_us",
+            "value": 9039.506000000983,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=100/advance_us",
+            "value": 991.2499999991269,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=100/cancel_us",
+            "value": 20414.49399999874,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1000/arm_us",
+            "value": 9913.891000000149,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1000/advance_us",
+            "value": 10423.16799999935,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=individual/armed=10000/ready=1000/cancel_us",
+            "value": 18536.802999999054,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=1/arm_us",
+            "value": 73.45899999927497,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=1/advance_us",
+            "value": 26.389999999082647,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=1/cancel_us",
+            "value": 34.1340000013588,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=10/arm_us",
+            "value": 73.81799999893701,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=10/advance_us",
+            "value": 98.56899999977031,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=10/cancel_us",
+            "value": 33.44500000093831,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=100/arm_us",
+            "value": 64.83599999955914,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=100/advance_us",
+            "value": 734.3400000008842,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=100/ready=100/cancel_us",
+            "value": 6.622999999308377,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1/arm_us",
+            "value": 1808.3599999990838,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1/advance_us",
+            "value": 46.292999999423046,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1/cancel_us",
+            "value": 397.46800000102667,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=10/arm_us",
+            "value": 1745.452999999543,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=10/advance_us",
+            "value": 135.02999999946041,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=10/cancel_us",
+            "value": 370.1579999997193,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=100/arm_us",
+            "value": 1806.2559999998484,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=100/advance_us",
+            "value": 812.3350000005303,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=100/cancel_us",
+            "value": 362.23900000004505,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1000/arm_us",
+            "value": 1848.8780000006955,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1000/advance_us",
+            "value": 7905.241000000387,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=1000/ready=1000/cancel_us",
+            "value": 18.173999998907675,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1/arm_us",
+            "value": 354220.3870000012,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1/advance_us",
+            "value": 159.78099999847473,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1/cancel_us",
+            "value": 13730.16600000119,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=10/arm_us",
+            "value": 274656.79900000035,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=10/advance_us",
+            "value": 624.8439999999391,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=10/cancel_us",
+            "value": 13841.549999999188,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=100/arm_us",
+            "value": 275265.72400000074,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=100/advance_us",
+            "value": 1577.8489999993326,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=100/cancel_us",
+            "value": 13528.211000000738,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1000/arm_us",
+            "value": 293814.3919999984,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1000/advance_us",
+            "value": 12393.059000001813,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/clock/mode=advance/scope=shared/armed=10000/ready=1000/cancel_us",
+            "value": 10960.991999996622,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=1024/declared=1/decoded=1/us_per_fragment",
+            "value": 23.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=1024/declared=64/decoded=64/us_per_fragment",
+            "value": 33.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=1024/declared=1024/decoded=1024/us_per_fragment",
+            "value": 169.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=1024/declared=4294967295/decoded=0/us_per_fragment",
+            "value": 6.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=65536/declared=1/decoded=1/us_per_fragment",
+            "value": 69.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=65536/declared=64/decoded=64/us_per_fragment",
+            "value": 76.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=65536/declared=1024/decoded=1024/us_per_fragment",
+            "value": 157,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/cmaf/mdat_bytes=65536/declared=4294967295/decoded=0/us_per_fragment",
+            "value": 5.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=1/phase=publish/us",
+            "value": 2754.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=1/phase=publish/size_bytes",
+            "value": 740,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=1/phase=read/us",
+            "value": 1311.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=1/phase=read/size_bytes",
+            "value": 71680,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=4/phase=publish/us",
+            "value": 1504.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=4/phase=publish/size_bytes",
+            "value": 740,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=4/phase=read/us",
+            "value": 505.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=4/phase=read/size_bytes",
+            "value": 71680,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=16/phase=publish/us",
+            "value": 1218.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=16/phase=publish/size_bytes",
+            "value": 740,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=16/phase=read/us",
+            "value": 439.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=1/readers=16/phase=read/size_bytes",
+            "value": 71680,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=1/phase=publish/us",
+            "value": 3770.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=1/phase=publish/size_bytes",
+            "value": 2960,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=1/phase=read/us",
+            "value": 1324.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=1/phase=read/size_bytes",
+            "value": 286720,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=4/phase=publish/us",
+            "value": 3274.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=4/phase=publish/size_bytes",
+            "value": 2960,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=4/phase=read/us",
+            "value": 1996.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=4/phase=read/size_bytes",
+            "value": 286720,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=16/phase=publish/us",
+            "value": 3170.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=16/phase=publish/size_bytes",
+            "value": 2960,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=16/phase=read/us",
+            "value": 1044.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=4/readers=16/phase=read/size_bytes",
+            "value": 286720,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=1/phase=publish/us",
+            "value": 10972.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=1/phase=publish/size_bytes",
+            "value": 11840,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=1/phase=read/us",
+            "value": 3410.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=1/phase=read/size_bytes",
+            "value": 1146880,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=4/phase=publish/us",
+            "value": 10612.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=4/phase=publish/size_bytes",
+            "value": 11840,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=4/phase=read/us",
+            "value": 3331.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=4/phase=read/size_bytes",
+            "value": 1146880,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=16/phase=publish/us",
+            "value": 11275.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=16/phase=publish/size_bytes",
+            "value": 11840,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=16/phase=read/us",
+            "value": 3076.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/publishers=16/readers=16/phase=read/size_bytes",
+            "value": 1146880,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=1/queued=1/retained_bytes=27457/deliver_us",
+            "value": 458.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=1/queued=8/retained_bytes=77628/deliver_us",
+            "value": 292.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=1/queued=64/retained_bytes=164331/deliver_us",
+            "value": 270.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=16/queued=1/retained_bytes=307076/deliver_us",
+            "value": 281.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=16/queued=8/retained_bytes=419447/deliver_us",
+            "value": 268.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=16/queued=64/retained_bytes=661164/deliver_us",
+            "value": 287.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=64/queued=1/retained_bytes=1042649/deliver_us",
+            "value": 270.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=64/queued=8/retained_bytes=1261798/deliver_us",
+            "value": 291.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/tracks=64/queued=64/retained_bytes=3517656/deliver_us",
+            "value": 291.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/compression/measurement=consumer_bundle/size_bytes",
+            "value": 130453,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/compression/measurement=consumer_bundle_gzip/size_bytes",
+            "value": 38649,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1/publishers=1/readers=1/ns_per_frame",
+            "value": 9187,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1/publishers=1/readers=1/ns_per_frame",
+            "value": 5303,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1/publishers=1/readers=1/ns_per_frame",
+            "value": 6518,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1/publishers=1/readers=8/ns_per_frame",
+            "value": 2540,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1/publishers=1/readers=8/ns_per_frame",
+            "value": 2892,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1/publishers=1/readers=8/ns_per_frame",
+            "value": 2942,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1/publishers=4/readers=1/ns_per_frame",
+            "value": 2853,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1/publishers=4/readers=1/ns_per_frame",
+            "value": 2652,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1/publishers=4/readers=1/ns_per_frame",
+            "value": 3099,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1/publishers=4/readers=8/ns_per_frame",
+            "value": 2614,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1/publishers=4/readers=8/ns_per_frame",
+            "value": 2814,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1/publishers=4/readers=8/ns_per_frame",
+            "value": 2817,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=64/publishers=1/readers=1/ns_per_frame",
+            "value": 2703,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=64/publishers=1/readers=1/ns_per_frame",
+            "value": 4547,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=64/publishers=1/readers=1/ns_per_frame",
+            "value": 3054,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=64/publishers=1/readers=8/ns_per_frame",
+            "value": 2444,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=64/publishers=1/readers=8/ns_per_frame",
+            "value": 2447,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=64/publishers=1/readers=8/ns_per_frame",
+            "value": 2786,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=64/publishers=4/readers=1/ns_per_frame",
+            "value": 2482,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=64/publishers=4/readers=1/ns_per_frame",
+            "value": 2730,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=64/publishers=4/readers=1/ns_per_frame",
+            "value": 2865,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=64/publishers=4/readers=8/ns_per_frame",
+            "value": 2710,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=64/publishers=4/readers=8/ns_per_frame",
+            "value": 2814,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=64/publishers=4/readers=8/ns_per_frame",
+            "value": 3100,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1024/publishers=1/readers=1/ns_per_frame",
+            "value": 3831,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1024/publishers=1/readers=1/ns_per_frame",
+            "value": 2822,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1024/publishers=1/readers=1/ns_per_frame",
+            "value": 3031,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1024/publishers=1/readers=8/ns_per_frame",
+            "value": 3247,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1024/publishers=1/readers=8/ns_per_frame",
+            "value": 2426,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1024/publishers=1/readers=8/ns_per_frame",
+            "value": 2798,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1024/publishers=4/readers=1/ns_per_frame",
+            "value": 3572,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1024/publishers=4/readers=1/ns_per_frame",
+            "value": 2492,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1024/publishers=4/readers=1/ns_per_frame",
+            "value": 2786,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=0/retained=1024/publishers=4/readers=8/ns_per_frame",
+            "value": 3521,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=1/retained=1024/publishers=4/readers=8/ns_per_frame",
+            "value": 3006,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/drift/time_mode=2/retained=1024/publishers=4/readers=8/ns_per_frame",
+            "value": 2792,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=1/frames=1024/seal_us",
+            "value": 38.77,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=1/frames=1024/open_us",
+            "value": 35.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=8/frames=1024/seal_us",
+            "value": 36.09,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=8/frames=1024/open_us",
+            "value": 36.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=64/frames=1024/seal_us",
+            "value": 35.35,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=160/depth=64/frames=1024/open_us",
+            "value": 34.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=1/frames=1024/seal_us",
+            "value": 41.77,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=1/frames=1024/open_us",
+            "value": 37.16,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=8/frames=1024/seal_us",
+            "value": 39.19,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=8/frames=1024/open_us",
+            "value": 37.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=64/frames=1024/seal_us",
+            "value": 38.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=1160/depth=64/frames=1024/open_us",
+            "value": 36.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=1/frames=1024/seal_us",
+            "value": 62.98,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=1/frames=1024/open_us",
+            "value": 49.03,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=8/frames=1024/seal_us",
+            "value": 60.14,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=8/frames=1024/open_us",
+            "value": 50.09,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=64/frames=1024/seal_us",
+            "value": 57.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=16384/depth=64/frames=1024/open_us",
+            "value": 49.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=1/frames=128/seal_us",
+            "value": 297.16,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=1/frames=128/open_us",
+            "value": 220.45,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=8/frames=128/seal_us",
+            "value": 228.67,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=8/frames=128/open_us",
+            "value": 199.31,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=64/frames=128/seal_us",
+            "value": 189.23,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/e2ee/bytes=262144/depth=64/frames=128/open_us",
+            "value": 209.53,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=2/subscribers=1/fill_us",
+            "value": 1358.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=2/subscribers=8/fill_us",
+            "value": 2392.65,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=16/subscribers=1/fill_us",
+            "value": 971.76,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=16/subscribers=8/fill_us",
+            "value": 5306.45,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=128/subscribers=1/fill_us",
+            "value": 3668.95,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/fills/groups=128/subscribers=8/fill_us",
+            "value": 23351.31,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=64/payload_bytes=1/size_bytes",
+            "value": 64,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=64/payload_bytes=1/ms",
+            "value": 4.361,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=64/payload_bytes=1024/size_bytes",
+            "value": 65536,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=64/payload_bytes=1024/ms",
+            "value": 4.705,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=1024/payload_bytes=1/size_bytes",
+            "value": 1024,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=1024/payload_bytes=1/ms",
+            "value": 32.878,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=1024/payload_bytes=1024/size_bytes",
+            "value": 1048576,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=retained/frames=1024/payload_bytes=1024/ms",
+            "value": 36.296,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=33619968/size_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=33619968/ms",
+            "value": 61.155,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=34603008/size_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=34603008/ms",
+            "value": 61.411,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=41943040/size_bytes",
+            "value": 0,
+            "unit": "bytes"
+          },
+          {
+            "name": "bench-js/js/flate-decoder/case=overflow/frames=1/payload_bytes=41943040/ms",
+            "value": 61.667,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=1/routes=8/update_us",
+            "value": 312.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=1/routes=32/update_us",
+            "value": 407.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=1/routes=128/update_us",
+            "value": 826.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=4/routes=8/update_us",
+            "value": 168.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=4/routes=32/update_us",
+            "value": 232.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=4/routes=128/update_us",
+            "value": 820.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=16/routes=8/update_us",
+            "value": 171.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=16/routes=32/update_us",
+            "value": 404,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=covering/heads=16/routes=128/update_us",
+            "value": 902.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=1/routes=8/update_us",
+            "value": 100,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=1/routes=32/update_us",
+            "value": 268.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=1/routes=128/update_us",
+            "value": 825.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=4/routes=8/update_us",
+            "value": 83.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=4/routes=32/update_us",
+            "value": 275.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=4/routes=128/update_us",
+            "value": 814.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=16/routes=8/update_us",
+            "value": 81.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=16/routes=32/update_us",
+            "value": 222.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/touched=single/heads=16/routes=128/update_us",
+            "value": 713.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=8/sessions=1/watch_us",
+            "value": 95.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=8/sessions=8/watch_us",
+            "value": 178.86,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=8/sessions=32/watch_us",
+            "value": 463.13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=128/sessions=1/watch_us",
+            "value": 73.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=128/sessions=8/watch_us",
+            "value": 163.82,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=128/sessions=32/watch_us",
+            "value": 485.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=2048/sessions=1/watch_us",
+            "value": 71.46,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=2048/sessions=8/watch_us",
+            "value": 192.17,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/forward/watchers=2048/sessions=32/watch_us",
+            "value": 538.79,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=24/frames_per_chunk=1.1/ns_per_frame",
+            "value": 5353,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=24/frames_per_chunk=1.1/first_frame_us",
+            "value": 12.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=1200/frames_per_chunk=50.0/ns_per_frame",
+            "value": 936,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=1200/frames_per_chunk=50.0/first_frame_us",
+            "value": 35.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=16384/frames_per_chunk=50.0/ns_per_frame",
+            "value": 925,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=16384/frames_per_chunk=50.0/first_frame_us",
+            "value": 33.67,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 943,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 33.88,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=108/frames_per_chunk=1.0/ns_per_frame",
+            "value": 5987,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=108/frames_per_chunk=1.0/first_frame_us",
+            "value": 11.54,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=1200/frames_per_chunk=10.0/ns_per_frame",
+            "value": 1465,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=1200/frames_per_chunk=10.0/first_frame_us",
+            "value": 19.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=16384/frames_per_chunk=50.0/ns_per_frame",
+            "value": 916,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=16384/frames_per_chunk=50.0/first_frame_us",
+            "value": 34.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 926,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=100/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 34.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=1008/frames_per_chunk=1.0/ns_per_frame",
+            "value": 6687,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=1008/frames_per_chunk=1.0/first_frame_us",
+            "value": 14.84,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=1200/frames_per_chunk=1.2/ns_per_frame",
+            "value": 6015,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=1200/frames_per_chunk=1.2/first_frame_us",
+            "value": 11.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=16384/frames_per_chunk=12.5/ns_per_frame",
+            "value": 1617,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=16384/frames_per_chunk=12.5/first_frame_us",
+            "value": 28.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 933,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=1000/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 35.58,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=3000.0/ns_per_frame",
+            "value": 995,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=lite/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=3000.0/first_frame_us",
+            "value": 1956.01,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=24/frames_per_chunk=1.3/ns_per_frame",
+            "value": 7540,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=24/frames_per_chunk=1.3/first_frame_us",
+            "value": 52.56,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=1200/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1562,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=1200/frames_per_chunk=50.0/first_frame_us",
+            "value": 52.64,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=16384/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1214,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=16384/frames_per_chunk=50.0/first_frame_us",
+            "value": 42.94,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1188,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 45.95,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=108/frames_per_chunk=1.0/ns_per_frame",
+            "value": 7716,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=108/frames_per_chunk=1.0/first_frame_us",
+            "value": 25.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=1200/frames_per_chunk=10.0/ns_per_frame",
+            "value": 1627,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=1200/frames_per_chunk=10.0/first_frame_us",
+            "value": 29.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=16384/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1383,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=16384/frames_per_chunk=50.0/first_frame_us",
+            "value": 54.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1171,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=100/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 45.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=1008/frames_per_chunk=1.0/ns_per_frame",
+            "value": 9218,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=1008/frames_per_chunk=1.0/first_frame_us",
+            "value": 25.68,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=1200/frames_per_chunk=1.2/ns_per_frame",
+            "value": 7654,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=1200/frames_per_chunk=1.2/first_frame_us",
+            "value": 23.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=16384/frames_per_chunk=12.5/ns_per_frame",
+            "value": 1784,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=16384/frames_per_chunk=12.5/first_frame_us",
+            "value": 32.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=65536/frames_per_chunk=50.0/ns_per_frame",
+            "value": 1519,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=1000/chunk_bytes=65536/frames_per_chunk=50.0/first_frame_us",
+            "value": 61.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=3000.0/ns_per_frame",
+            "value": 724,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/frames/protocol=ietf/frame_bytes=16/chunk_bytes=65536/frames_per_chunk=3000.0/first_frame_us",
+            "value": 1327.49,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/jitter/held=64/order=in/ns_per_frame",
+            "value": 200.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=64/order=reordered/ns_per_frame",
+            "value": 47.4,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=512/order=in/ns_per_frame",
+            "value": 133.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=512/order=reordered/ns_per_frame",
+            "value": 53.2,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=4096/order=in/ns_per_frame",
+            "value": 145.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=4096/order=reordered/ns_per_frame",
+            "value": 66.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=8192/order=in/ns_per_frame",
+            "value": 163.8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/jitter/held=8192/order=reordered/ns_per_frame",
+            "value": 75.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1/changed=1/compression=none/ms_per_update",
+            "value": 0.003775,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1/changed=1/compression=deflate/ms_per_update",
+            "value": 0.087609,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=10/changed=1/compression=none/ms_per_update",
+            "value": 0.004991,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=10/changed=1/compression=deflate/ms_per_update",
+            "value": 0.077053,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=10/changed=10/compression=none/ms_per_update",
+            "value": 0.00544,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=10/changed=10/compression=deflate/ms_per_update",
+            "value": 0.081202,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=100/changed=1/compression=none/ms_per_update",
+            "value": 0.021462,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=100/changed=1/compression=deflate/ms_per_update",
+            "value": 0.075914,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=100/changed=10/compression=none/ms_per_update",
+            "value": 0.023635,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=100/changed=10/compression=deflate/ms_per_update",
+            "value": 0.107054,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1000/changed=1/compression=none/ms_per_update",
+            "value": 0.698134,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1000/changed=1/compression=deflate/ms_per_update",
+            "value": 0.768375,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1000/changed=10/compression=none/ms_per_update",
+            "value": 0.699045,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-codec/keys=1000/changed=10/compression=deflate/ms_per_update",
+            "value": 0.798237,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=catalog/bytes=1026/json_parse_us",
+            "value": 2.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=catalog/bytes=1026/parse_us",
+            "value": 6.03,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-16/bytes=199/json_parse_us",
+            "value": 0.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-16/bytes=199/parse_us",
+            "value": 0.85,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-1024/bytes=12295/json_parse_us",
+            "value": 22.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-1024/bytes=12295/parse_us",
+            "value": 26.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-65536/bytes=786439/json_parse_us",
+            "value": 1079.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=unicode-65536/bytes=786439/parse_us",
+            "value": 1709.57,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-10/bytes=1413/json_parse_us",
+            "value": 2.22,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-10/bytes=1413/parse_us",
+            "value": 7.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-100/bytes=14362/json_parse_us",
+            "value": 21.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-100/bytes=14362/parse_us",
+            "value": 68.82,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-1000/bytes=146993/json_parse_us",
+            "value": 334.13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-parse/frame=stats-1000/bytes=146993/parse_us",
+            "value": 826.69,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=64/payload_bytes=16/compression=none/ns_per_record",
+            "value": 4653.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=64/payload_bytes=16/compression=deflate/ns_per_record",
+            "value": 59075.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=64/payload_bytes=1024/compression=none/ns_per_record",
+            "value": 5752.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=64/payload_bytes=1024/compression=deflate/ns_per_record",
+            "value": 49481,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=1024/payload_bytes=16/compression=none/ns_per_record",
+            "value": 1351.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=1024/payload_bytes=16/compression=deflate/ns_per_record",
+            "value": 38150.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=1024/payload_bytes=1024/compression=none/ns_per_record",
+            "value": 3335.5,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/json-stream/records=1024/payload_bytes=1024/compression=deflate/ns_per_record",
+            "value": 25609.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=2048/order=ascending/ns_per_arrival",
+            "value": 3840,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=2048/order=descending/ns_per_arrival",
+            "value": 2440,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=2048/order=shuffled/ns_per_arrival",
+            "value": 2315,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=2048/order=rolling/ns_per_arrival",
+            "value": 3276,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=8192/order=ascending/ns_per_arrival",
+            "value": 1825,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=8192/order=descending/ns_per_arrival",
+            "value": 1196,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=8192/order=shuffled/ns_per_arrival",
+            "value": 2100,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=8192/order=rolling/ns_per_arrival",
+            "value": 1362,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=32768/order=ascending/ns_per_arrival",
+            "value": 1070,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=32768/order=descending/ns_per_arrival",
+            "value": 1181,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=32768/order=shuffled/ns_per_arrival",
+            "value": 1772,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/ledger/arrivals=32768/order=rolling/ns_per_arrival",
+            "value": 1353,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Video/version=ff0dad06/bytes=369/encode_ns",
+            "value": 68480,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Video/version=ff0dad06/bytes=369/decode_ns",
+            "value": 9573,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Video/version=ff0dad07/bytes=304/encode_ns",
+            "value": 68848,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Video/version=ff0dad07/bytes=304/decode_ns",
+            "value": 10282,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Audio/version=ff0dad06/bytes=297/encode_ns",
+            "value": 57151,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Audio/version=ff0dad06/bytes=297/decode_ns",
+            "value": 7708,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Audio/version=ff0dad07/bytes=248/encode_ns",
+            "value": 56252,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Audio/version=ff0dad07/bytes=248/decode_ns",
+            "value": 7936,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Group/version=ff0dad06/bytes=5/encode_ns",
+            "value": 5716,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Group/version=ff0dad06/bytes=5/decode_ns",
+            "value": 2080,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Group/version=ff0dad07/bytes=5/encode_ns",
+            "value": 5504,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Group/version=ff0dad07/bytes=5/decode_ns",
+            "value": 2008,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Subscribe/version=ff0dad06/bytes=26/encode_ns",
+            "value": 13824,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Subscribe/version=ff0dad06/bytes=26/decode_ns",
+            "value": 6315,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Subscribe/version=ff0dad07/bytes=27/encode_ns",
+            "value": 14436,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Subscribe/version=ff0dad07/bytes=27/decode_ns",
+            "value": 6058,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Datagram/version=ff0dad06/bytes=11/encode_ns",
+            "value": 2846,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Datagram/version=ff0dad06/bytes=11/decode_ns",
+            "value": 1732,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Datagram/version=ff0dad07/bytes=8/encode_ns",
+            "value": 2764,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Datagram/version=ff0dad07/bytes=8/decode_ns",
+            "value": 1706,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Setup/version=ff0dad06/bytes=15/encode_ns",
+            "value": 10582,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Setup/version=ff0dad06/bytes=15/decode_ns",
+            "value": 5665,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Setup/version=ff0dad07/bytes=15/encode_ns",
+            "value": 10528,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/lite-varint/sample=Setup/version=ff0dad07/bytes=15/decode_ns",
+            "value": 5371,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=1/readers=0/held_estimates=1/update_us",
+            "value": 12.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=1/readers=1/held_estimates=1/update_us",
+            "value": 13.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=1/readers=8/held_estimates=1/update_us",
+            "value": 26.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=1/readers=64/held_estimates=1/update_us",
+            "value": 127.24,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=32/readers=0/held_estimates=32/update_us",
+            "value": 11.49,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=32/readers=1/held_estimates=32/update_us",
+            "value": 14,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=32/readers=8/held_estimates=32/update_us",
+            "value": 27.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=32/readers=64/held_estimates=32/update_us",
+            "value": 135.41,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=256/readers=0/held_estimates=256/update_us",
+            "value": 11.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=256/readers=1/held_estimates=256/update_us",
+            "value": 13.88,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=256/readers=8/held_estimates=256/update_us",
+            "value": 27.46,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=eager/connections=256/readers=64/held_estimates=256/update_us",
+            "value": 152.83,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=1/readers=0/held_estimates=0/update_us",
+            "value": 4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=1/readers=1/held_estimates=1/update_us",
+            "value": 12.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=1/readers=8/held_estimates=1/update_us",
+            "value": 30.71,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=1/readers=64/held_estimates=1/update_us",
+            "value": 192.65,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=32/readers=0/held_estimates=0/update_us",
+            "value": 2.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=32/readers=1/held_estimates=32/update_us",
+            "value": 11.13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=32/readers=8/held_estimates=32/update_us",
+            "value": 31.56,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=32/readers=64/held_estimates=32/update_us",
+            "value": 209.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=256/readers=0/held_estimates=0/update_us",
+            "value": 3.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=256/readers=1/held_estimates=256/update_us",
+            "value": 11.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=256/readers=8/held_estimates=256/update_us",
+            "value": 31.49,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/observed/forwarding=observed/connections=256/readers=64/held_estimates=256/update_us",
+            "value": 175.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=1/bytes_per_stream=1024/records=3/elapsed_ms",
+            "value": 4.598,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=1/bytes_per_stream=16384/records=4/elapsed_ms",
+            "value": 0.891,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=1/bytes_per_stream=262144/records=19/elapsed_ms",
+            "value": 2.795,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=8/bytes_per_stream=1024/records=17/elapsed_ms",
+            "value": 1.793,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=8/bytes_per_stream=16384/records=25/elapsed_ms",
+            "value": 3.214,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=8/bytes_per_stream=262144/records=145/elapsed_ms",
+            "value": 12.448,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=64/bytes_per_stream=1024/records=129/elapsed_ms",
+            "value": 7.107,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=64/bytes_per_stream=16384/records=193/elapsed_ms",
+            "value": 9.251,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/p2p/streams=64/bytes_per_stream=262144/records=1154/elapsed_ms",
+            "value": 56.267,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=1/streams=4/ns_per_change",
+            "value": 4348.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=1/streams=16/ns_per_change",
+            "value": 6322.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=1/streams=64/ns_per_change",
+            "value": 22609.4,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=16/streams=4/ns_per_change",
+            "value": 353.5,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=16/streams=16/ns_per_change",
+            "value": 2471.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=16/streams=64/ns_per_change",
+            "value": 15166.4,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=128/streams=4/ns_per_change",
+            "value": 312.8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=128/streams=16/ns_per_change",
+            "value": 1569.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/priority/subscriptions=128/streams=64/ns_per_change",
+            "value": 15270.5,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=1025/kind=stream/frames=1/us_per_record",
+            "value": 11.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=1024/kind=stream/frames=16/us_per_record",
+            "value": 35.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=1024/kind=stream/frames=256/us_per_record",
+            "value": 248,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=1024/kind=empty/frames=256/us_per_record",
+            "value": 193.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=1024/kind=max_data/frames=204/us_per_record",
+            "value": 88.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=16381/kind=stream/frames=1/us_per_record",
+            "value": 5.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=16384/kind=stream/frames=16/us_per_record",
+            "value": 23.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=16128/kind=stream/frames=256/us_per_record",
+            "value": 247.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=16380/kind=empty/frames=4095/us_per_record",
+            "value": 3827.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/qmux-record/record_bytes=16380/kind=max_data/frames=3276/us_per_record",
+            "value": 1145.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=16384/chunk_bytes=1200/chunks=14/ns_per_byte",
+            "value": 1.128,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=16384/chunk_bytes=16384/chunks=1/ns_per_byte",
+            "value": 0.075,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=16384/chunk_bytes=1048576/chunks=1/ns_per_byte",
+            "value": 0.072,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=262144/chunk_bytes=1200/chunks=219/ns_per_byte",
+            "value": 0.49,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=262144/chunk_bytes=16384/chunks=16/ns_per_byte",
+            "value": 0.254,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=262144/chunk_bytes=1048576/chunks=1/ns_per_byte",
+            "value": 0.005,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=1048576/chunk_bytes=1200/chunks=874/ns_per_byte",
+            "value": 0.517,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=1048576/chunk_bytes=16384/chunks=64/ns_per_byte",
+            "value": 0.209,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/reader/frame_bytes=1048576/chunk_bytes=1048576/chunks=1/ns_per_byte",
+            "value": 0.001,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=1/joined=1/refresh_us",
+            "value": 550.77,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=1/joined=8/refresh_us",
+            "value": 677.56,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=1/joined=32/refresh_us",
+            "value": 936.76,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=8/joined=1/refresh_us",
+            "value": 322.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=8/joined=8/refresh_us",
+            "value": 355.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=8/joined=32/refresh_us",
+            "value": 615.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=32/joined=1/refresh_us",
+            "value": 190.54,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=32/joined=8/refresh_us",
+            "value": 283.34,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1/tracks=32/joined=32/refresh_us",
+            "value": 712.45,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=1/joined=1/refresh_us",
+            "value": 549.17,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=1/joined=8/refresh_us",
+            "value": 1174.87,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=1/joined=32/refresh_us",
+            "value": 5594.81,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=8/joined=1/refresh_us",
+            "value": 328.66,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=8/joined=8/refresh_us",
+            "value": 1030.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=8/joined=32/refresh_us",
+            "value": 2939.94,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=32/joined=1/refresh_us",
+            "value": 419.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=32/joined=8/refresh_us",
+            "value": 1042.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=64/tracks=32/joined=32/refresh_us",
+            "value": 3164.79,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=1/joined=1/refresh_us",
+            "value": 6429.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=1/joined=8/refresh_us",
+            "value": 56010.06,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=1/joined=32/refresh_us",
+            "value": 437785.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=8/joined=1/refresh_us",
+            "value": 13934.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=8/joined=8/refresh_us",
+            "value": 109123.45,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=8/joined=32/refresh_us",
+            "value": 437793.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=32/joined=1/refresh_us",
+            "value": 14100.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=32/joined=8/refresh_us",
+            "value": 109355.52,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/refresh/retained=1024/tracks=32/joined=32/refresh_us",
+            "value": 433256.83,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=1/window=8/accepted=8/admit_us",
+            "value": 2.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=1/window=128/accepted=128/admit_us",
+            "value": 23.69,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=1/window=220000/accepted=220000/admit_us",
+            "value": 51323.59,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=8/window=8/accepted=64/admit_us",
+            "value": 8.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=8/window=128/accepted=1024/admit_us",
+            "value": 95.66,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=8/window=220000/accepted=1760000/admit_us",
+            "value": 348628.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=32/window=8/accepted=256/admit_us",
+            "value": 21.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=32/window=128/accepted=4096/admit_us",
+            "value": 292.76,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=ordered/sessions=32/window=220000/accepted=7040000/admit_us",
+            "value": 1198495.86,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=1/window=8/accepted=8/admit_us",
+            "value": 6.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=1/window=128/accepted=128/admit_us",
+            "value": 49.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=1/window=220000/accepted=220000/admit_us",
+            "value": 90672.33,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=8/window=8/accepted=64/admit_us",
+            "value": 18.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=8/window=128/accepted=1024/admit_us",
+            "value": 343.53,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=8/window=220000/accepted=1760000/admit_us",
+            "value": 772516.39,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=32/window=8/accepted=256/admit_us",
+            "value": 67.17,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=32/window=128/accepted=4096/admit_us",
+            "value": 1044.19,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=reordered/sessions=32/window=220000/accepted=7040000/admit_us",
+            "value": 2929602.82,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=1/window=8/accepted=8/admit_us",
+            "value": 3.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=1/window=128/accepted=128/admit_us",
+            "value": 48.39,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=1/window=220000/accepted=220000/admit_us",
+            "value": 150999.13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=8/window=8/accepted=64/admit_us",
+            "value": 17.39,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=8/window=128/accepted=1024/admit_us",
+            "value": 328.77,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=8/window=220000/accepted=1760000/admit_us",
+            "value": 1150572.18,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=32/window=8/accepted=256/admit_us",
+            "value": 69.71,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=32/window=128/accepted=4096/admit_us",
+            "value": 1542.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/mode=scattered/sessions=32/window=220000/accepted=7040000/admit_us",
+            "value": 5281823.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=1/requests=8/accepted=8/admit_us",
+            "value": 1.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=1/requests=128/accepted=128/admit_us",
+            "value": 19.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=1/requests=220000/accepted=220000/admit_us",
+            "value": 18053.18,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=8/requests=8/accepted=64/admit_us",
+            "value": 7.01,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=8/requests=128/accepted=1024/admit_us",
+            "value": 83.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=8/requests=220000/accepted=1760000/admit_us",
+            "value": 106782.02,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=32/requests=8/accepted=256/admit_us",
+            "value": 16.53,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=32/requests=128/accepted=4096/admit_us",
+            "value": 259.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-ordered/sessions=32/requests=220000/accepted=7040000/admit_us",
+            "value": 431466.66,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=1/requests=8/accepted=8/admit_us",
+            "value": 3.79,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=1/requests=128/accepted=128/admit_us",
+            "value": 47.79,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=1/requests=220000/accepted=220000/admit_us",
+            "value": 66528.04,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=8/requests=8/accepted=64/admit_us",
+            "value": 18.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=8/requests=128/accepted=1024/admit_us",
+            "value": 293.34,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=8/requests=220000/accepted=1760000/admit_us",
+            "value": 516849.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=32/requests=8/accepted=256/admit_us",
+            "value": 70.36,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=32/requests=128/accepted=4096/admit_us",
+            "value": 1185.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-reordered/sessions=32/requests=220000/accepted=7040000/admit_us",
+            "value": 2052356.87,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=1/requests=8/accepted=8/admit_us",
+            "value": 2.39,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=1/requests=128/accepted=128/admit_us",
+            "value": 45.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=1/requests=220000/accepted=220000/admit_us",
+            "value": 136222.59,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=8/requests=8/accepted=64/admit_us",
+            "value": 18.06,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=8/requests=128/accepted=1024/admit_us",
+            "value": 372.29,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=8/requests=220000/accepted=1760000/admit_us",
+            "value": 1097476.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=32/requests=8/accepted=256/admit_us",
+            "value": 81.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=32/requests=128/accepted=4096/admit_us",
+            "value": 1618.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/request-ids/modern_mode=modern-scattered/sessions=32/requests=220000/accepted=7040000/admit_us",
+            "value": 4638923.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=8/followers=1/update_us",
+            "value": 40.77,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=8/followers=8/update_us",
+            "value": 56.03,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=8/followers=32/update_us",
+            "value": 115.38,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=32/followers=1/update_us",
+            "value": 26.26,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=32/followers=8/update_us",
+            "value": 45.52,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=32/followers=32/update_us",
+            "value": 112.49,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=128/followers=1/update_us",
+            "value": 45.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=128/followers=8/update_us",
+            "value": 67.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=watched/routes=128/followers=32/update_us",
+            "value": 135.55,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=8/followers=1/update_us",
+            "value": 14.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=8/followers=8/update_us",
+            "value": 13.96,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=8/followers=32/update_us",
+            "value": 16.02,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=32/followers=1/update_us",
+            "value": 17.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=32/followers=8/update_us",
+            "value": 19.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=32/followers=32/update_us",
+            "value": 22.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=128/followers=1/update_us",
+            "value": 36.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=128/followers=8/update_us",
+            "value": 36.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/touched=unrelated/routes=128/followers=32/update_us",
+            "value": 37.16,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=8/waiters=1/cancel_us",
+            "value": 18.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=8/waiters=8/cancel_us",
+            "value": 101.98,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=8/waiters=32/cancel_us",
+            "value": 142.36,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=128/waiters=1/cancel_us",
+            "value": 9.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=128/waiters=8/cancel_us",
+            "value": 43.57,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=128/waiters=32/cancel_us",
+            "value": 116.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=2048/waiters=1/cancel_us",
+            "value": 7.24,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=2048/waiters=8/cancel_us",
+            "value": 38.38,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/unrelated=2048/waiters=32/cancel_us",
+            "value": 116.19,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=0/extra_routes=0/cancel_us",
+            "value": 3.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=0/extra_routes=128/cancel_us",
+            "value": 4.23,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=1/extra_routes=0/cancel_us",
+            "value": 3.12,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=1/extra_routes=128/cancel_us",
+            "value": 4.25,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=16/extra_routes=0/cancel_us",
+            "value": 4.15,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=16/extra_routes=128/cancel_us",
+            "value": 6.04,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=128/extra_routes=0/cancel_us",
+            "value": 19.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/failovers=128/extra_routes=128/cancel_us",
+            "value": 16.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=1024/waiters=1/active_ms",
+            "value": 3.06,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=1024/waiters=1/settled_ms",
+            "value": 4.5,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=1024/waiters=4/active_ms",
+            "value": 9.94,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=1024/waiters=4/settled_ms",
+            "value": 15.92,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=4096/waiters=1/active_ms",
+            "value": 16.63,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=4096/waiters=1/settled_ms",
+            "value": 23.57,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=4096/waiters=4/active_ms",
+            "value": 45.46,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=4096/waiters=4/settled_ms",
+            "value": 73.35,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=16384/waiters=1/active_ms",
+            "value": 72.41,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=16384/waiters=1/settled_ms",
+            "value": 99.54,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=16384/waiters=4/active_ms",
+            "value": 165.51,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-forward/paths=16384/waiters=4/settled_ms",
+            "value": 287.39,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=1024/waiters=1/active_ms",
+            "value": 4.22,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=1024/waiters=1/settled_ms",
+            "value": 6.37,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=1024/waiters=4/active_ms",
+            "value": 12.95,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=1024/waiters=4/settled_ms",
+            "value": 20.25,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=4096/waiters=1/active_ms",
+            "value": 19.47,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=4096/waiters=1/settled_ms",
+            "value": 27.18,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=4096/waiters=4/active_ms",
+            "value": 49.49,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=4096/waiters=4/settled_ms",
+            "value": 76.6,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=16384/waiters=1/active_ms",
+            "value": 82.4,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=16384/waiters=1/settled_ms",
+            "value": 114.29,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=16384/waiters=4/active_ms",
+            "value": 213.86,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=cancel-reverse/paths=16384/waiters=4/settled_ms",
+            "value": 329.31,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=1024/waiters=1/active_ms",
+            "value": 3.69,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=1024/waiters=1/settled_ms",
+            "value": 3.69,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=1024/waiters=4/active_ms",
+            "value": 4.03,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=1024/waiters=4/settled_ms",
+            "value": 4.03,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=4096/waiters=1/active_ms",
+            "value": 9.89,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=4096/waiters=1/settled_ms",
+            "value": 9.89,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=4096/waiters=4/active_ms",
+            "value": 15.08,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=4096/waiters=4/settled_ms",
+            "value": 15.08,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=16384/waiters=1/active_ms",
+            "value": 60.76,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=16384/waiters=1/settled_ms",
+            "value": 60.76,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=16384/waiters=4/active_ms",
+            "value": 98.75,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/operation=drain-local/paths=16384/waiters=4/settled_ms",
+            "value": 98.76,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=1/active_us",
+            "value": 9.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=1/settled_us",
+            "value": 16.79,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=64/active_us",
+            "value": 133.97,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=64/settled_us",
+            "value": 236.85,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=1024/active_us",
+            "value": 2770.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=1/cancelled=1024/settled_us",
+            "value": 4703.25,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=1/active_us",
+            "value": 13.93,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=1/settled_us",
+            "value": 23.96,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=64/active_us",
+            "value": 174.53,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=64/settled_us",
+            "value": 276.72,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=1024/active_us",
+            "value": 2772.66,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=16/cancelled=1024/settled_us",
+            "value": 4693.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=1/active_us",
+            "value": 25.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=1/settled_us",
+            "value": 40.72,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=64/active_us",
+            "value": 149.17,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=64/settled_us",
+            "value": 284.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=1024/active_us",
+            "value": 2722.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=false/routes=128/cancelled=1024/settled_us",
+            "value": 4502.73,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=1/active_us",
+            "value": 5.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=1/settled_us",
+            "value": 12.51,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=64/active_us",
+            "value": 114.35,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=64/settled_us",
+            "value": 207.37,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=1024/active_us",
+            "value": 2480.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=1/cancelled=1024/settled_us",
+            "value": 4245.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=1/active_us",
+            "value": 7.88,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=1/settled_us",
+            "value": 17.17,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=64/active_us",
+            "value": 123.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=64/settled_us",
+            "value": 261.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=1024/active_us",
+            "value": 2605.99,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=16/cancelled=1024/settled_us",
+            "value": 4242.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=1/active_us",
+            "value": 11.69,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=1/settled_us",
+            "value": 27.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=64/active_us",
+            "value": 126.58,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=64/settled_us",
+            "value": 248.99,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=1024/active_us",
+            "value": 2962.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/survivor=true/routes=128/cancelled=1024/settled_us",
+            "value": 5105.12,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=1/subscribers=1/update_us",
+            "value": 663.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=1/subscribers=8/update_us",
+            "value": 1403.15,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=32/subscribers=1/update_us",
+            "value": 1615.29,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=32/subscribers=8/update_us",
+            "value": 9315.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=128/subscribers=1/update_us",
+            "value": 4505,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=18/namespaces=128/subscribers=8/update_us",
+            "value": 32092.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=1/subscribers=1/update_us",
+            "value": 109.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=1/subscribers=8/update_us",
+            "value": 630.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=32/subscribers=1/update_us",
+            "value": 1156.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=32/subscribers=8/update_us",
+            "value": 8178.74,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=128/subscribers=1/update_us",
+            "value": 4263.63,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/requests/namespace_update=namespace_update/draft=21/namespaces=128/subscribers=8/update_us",
+            "value": 32920.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=0/direct_us",
+            "value": 3.91,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=0/front_us",
+            "value": 5.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=0/fork_us",
+            "value": 5.38,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=0/direct_us",
+            "value": 2.18,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=0/front_us",
+            "value": 3.34,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=0/fork_us",
+            "value": 3.16,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=0/direct_us",
+            "value": 1.86,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=0/front_us",
+            "value": 2.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=0/fork_us",
+            "value": 3.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=1/direct_us",
+            "value": 2.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=1/front_us",
+            "value": 5.23,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=1/fork_us",
+            "value": 5.05,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=1/direct_us",
+            "value": 2.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=1/front_us",
+            "value": 3.42,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=1/fork_us",
+            "value": 3.47,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=1/direct_us",
+            "value": 1.99,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=1/front_us",
+            "value": 3.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=1/fork_us",
+            "value": 3.41,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=16/direct_us",
+            "value": 2.86,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=16/front_us",
+            "value": 5.21,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/swaps=16/fork_us",
+            "value": 5.16,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=16/direct_us",
+            "value": 1.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=16/front_us",
+            "value": 3.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/swaps=16/fork_us",
+            "value": 3.62,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=16/direct_us",
+            "value": 2.01,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=16/front_us",
+            "value": 3.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/swaps=16/fork_us",
+            "value": 3.33,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/flaps=1/flap_us",
+            "value": 77.25,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/flaps=16/flap_us",
+            "value": 47.86,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/flaps=64/flap_us",
+            "value": 37.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/flaps=1/flap_us",
+            "value": 21.99,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/flaps=16/flap_us",
+            "value": 9.59,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/flaps=64/flap_us",
+            "value": 7.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/flaps=1/flap_us",
+            "value": 12.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/flaps=16/flap_us",
+            "value": 4.87,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/flaps=64/flap_us",
+            "value": 4.55,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/replayed_frames=0/readable_us",
+            "value": 8.08,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/replayed_frames=0/readable_us",
+            "value": 4.53,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/replayed_frames=0/readable_us",
+            "value": 2.44,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/replayed_frames=1/readable_us",
+            "value": 3.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/replayed_frames=1/readable_us",
+            "value": 2.07,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/replayed_frames=1/readable_us",
+            "value": 2.06,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/replayed_frames=64/readable_us",
+            "value": 6.68,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/replayed_frames=64/readable_us",
+            "value": 3.34,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/replayed_frames=64/readable_us",
+            "value": 2.82,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=1/replayed_frames=1024/readable_us",
+            "value": 86.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=4/replayed_frames=1024/readable_us",
+            "value": 52.89,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/readers=16/replayed_frames=1024/readable_us",
+            "value": 52.64,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=1/retained=1/us_per_datagram",
+            "value": 0.68,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=4/retained=1/us_per_datagram",
+            "value": 0.46,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=16/retained=1/us_per_datagram",
+            "value": 0.41,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=1/retained=64/us_per_datagram",
+            "value": 0.55,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=4/retained=64/us_per_datagram",
+            "value": 0.39,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=16/retained=64/us_per_datagram",
+            "value": 0.35,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=1/retained=4096/us_per_datagram",
+            "value": 0.43,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=4/retained=4096/us_per_datagram",
+            "value": 0.34,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/resume/datagram_readers=16/retained=4096/us_per_datagram",
+            "value": 0.32,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/signals/op=new-error/ns_per_op",
+            "value": 277,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/signals/op=create-close/ns_per_op",
+            "value": 2657,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/signals/op=create-get-close/ns_per_op",
+            "value": 2694,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/slow-group/groups=1/warnings=1/bytes=51/catchup_ms",
+            "value": 1.357,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/slow-group/groups=16/warnings=1/bytes=53/catchup_ms",
+            "value": 0.894,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/slow-group/groups=256/warnings=1/bytes=55/catchup_ms",
+            "value": 5.417,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/slow-group/groups=1024/warnings=1/bytes=57/catchup_ms",
+            "value": 25.368,
+            "unit": "ms"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=1/subscribers=1/groups=128/drop_us",
+            "value": 82.87,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=1/subscribers=4/groups=128/drop_us",
+            "value": 62.73,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=1/subscribers=16/groups=128/drop_us",
+            "value": 55.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=4/subscribers=1/groups=128/drop_us",
+            "value": 38.88,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=4/subscribers=4/groups=128/drop_us",
+            "value": 44.68,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=4/subscribers=16/groups=128/drop_us",
+            "value": 47.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=16/subscribers=1/groups=128/drop_us",
+            "value": 48,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=16/subscribers=4/groups=128/drop_us",
+            "value": 52.78,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-drop/publishers=16/subscribers=16/groups=128/drop_us",
+            "value": 57.57,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=1/subscribers=1/track_added_us",
+            "value": 368.67,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=1/subscribers=4/track_added_us",
+            "value": 431.14,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=1/subscribers=16/track_added_us",
+            "value": 661.27,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=16/subscribers=1/track_added_us",
+            "value": 72.55,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=16/subscribers=4/track_added_us",
+            "value": 163.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=16/subscribers=16/track_added_us",
+            "value": 645.52,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=128/subscribers=1/track_added_us",
+            "value": 56.36,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=128/subscribers=4/track_added_us",
+            "value": 172.64,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/subscribe-tracks/broadcasts=128/subscribers=16/track_added_us",
+            "value": 624.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=0/operation=read/publish_us",
+            "value": 30.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=0/operation=read/end_us",
+            "value": 23.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=0/operation=read/idle_us",
+            "value": 68.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=0/operation=read/publish_us",
+            "value": 11.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=0/operation=read/end_us",
+            "value": 22.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=0/operation=read/idle_us",
+            "value": 125.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=0/operation=read/publish_us",
+            "value": 13,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=0/operation=read/end_us",
+            "value": 38.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=0/operation=read/idle_us",
+            "value": 501.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=0/operation=read/publish_us",
+            "value": 10.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=0/operation=read/end_us",
+            "value": 136.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=0/operation=read/idle_us",
+            "value": 2005.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=0/operation=read/publish_us",
+            "value": 28,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=0/operation=read/end_us",
+            "value": 23.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=0/operation=read/idle_us",
+            "value": 71.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=0/operation=read/publish_us",
+            "value": 28.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=0/operation=read/end_us",
+            "value": 32.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=0/operation=read/idle_us",
+            "value": 205,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=0/operation=read/publish_us",
+            "value": 26.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=0/operation=read/end_us",
+            "value": 59.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=0/operation=read/idle_us",
+            "value": 814.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=0/operation=read/publish_us",
+            "value": 25.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=0/operation=read/end_us",
+            "value": 190.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=0/operation=read/idle_us",
+            "value": 4320.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=0/operation=read/publish_us",
+            "value": 69.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=0/operation=read/end_us",
+            "value": 36.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=0/operation=read/idle_us",
+            "value": 131.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=0/operation=read/publish_us",
+            "value": 68.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=0/operation=read/end_us",
+            "value": 54.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=0/operation=read/idle_us",
+            "value": 520.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=0/operation=read/publish_us",
+            "value": 85.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=0/operation=read/end_us",
+            "value": 92.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=0/operation=read/idle_us",
+            "value": 2443.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=0/operation=read/publish_us",
+            "value": 69.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=0/operation=read/end_us",
+            "value": 383.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=0/operation=read/idle_us",
+            "value": 14249.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=read/publish_us",
+            "value": 165.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=read/end_us",
+            "value": 39.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=read/idle_us",
+            "value": 190.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=read/publish_us",
+            "value": 163.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=read/end_us",
+            "value": 55.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=read/idle_us",
+            "value": 296.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=read/publish_us",
+            "value": 174.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=read/end_us",
+            "value": 92,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=read/idle_us",
+            "value": 654.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=read/publish_us",
+            "value": 185.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=read/end_us",
+            "value": 130.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=read/idle_us",
+            "value": 2226,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=read/publish_us",
+            "value": 948.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=read/end_us",
+            "value": 39.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=read/idle_us",
+            "value": 280,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=read/publish_us",
+            "value": 972.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=read/end_us",
+            "value": 54.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=read/idle_us",
+            "value": 458.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=read/publish_us",
+            "value": 871.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=read/end_us",
+            "value": 93.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=read/idle_us",
+            "value": 1273.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=read/publish_us",
+            "value": 796.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=read/end_us",
+            "value": 227.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=read/idle_us",
+            "value": 4600.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=read/publish_us",
+            "value": 3496.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=read/end_us",
+            "value": 64.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=read/idle_us",
+            "value": 774.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=read/publish_us",
+            "value": 3342.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=read/end_us",
+            "value": 82.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=read/idle_us",
+            "value": 1178,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=read/publish_us",
+            "value": 3235.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=read/end_us",
+            "value": 122.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=read/idle_us",
+            "value": 3479.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=read/publish_us",
+            "value": 3188.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=read/end_us",
+            "value": 375.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=read/idle_us",
+            "value": 16297.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=open/publish_us",
+            "value": 91.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=open/end_us",
+            "value": 43.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=1/held=16/operation=open/idle_us",
+            "value": 186.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=open/publish_us",
+            "value": 94.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=open/end_us",
+            "value": 47.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=1/held=16/operation=open/idle_us",
+            "value": 267.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=open/publish_us",
+            "value": 97.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=open/end_us",
+            "value": 110.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=1/held=16/operation=open/idle_us",
+            "value": 664.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=open/publish_us",
+            "value": 94.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=open/end_us",
+            "value": 206.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=1/held=16/operation=open/idle_us",
+            "value": 2348.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=open/publish_us",
+            "value": 466.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=open/end_us",
+            "value": 44.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=4/held=16/operation=open/idle_us",
+            "value": 288.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=open/publish_us",
+            "value": 520.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=open/end_us",
+            "value": 51.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=4/held=16/operation=open/idle_us",
+            "value": 465.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=open/publish_us",
+            "value": 499.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=open/end_us",
+            "value": 74.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=4/held=16/operation=open/idle_us",
+            "value": 1088.2,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=open/publish_us",
+            "value": 452.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=open/end_us",
+            "value": 289.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=4/held=16/operation=open/idle_us",
+            "value": 4979.6,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=open/publish_us",
+            "value": 2084,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=open/end_us",
+            "value": 94.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=25/subscribers=16/held=16/operation=open/idle_us",
+            "value": 770.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=open/publish_us",
+            "value": 1948.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=open/end_us",
+            "value": 98.1,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=100/subscribers=16/held=16/operation=open/idle_us",
+            "value": 1172.4,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=open/publish_us",
+            "value": 1940.7,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=open/end_us",
+            "value": 176.5,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=400/subscribers=16/held=16/operation=open/idle_us",
+            "value": 3686.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=open/publish_us",
+            "value": 1793.3,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=open/end_us",
+            "value": 458.8,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/track/retained=1500/subscribers=16/held=16/operation=open/idle_us",
+            "value": 14962.9,
+            "unit": "us"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=1-byte/op=encode/ns_per_op",
+            "value": 48.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=1-byte/op=decode/ns_per_op",
+            "value": 5.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=1-byte/op=decode-varint/ns_per_op",
+            "value": 7.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=2-byte/op=encode/ns_per_op",
+            "value": 49.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=2-byte/op=decode/ns_per_op",
+            "value": 8.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=2-byte/op=decode-varint/ns_per_op",
+            "value": 8.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=4-byte/op=encode/ns_per_op",
+            "value": 53.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=4-byte/op=decode/ns_per_op",
+            "value": 7.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=4-byte/op=decode-varint/ns_per_op",
+            "value": 8.7,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=8-byte/op=encode/ns_per_op",
+            "value": 50.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=8-byte/op=decode/ns_per_op",
+            "value": 17.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=quic/value=8-byte/op=decode-varint/ns_per_op",
+            "value": 11.1,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=1-byte/op=encode/ns_per_op",
+            "value": 50.4,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=1-byte/op=decode/ns_per_op",
+            "value": 5.2,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=1-byte/op=decode-varint/ns_per_op",
+            "value": 11.9,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=2-byte/op=encode/ns_per_op",
+            "value": 50.5,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=2-byte/op=decode/ns_per_op",
+            "value": 8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=2-byte/op=decode-varint/ns_per_op",
+            "value": 12.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=4-byte/op=encode/ns_per_op",
+            "value": 55.3,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=4-byte/op=decode/ns_per_op",
+            "value": 8.6,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=4-byte/op=decode-varint/ns_per_op",
+            "value": 12.8,
+            "unit": "ns"
+          },
+          {
+            "name": "bench-js/js/varint/format=leading-ones/value=8-byte/op=encode/ns_per_op",
+            "value": 59.6,
             "unit": "ns"
           },
           {
