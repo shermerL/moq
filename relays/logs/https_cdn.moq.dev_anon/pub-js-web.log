@@ -1,21 +1,24 @@
-publishing smoke-js-web-4859-24737.hang (fake camera, vite) to https://cdn.moq.dev/anon
+publishing smoke-js-web-4953-29296.hang (fake camera, vite) to https://cdn.moq.dev/anon
 [page] negotiated protocol: moq-lite-06
 [page] announced: prefix=
+[page] announced: broadcast=alluno/comms/8afe57cd-9e40-4f0f-946e-dbca939eb524/3f957309-865b-4ec1-92e7-275d1959fc02/Lord_Vader active=true
+[page] announced: broadcast=alluno/host/8afe57cd-9e40-4f0f-946e-dbca939eb524 active=true
+[page] announced: broadcast=alluno/input/8afe57cd-9e40-4f0f-946e-dbca939eb524/3f957309-865b-4ec1-92e7-275d1959fc02 active=true
 [page] announced: broadcast=anon/doom/game/e1m1 active=true
-[page] announced: broadcast=boom-moq-bnsmoke1 active=true
 [page] announced: broadcast=boom-moq-s2 active=true
-[page] announced: broadcast=room/6add59f11d8068f32675c9f9.hang active=true
+[page] announced: broadcast=lcb-6735905-1e5f.hang active=true
+[page] announced: broadcast=room/6add18efaaa1f4f33a5d0819.hang active=true
 [page] announce: prefix=
-[page] announce: broadcast=smoke-js-web-4859-24737.hang active=true
-[page] track info: broadcast=smoke-js-web-4859-24737.hang track=catalog.json
-[page] track info: broadcast=smoke-js-web-4859-24737.hang track=catalog.json
-[page] publish ok: broadcast=smoke-js-web-4859-24737.hang track=catalog.json
-[page] track info: broadcast=smoke-js-web-4859-24737.hang track=video
-[page] track info: broadcast=smoke-js-web-4859-24737.hang track=video
-[page] publish ok: broadcast=smoke-js-web-4859-24737.hang track=video
-[page] subscribe update: broadcast=smoke-js-web-4859-24737.hang track=video
-[page] subscribe update: broadcast=smoke-js-web-4859-24737.hang track=video
-[page] publish error: broadcast=smoke-js-web-4859-24737.hang track=catalog.json error=remote error: 1
-[page] datagram send stopped: sub=0 error=remote error: 1
-[page] publish error: broadcast=smoke-js-web-4859-24737.hang track=video error=remote error: 1
+[page] announce: broadcast=smoke-js-web-4953-29296.hang active=true
+[page] track info: broadcast=smoke-js-web-4953-29296.hang track=catalog.json
+[page] track info: broadcast=smoke-js-web-4953-29296.hang track=catalog.json
+[page] publish ok: broadcast=smoke-js-web-4953-29296.hang track=catalog.json
+[page] track info: broadcast=smoke-js-web-4953-29296.hang track=video
+[page] track info: broadcast=smoke-js-web-4953-29296.hang track=video
+[page] publish ok: broadcast=smoke-js-web-4953-29296.hang track=video
+[page] subscribe update: broadcast=smoke-js-web-4953-29296.hang track=video
+[page] subscribe update: broadcast=smoke-js-web-4953-29296.hang track=video
+[page] publish error: broadcast=smoke-js-web-4953-29296.hang track=video error=remote error: 1
 [page] datagram send stopped: sub=1 error=remote error: 1
+[page] publish error: broadcast=smoke-js-web-4953-29296.hang track=catalog.json error=remote error: 1
+[page] datagram send stopped: sub=0 error=remote error: 1
