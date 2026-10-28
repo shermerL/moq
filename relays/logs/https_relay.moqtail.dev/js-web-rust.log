@@ -1,14 +1,14 @@
-[2m2026-10-28T09:48:11.014687Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m5232833322197231 [3mconfigured[0m[2m=[0mfalse
-[2m2026-10-28T09:48:11.020172Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-10-28T09:48:11.020200Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-[2m2026-10-28T09:48:11.023762Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
-[2m2026-10-28T09:48:11.024008Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-10-28T09:48:11.124857Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-18
-[2m2026-10-28T09:48:11.124895Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
-[2m2026-10-28T09:48:11.924221Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-js-web-4903-25291.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-28T09:48:11.967359Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-js-web-4903-25291.hang [3mtrack[0m[2m=[0mvideo
-[2m2026-10-28T09:48:14.065527Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-js-web-4903-25291.hang [3mtrack[0m[2m=[0mvideo
-[2m2026-10-28T09:48:14.065561Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-js-web-4903-25291.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-10-28T09:48:14.077688Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-[2m2026-10-28T09:48:14.077790Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
+[2m2026-10-28T14:57:30.669721Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m4177258484706697 [3mconfigured[0m[2m=[0mfalse
+[2m2026-10-28T14:57:30.678414Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-10-28T14:57:30.678443Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m4194304
+[2m2026-10-28T14:57:30.688643Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
+[2m2026-10-28T14:57:30.690889Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-10-28T14:57:30.861315Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-18
+[2m2026-10-28T14:57:30.861350Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
+[2m2026-10-28T14:57:32.133788Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-js-web-4938-28584.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-28T14:57:32.177313Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe started [3mbroadcast[0m[2m=[0msmoke-js-web-4938-28584.hang [3mtrack[0m[2m=[0mvideo
+[2m2026-10-28T14:57:32.285476Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-js-web-4938-28584.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-10-28T14:57:32.285519Z[0m [32m INFO[0m [2mmoq_net::ietf::subscriber[0m[2m:[0m subscribe cancelled [3mbroadcast[0m[2m=[0msmoke-js-web-4938-28584.hang [3mtrack[0m[2m=[0mvideo
+[2m2026-10-28T14:57:32.303969Z[0m [33m WARN[0m [2mweb_transport_moq::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
+[2m2026-10-28T14:57:32.304148Z[0m [32m INFO[0m [2mmoq_net::ietf::session[0m[2m:[0m session terminated [3merr[0m[2m=[0mtransport: connection error: closed
 Error: Broken pipe (os error 32)
