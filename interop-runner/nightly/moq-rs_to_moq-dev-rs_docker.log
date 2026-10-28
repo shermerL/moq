@@ -4,140 +4,71 @@ Running interop tests...
   Relay:  moq-interop-relay:local
   Client: ghcr.io/englishm/moq-interop-runner-moq-test-client:latest
   URL:    https://relay:4443
-time="2026-10-26T15:10:39Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-26T15:10:39Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-26T15:10:39Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-26T15:10:39Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
-time="2026-10-26T15:10:39Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T03:19:29Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T03:19:29Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T03:19:29Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T03:19:29Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T03:19:29Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
  Container runner-upstream-test-client-1  Recreate
  Container runner-upstream-test-client-1  Recreated
 Attaching to relay-1, test-client-1
-relay-1        | [2m2026-10-26T15:10:39.349638Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-relay-1        | [2m2026-10-26T15:10:39.349659Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
-relay-1        | [2m2026-10-26T15:10:39.350080Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m7867531146249754 [3mconfigured[0m[2m=[0mfalse
-relay-1        | [2m2026-10-26T15:10:39.350190Z[0m [32m INFO[0m [2mmoq_relay::relay[0m[2m:[0m listening [3maddr[0m[2m=[0m[::]:4443 [3mkind[0m[2m=[0m"quic"
-relay-1        | [2m2026-10-26T15:10:39.350356Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+relay-1        | [2m2026-10-28T03:19:29.513883Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+relay-1        | [2m2026-10-28T03:19:29.513899Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m212992
+relay-1        | [2m2026-10-28T03:19:29.514086Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m1889995419226307 [3mconfigured[0m[2m=[0mfalse
+relay-1        | [2m2026-10-28T03:19:29.514160Z[0m [32m INFO[0m [2mmoq_relay::relay[0m[2m:[0m listening [3maddr[0m[2m=[0m[::]:4443 [3mkind[0m[2m=[0m"quic"
+relay-1        | [2m2026-10-28T03:19:29.514344Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
 test-client-1  | TAP version 14
 test-client-1  | # moq-test-client v0.1.15
 test-client-1  | # Relay: https://relay:4443/
 test-client-1  | 1..8
-test-client-1  | [2m2026-10-26T15:10:44.960141Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:53173 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:45.001124Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m0 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:53173 [3msession[0m[2m=[0m"401433ee1dc286447e6bbf0625b255b1"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:45.001238Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m0 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:53173 [3msession[0m[2m=[0m"401433ee1dc286447e6bbf0625b255b1"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:45.001521Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m SETUP exchange completed successfully
-test-client-1  | ok 1 - setup-only
+test-client-1  | [2m2026-10-28T03:19:35.131031Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:50936 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 1 - setup-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 42
-test-client-1  |   connection_id: ea07ea30c153da773377a1e87de5fce7
+test-client-1  |   duration_ms: 41
+test-client-1  |   message: "SETUP exchange failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-test-client-1  | [2m2026-10-26T15:10:45.001703Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-relay-1        | [2m2026-10-26T15:10:45.001781Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m0 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:53173 [3msession[0m[2m=[0m"401433ee1dc286447e6bbf0625b255b1"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:45.001947Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m0 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:53173 [3msession[0m[2m=[0m"401433ee1dc286447e6bbf0625b255b1"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m0 [3merr[0m[2m=[0mcancelled
-test-client-1  | [2m2026-10-26T15:10:45.002467Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:49171 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:45.004339Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m1 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:49171 [3msession[0m[2m=[0m"3a46480afe3a3ec1b039434471ba096d"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:45.004397Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m1 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:49171 [3msession[0m[2m=[0m"3a46480afe3a3ec1b039434471ba096d"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:45.004619Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Sending PUBLISH_NAMESPACE for: moq-test/interop
-test-client-1  | [2m2026-10-26T15:10:47.006270Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m PUBLISH_NAMESPACE succeeded (REQUEST_OK received, waiting for subscribers)
-relay-1        | [2m2026-10-26T15:10:47.006512Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m1 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:49171 [3msession[0m[2m=[0m"3a46480afe3a3ec1b039434471ba096d"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-test-client-1  | ok 2 - publish-namespace-only
+test-client-1  | [2m2026-10-28T03:19:35.172089Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:46785 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 2 - publish-namespace-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 2004
-test-client-1  |   connection_id: 4e75137dd4c3545cea75554e8e4cdb06
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "SETUP exchange failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-relay-1        | [2m2026-10-26T15:10:47.007015Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m1 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:49171 [3msession[0m[2m=[0m"3a46480afe3a3ec1b039434471ba096d"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m1 [3merr[0m[2m=[0mprotocol violation
-test-client-1  | [2m2026-10-26T15:10:47.007456Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:60389 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:47.009790Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m2 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:60389 [3msession[0m[2m=[0m"92a49a578b8eb867afff7867f9d97d11"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:47.009865Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m2 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:60389 [3msession[0m[2m=[0m"92a49a578b8eb867afff7867f9d97d11"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:47.010165Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Subscribing to non-existent track: nonexistent/namespace/test-track
-test-client-1  | [2m2026-10-26T15:10:47.010516Z[0m [33m WARN[0m [2mmoq_test_client::scenarios[0m[2m:[0m Got error but not clearly 'not found': closed, code=16. Relay may use different error text.
-relay-1        | [2m2026-10-26T15:10:47.010574Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m2 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:60389 [3msession[0m[2m=[0m"92a49a578b8eb867afff7867f9d97d11"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-test-client-1  | ok 3 - subscribe-error
+test-client-1  | [2m2026-10-28T03:19:35.174749Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:50791 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 3 - subscribe-error
 test-client-1  |   ---
-test-client-1  |   duration_ms: 4
-test-client-1  |   connection_id: 26aab9d5cde1e5046eed0277bce5d9c4
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "SETUP exchange failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-relay-1        | [2m2026-10-26T15:10:47.010919Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m2 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:60389 [3msession[0m[2m=[0m"92a49a578b8eb867afff7867f9d97d11"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m2 [3merr[0m[2m=[0mprotocol violation
-test-client-1  | [2m2026-10-26T15:10:47.011551Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:41003 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:47.013469Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m3 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:41003 [3msession[0m[2m=[0m"0bf5ce1c2bee364219a0caecce84dd0e"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:47.013518Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m3 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:41003 [3msession[0m[2m=[0m"0bf5ce1c2bee364219a0caecce84dd0e"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:47.014409Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:56558 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:47.016144Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m4 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:56558 [3msession[0m[2m=[0m"635aadd35e4d508046d16bbf4f55b4fd"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:47.016217Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m4 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:56558 [3msession[0m[2m=[0m"635aadd35e4d508046d16bbf4f55b4fd"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:47.016426Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Publisher sending PUBLISH_NAMESPACE: moq-test/interop
-test-client-1  | [2m2026-10-26T15:10:47.016437Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Subscriber subscribing to track: moq-test/interop/test-track
-test-client-1  | ok 4 - publish-namespace-subscribe
+test-client-1  | [2m2026-10-28T03:19:35.177600Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:46247 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 4 - publish-namespace-subscribe
 test-client-1  |   ---
-test-client-1  |   duration_ms: 3006
-test-client-1  |   publisher_connection_id: 9a425e7605b9ff838ebfc33dbdce75bc
-test-client-1  |   subscriber_connection_id: 30c4accefccdd0a18c4fde9d0b5391a9
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "publisher SETUP failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-test-client-1  | [2m2026-10-26T15:10:50.017463Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Test timeout reached - subscription routing may still be in progress
-relay-1        | [2m2026-10-26T15:10:50.017824Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m4 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:56558 [3msession[0m[2m=[0m"635aadd35e4d508046d16bbf4f55b4fd"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-test-client-1  | [2m2026-10-26T15:10:50.018229Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-test-client-1  | [2m2026-10-26T15:10:50.018291Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-relay-1        | [2m2026-10-26T15:10:50.018084Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m3 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:41003 [3msession[0m[2m=[0m"0bf5ce1c2bee364219a0caecce84dd0e"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:50.018248Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m4 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:56558 [3msession[0m[2m=[0m"635aadd35e4d508046d16bbf4f55b4fd"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m4 [3merr[0m[2m=[0mcancelled
-relay-1        | [2m2026-10-26T15:10:50.018288Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m3 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:41003 [3msession[0m[2m=[0m"0bf5ce1c2bee364219a0caecce84dd0e"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m3 [3merr[0m[2m=[0mcancelled
-test-client-1  | [2m2026-10-26T15:10:50.018705Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:39588 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:50.021402Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m5 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:39588 [3msession[0m[2m=[0m"6a3c0552b792f2d749cbbde949acd718"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:50.021481Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m5 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:39588 [3msession[0m[2m=[0m"6a3c0552b792f2d749cbbde949acd718"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:50.021737Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Subscriber subscribing BEFORE PUBLISH_NAMESPACE: moq-test/interop/test-track
-test-client-1  | [2m2026-10-26T15:10:50.022308Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m failed to read capsule [3me[0m[2m=[0mUnexpectedEnd
-relay-1        | [2m2026-10-26T15:10:50.022278Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m5 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:39588 [3msession[0m[2m=[0m"6a3c0552b792f2d749cbbde949acd718"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:50.022347Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m5 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:39588 [3msession[0m[2m=[0m"6a3c0552b792f2d749cbbde949acd718"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m5 [3merr[0m[2m=[0mcancelled
-test-client-1  | [2m2026-10-26T15:10:50.523516Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:44438 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:50.527223Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m6 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:44438 [3msession[0m[2m=[0m"b25d28234114aa646e4e49c3d548cf15"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:50.527316Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m6 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:44438 [3msession[0m[2m=[0m"b25d28234114aa646e4e49c3d548cf15"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:50.527600Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Publisher sending PUBLISH_NAMESPACE (after subscriber): moq-test/interop
-test-client-1  | ok 5 - subscribe-before-publish-namespace
+test-client-1  | [2m2026-10-28T03:19:35.180219Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:35174 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 5 - subscribe-before-publish-namespace
 test-client-1  |   ---
-relay-1        | [2m2026-10-26T15:10:53.528636Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m6 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:44438 [3msession[0m[2m=[0m"b25d28234114aa646e4e49c3d548cf15"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:53.529167Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m6 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:44438 [3msession[0m[2m=[0m"b25d28234114aa646e4e49c3d548cf15"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m6 [3merr[0m[2m=[0mprotocol violation
-test-client-1  |   duration_ms: 3511
-test-client-1  |   subscriber_connection_id: bd1055ee82c5c6b299297c55c747981c
-test-client-1  |   publisher_connection_id: 68912f3a5dc7766aa41c14592f0f4c61
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "subscriber SETUP failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-test-client-1  | [2m2026-10-26T15:10:53.528536Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Publisher PUBLISH_NAMESPACE timeout (expected)
-test-client-1  | [2m2026-10-26T15:10:53.528562Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Subscriber got error: closed, code=16 (may be expected)
-test-client-1  | [2m2026-10-26T15:10:53.529572Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:57172 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:53.531846Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m7 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57172 [3msession[0m[2m=[0m"0dc2c39dc057c7ef4e8954a69f7d8acb"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:53.531921Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m7 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57172 [3msession[0m[2m=[0m"0dc2c39dc057c7ef4e8954a69f7d8acb"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:53.532212Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Sending PUBLISH_NAMESPACE: moq-test/interop
-test-client-1  | [2m2026-10-26T15:10:55.533469Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m PUBLISH_NAMESPACE active; sending PUBLISH_NAMESPACE_DONE
-relay-1        | [2m2026-10-26T15:10:55.533567Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m7 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57172 [3msession[0m[2m=[0m"0dc2c39dc057c7ef4e8954a69f7d8acb"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:55.534075Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m7 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57172 [3msession[0m[2m=[0m"0dc2c39dc057c7ef4e8954a69f7d8acb"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m7 [3merr[0m[2m=[0mprotocol violation
-test-client-1  | [2m2026-10-26T15:10:55.634334Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m PUBLISH_NAMESPACE_DONE sent successfully
-test-client-1  | ok 6 - publish-namespace-done
+test-client-1  | [2m2026-10-28T03:19:35.182698Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:59350 [3mdual_stack[0m[2m=[0mtrue
+test-client-1  | not ok 6 - publish-namespace-done
 test-client-1  |   ---
-test-client-1  |   duration_ms: 2105
-test-client-1  |   connection_id: e783bb03160ccc873c5ee42fd6dbe01d
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "SETUP exchange failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-test-client-1  | [2m2026-10-26T15:10:55.635350Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:54298 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:55.637661Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m8 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:54298 [3msession[0m[2m=[0m"3cb6b7d995f954c0e1bfdc75db2c200d"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:55.637739Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m8 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:54298 [3msession[0m[2m=[0m"3cb6b7d995f954c0e1bfdc75db2c200d"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:55.638028Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Publisher sending direct PUBLISH [3mnamespace[0m[2m=[0m/moq-test/publish [3mtrack[0m[2m=[0m"published-track"
+test-client-1  | [2m2026-10-28T03:19:35.185160Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:33293 [3mdual_stack[0m[2m=[0mtrue
 test-client-1  | not ok 7 - publish-track-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 3
-test-client-1  |   message: "PUBLISH was rejected: closed, code=3"
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "publisher SETUP failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-relay-1        | [2m2026-10-26T15:10:55.638463Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m8 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:54298 [3msession[0m[2m=[0m"3cb6b7d995f954c0e1bfdc75db2c200d"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
-relay-1        | [2m2026-10-26T15:10:55.638860Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m8 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:54298 [3msession[0m[2m=[0m"3cb6b7d995f954c0e1bfdc75db2c200d"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m8 [3merr[0m[2m=[0mprotocol violation
-test-client-1  | [2m2026-10-26T15:10:55.639343Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:55060 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:55.641202Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m9 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:55060 [3msession[0m[2m=[0m"c1c10ba96cc243a05f841326342684c1"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:55.641261Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m9 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:55060 [3msession[0m[2m=[0m"c1c10ba96cc243a05f841326342684c1"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:55.642083Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:57162 [3mdual_stack[0m[2m=[0mtrue
-relay-1        | [2m2026-10-26T15:10:55.644296Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m10 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57162 [3msession[0m[2m=[0m"dd5f860cb829e04c634349237fb2c483"[1m}[0m[2m:[0m [2mmoq_relay::cluster[0m[2m:[0m session accepted [3mtransport[0m[2m=[0mwebtransport [3mrequest.role[0m[2m=[0mNone [3mtier[0m[2m=[0m [3mroot[0m[2m=[0m [3mpublish[0m[2m=[0mSome(Patterns([Pattern("**")])) [3msubscribe[0m[2m=[0mSome(Patterns([Pattern("**")]))
-relay-1        | [2m2026-10-26T15:10:55.644353Z[0m [32m INFO[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m10 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57162 [3msession[0m[2m=[0m"dd5f860cb829e04c634349237fb2c483"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m negotiated [3mversion[0m[2m=[0mmoq-transport-16 [3mtransport[0m[2m=[0mwebtransport
-test-client-1  | [2m2026-10-26T15:10:55.644605Z[0m [32m INFO[0m [2mmoq_test_client::scenarios[0m[2m:[0m Publisher sending direct PUBLISH before subscriber subscribes [3mnamespace[0m[2m=[0m/moq-test/publish [3mtrack[0m[2m=[0m"published-track"
+test-client-1  | [2m2026-10-28T03:19:35.187690Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m[::]:0 [3mlocal[0m[2m=[0m[::]:47412 [3mdual_stack[0m[2m=[0mtrue
 test-client-1  | not ok 8 - publish-track-subscribe
-relay-1        | [2m2026-10-26T15:10:55.645047Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m9 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:55060 [3msession[0m[2m=[0m"c1c10ba96cc243a05f841326342684c1"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
 test-client-1  |   ---
-test-client-1  |   duration_ms: 6
-test-client-1  |   message: "PUBLISH was rejected: closed, code=3"
-relay-1        | [2m2026-10-26T15:10:55.645180Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m10 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57162 [3msession[0m[2m=[0m"dd5f860cb829e04c634349237fb2c483"[1m}[0m[2m:[0m [2mmoq_net::ietf::session[0m[2m:[0m session error [3merr[0m[2m=[0mprotocol violation
+test-client-1  |   duration_ms: 2
+test-client-1  |   message: "publisher SETUP failed: webtransport error: read error: RESET_STREAM: 1: read error: RESET_STREAM: 1"
 test-client-1  |   ...
-relay-1        | [2m2026-10-26T15:10:55.645245Z[0m [33m WARN[0m [1mconn[0m[1m{[0m[3mid[0m[2m=[0m10 [3mremote[0m[2m=[0m[::ffff:172.18.0.3]:57162 [3msession[0m[2m=[0m"dd5f860cb829e04c634349237fb2c483"[1m}[0m[2m:[0m [2mmoq_relay::connection[0m[2m:[0m connection closed [3mid[0m[2m=[0m10 [3merr[0m[2m=[0mcancelled
 [Ktest-client-1 exited with code 1
 Aborting on container exit...
  Container runner-upstream-test-client-1  Stopping
