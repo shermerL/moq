@@ -4,11 +4,11 @@ Running interop tests...
   Relay:  ghcr.io/englishm/moq-interop-runner-moq-relay-ietf-draft-14:latest
   Client: ghcr.io/englishm/moq-interop-runner-moq-dev-js-client:latest
   URL:    https://relay:4443
-time="2026-10-28T03:22:46Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T03:22:46Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T03:22:46Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T03:22:46Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T03:22:46Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T10:06:10Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T10:06:10Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T10:06:10Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T10:06:10Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-28T10:06:10Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
  Container runner-upstream-relay-1  Recreate
  Container runner-upstream-relay-1  Recreated
 Attaching to relay-1, test-client-1
@@ -16,80 +16,80 @@ relay-1        | Starting moq-rs relay on port 4443
 relay-1        |   Cert: /certs/cert.pem
 relay-1        |   Key:  /certs/priv.key
 relay-1        |   Mlog: /mlog
-relay-1        | [2m2026-10-28T03:22:46.372989Z[0m [32m INFO[0m [2mmoq_relay_ietf[0m[2m:[0m using file coordinator: /tmp/moq-coordinator.json
-relay-1        | [2m2026-10-28T03:22:46.373036Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m0.0.0.0:4443 [3mlocal[0m[2m=[0m0.0.0.0:4443 [3mdual_stack[0m[2m=[0mfalse
-relay-1        | [2m2026-10-28T03:22:46.373362Z[0m [32m INFO[0m [2mmoq_relay_ietf::relay[0m[2m:[0m mlog output enabled: /mlog
-relay-1        | [2m2026-10-28T03:22:46.373389Z[0m [32m INFO[0m [2mmoq_relay_ietf::relay[0m[2m:[0m listening on 0.0.0.0:4443
+relay-1        | [2m2026-10-28T10:06:10.966195Z[0m [32m INFO[0m [2mmoq_relay_ietf[0m[2m:[0m using file coordinator: /tmp/moq-coordinator.json
+relay-1        | [2m2026-10-28T10:06:10.966241Z[0m [32m INFO[0m [2mmoq_native_ietf::quic[0m[2m:[0m UDP socket bound [3mbind[0m[2m=[0m0.0.0.0:4443 [3mlocal[0m[2m=[0m0.0.0.0:4443 [3mdual_stack[0m[2m=[0mfalse
+relay-1        | [2m2026-10-28T10:06:10.966567Z[0m [32m INFO[0m [2mmoq_relay_ietf::relay[0m[2m:[0m mlog output enabled: /mlog
+relay-1        | [2m2026-10-28T10:06:10.966590Z[0m [32m INFO[0m [2mmoq_relay_ietf::relay[0m[2m:[0m listening on 0.0.0.0:4443
 test-client-1  | TAP version 14
 test-client-1  | # moq-dev-js-client v0.1.0 (@moq/net 0.4.4)
 test-client-1  | # Relay: https://relay:4443
 test-client-1  | 1..8
-relay-1        | [2m2026-10-28T03:22:52.329033Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:16.977379Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:52.336877Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | adapter: close() called
+relay-1        | [2m2026-10-28T10:06:16.985363Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | ok 1 - setup-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 113
+test-client-1  |   duration_ms: 111
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:52.341281Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:16.989583Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:52.345825Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
-relay-1        | [2m2026-10-28T03:22:52.346525Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
+relay-1        | [2m2026-10-28T10:06:16.994312Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
+relay-1        | [2m2026-10-28T10:06:16.994756Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
 test-client-1  | adapter: close() called
-relay-1        | [2m2026-10-28T03:22:52.844154Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
+relay-1        | [2m2026-10-28T10:06:17.492376Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | ok 2 - announce-only
 test-client-1  |   ---
 test-client-1  |   duration_ms: 508
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:52.848580Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:17.497252Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:52.850463Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
-relay-1        | [2m2026-10-28T03:22:52.850541Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
-relay-1        | [2m2026-10-28T03:22:53.352023Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m announce closed [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mcancelled
-relay-1        | [2m2026-10-28T03:22:53.352397Z[0m [33m WARN[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m failed serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop }, error: cancelled [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mcancelled
+relay-1        | [2m2026-10-28T10:06:17.499079Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
+relay-1        | [2m2026-10-28T10:06:17.499149Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
+relay-1        | [2m2026-10-28T10:06:18.000698Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m announce closed [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mcancelled
+relay-1        | [2m2026-10-28T10:06:18.001095Z[0m [33m WARN[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m failed serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop }, error: cancelled [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mcancelled
 test-client-1  | adapter: no announcement for namespace: moq-test/interop
 test-client-1  | adapter: close() called
-relay-1        | [2m2026-10-28T03:22:53.551878Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
+relay-1        | [2m2026-10-28T10:06:18.200371Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | ok 3 - publish-namespace-done
 test-client-1  |   ---
-test-client-1  |   duration_ms: 707
+test-client-1  |   duration_ms: 708
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:53.556656Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:18.204643Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
+relay-1        | [2m2026-10-28T10:06:18.212163Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+test-client-1  | https://relay:4443/ connected via WebTransport
+test-client-1  | https://relay:4443/ negotiated ALPN: (none)
+relay-1        | [2m2026-10-28T10:06:18.212720Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [6ae963cb-690d-44a5-a164-dd47a3e52ff1] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
+relay-1        | [2m2026-10-28T10:06:18.212735Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:6ae963cb-690d-44a5-a164-dd47a3e52ff1]
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m2026-10-28T03:22:53.560589Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [bcc1ea16-8d0f-43b1-a3a3-18e1ac9e1fa4] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
-relay-1        | [2m2026-10-28T03:22:53.560600Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:bcc1ea16-8d0f-43b1-a3a3-18e1ac9e1fa4]
-relay-1        | [2m2026-10-28T03:22:53.561410Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
-test-client-1  | https://relay:4443/ connected via WebTransport
-test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:53.563202Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop/subscribe-namespace-lifecycle/da079e1c5970f3dbd670bbdd5a309554 } [3mnamespace[0m[2m=[0m/moq-test/interop/subscribe-namespace-lifecycle/da079e1c5970f3dbd670bbdd5a309554
-relay-1        | [2m2026-10-28T03:22:53.563322Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop/subscribe-namespace-lifecycle/da079e1c5970f3dbd670bbdd5a309554 -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop/subscribe-namespace-lifecycle/da079e1c5970f3dbd670bbdd5a309554 [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
+relay-1        | [2m2026-10-28T10:06:18.214633Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop/subscribe-namespace-lifecycle/a2d8081111546acf1bcbadb8f5da5e28 } [3mnamespace[0m[2m=[0m/moq-test/interop/subscribe-namespace-lifecycle/a2d8081111546acf1bcbadb8f5da5e28
+relay-1        | [2m2026-10-28T10:06:18.214738Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop/subscribe-namespace-lifecycle/a2d8081111546acf1bcbadb8f5da5e28 -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop/subscribe-namespace-lifecycle/a2d8081111546acf1bcbadb8f5da5e28 [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
 test-client-1  | not ok 4 - subscribe-namespace-lifecycle
 test-client-1  |   ---
-test-client-1  |   duration_ms: 3012
+test-client-1  |   duration_ms: 3014
 test-client-1  |   test_spec_revision: 1
 test-client-1  |   message: "timeout after 3000ms: NAMESPACE"
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:56.567251Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:21.220031Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
 test-client-1  | subscribe start: id=2 broadcast=nonexistent/namespace track=test-track
-relay-1        | [2m2026-10-28T03:22:56.574367Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [90315cdc-f1f8-45ff-a058-7cdf2271a921] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
-relay-1        | [2m2026-10-28T03:22:56.574384Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:90315cdc-f1f8-45ff-a058-7cdf2271a921]
+relay-1        | [2m2026-10-28T10:06:21.227747Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [87df9185-9ea4-44f4-8b9f-21a0a718b46f] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
+relay-1        | [2m2026-10-28T10:06:21.227765Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:87df9185-9ea4-44f4-8b9f-21a0a718b46f]
 test-client-1  | subscribe_namespace written: requestId=0
 test-client-1  | subscribe written: id=2 broadcast=nonexistent/namespace track=test-track
-relay-1        | [2m2026-10-28T03:22:56.575150Z[0m [32m INFO[0m [2mmoq_relay_ietf::producer[0m[2m:[0m serving subscribe: SubscribeInfo { id: 2, track_namespace: /nonexistent/namespace, track_name: "test-track", subscriber_priority: 255, group_order: Descending, forward: true, filter_type: AbsoluteStart, start_location: Some(Location { group_id: 0, object_id: 0 }), end_group_id: None, params: {  }, track_status: false } [3mnamespace[0m[2m=[0m/nonexistent/namespace [3mtrack[0m[2m=[0mtest-track
-relay-1        | [2m2026-10-28T03:22:56.575302Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [dd921f8c-f457-4784-a187-567bf37f52d6] Not found: track '/nonexistent/namespace/test-track' not found in local or remote tracks at /build/moq-relay-ietf/src/producer.rs:168
-relay-1        | [2m2026-10-28T03:22:56.575370Z[0m [33m WARN[0m [2mmoq_relay_ietf::producer[0m[2m:[0m failed serving subscribe: SubscribeInfo { id: 2, track_namespace: /nonexistent/namespace, track_name: "test-track", subscriber_priority: 255, group_order: Descending, forward: true, filter_type: AbsoluteStart, start_location: Some(Location { group_id: 0, object_id: 0 }), end_group_id: None, params: {  }, track_status: false }, error: not found: Track not found [error:dd921f8c-f457-4784-a187-567bf37f52d6] [3mnamespace[0m[2m=[0m/nonexistent/namespace [3mtrack[0m[2m=[0mtest-track [3merror[0m[2m=[0mnot found: Track not found [error:dd921f8c-f457-4784-a187-567bf37f52d6]
+relay-1        | [2m2026-10-28T10:06:21.228687Z[0m [32m INFO[0m [2mmoq_relay_ietf::producer[0m[2m:[0m serving subscribe: SubscribeInfo { id: 2, track_namespace: /nonexistent/namespace, track_name: "test-track", subscriber_priority: 255, group_order: Descending, forward: true, filter_type: AbsoluteStart, start_location: Some(Location { group_id: 0, object_id: 0 }), end_group_id: None, params: {  }, track_status: false } [3mnamespace[0m[2m=[0m/nonexistent/namespace [3mtrack[0m[2m=[0mtest-track
+relay-1        | [2m2026-10-28T10:06:21.228881Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [5606beaa-f019-4d76-9c2e-78b108ba9e02] Not found: track '/nonexistent/namespace/test-track' not found in local or remote tracks at /build/moq-relay-ietf/src/producer.rs:168
+relay-1        | [2m2026-10-28T10:06:21.228908Z[0m [33m WARN[0m [2mmoq_relay_ietf::producer[0m[2m:[0m failed serving subscribe: SubscribeInfo { id: 2, track_namespace: /nonexistent/namespace, track_name: "test-track", subscriber_priority: 255, group_order: Descending, forward: true, filter_type: AbsoluteStart, start_location: Some(Location { group_id: 0, object_id: 0 }), end_group_id: None, params: {  }, track_status: false }, error: not found: Track not found [error:5606beaa-f019-4d76-9c2e-78b108ba9e02] [3mnamespace[0m[2m=[0m/nonexistent/namespace [3mtrack[0m[2m=[0mtest-track [3merror[0m[2m=[0mnot found: Track not found [error:5606beaa-f019-4d76-9c2e-78b108ba9e02]
 test-client-1  | adapter: closing stream requestId=2
-test-client-1  | subscribe error: id=2 broadcast=nonexistent/namespace track=test-track error=SUBSCRIBE error: does_not_exist (code=4) not found: Track not found [error:dd921f8c-f457-4784-a187-567bf37f52d6]
+test-client-1  | subscribe error: id=2 broadcast=nonexistent/namespace track=test-track error=SUBSCRIBE error: does_not_exist (code=4) not found: Track not found [error:5606beaa-f019-4d76-9c2e-78b108ba9e02]
 test-client-1  | adapter: close() called
-relay-1        | [2m2026-10-28T03:22:56.877648Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
+relay-1        | [2m2026-10-28T10:06:21.531572Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | subscribe_namespace error: unexpected end of stream
 test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 184 |         }
 test-client-1  | 185 |         if (this.#buffer.byteLength >= size)
@@ -104,43 +104,42 @@ test-client-1  |       at async decode (/app/node_modules/@moq/net/stream.js:236
 test-client-1  | 
 test-client-1  | ok 5 - subscribe-error
 test-client-1  |   ---
-test-client-1  |   duration_ms: 314
+test-client-1  |   duration_ms: 317
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:56.881724Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:21.535988Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:56.883553Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
-relay-1        | [2m2026-10-28T03:22:56.883653Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
-relay-1        | [2m2026-10-28T03:22:57.186345Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:21.538103Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
+relay-1        | [2m2026-10-28T10:06:21.538192Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/interop -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/interop [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
+relay-1        | [2m2026-10-28T10:06:21.842844Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m2026-10-28T03:22:57.188689Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [f45574f5-e3e7-4d3e-93b1-c5471c98b1dd] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
-relay-1        | [2m2026-10-28T03:22:57.188706Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:f45574f5-e3e7-4d3e-93b1-c5471c98b1dd]
+relay-1        | [2m2026-10-28T10:06:21.845583Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [6ff27dd6-10f2-4922-81ca-6924e8261b7d] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
+relay-1        | [2m2026-10-28T10:06:21.845630Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:6ff27dd6-10f2-4922-81ca-6924e8261b7d]
 test-client-1  | not ok 6 - announce-subscribe
 test-client-1  |   ---
-test-client-1  |   duration_ms: 1811
+test-client-1  |   duration_ms: 1812
 test-client-1  |   message: "timeout after 1500ms waiting for broadcast"
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:22:58.692299Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:23.348835Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m2026-10-28T03:22:58.694168Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [ac7cd82b-44c2-46f0-ab0d-bba1726ef821] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
-relay-1        | [2m2026-10-28T03:22:58.694238Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:ac7cd82b-44c2-46f0-ab0d-bba1726ef821]
+relay-1        | [2m2026-10-28T10:06:23.350935Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [07b93db1-f758-45fa-9d70-2c50d8494a26] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
+relay-1        | [2m2026-10-28T10:06:23.350950Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:07b93db1-f758-45fa-9d70-2c50d8494a26]
 test-client-1  | https://relay:4443/ connected via WebTransport
+relay-1        | [2m2026-10-28T10:06:23.854527Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:22:59.197119Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
-relay-1        | [2m2026-10-28T03:22:59.198917Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
-relay-1        | [2m2026-10-28T03:22:59.198946Z[0m [33m WARN[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m failed serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop }, error: duplicate [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mduplicate
+relay-1        | [2m2026-10-28T10:06:23.856784Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop } [3mnamespace[0m[2m=[0m/moq-test/interop
+relay-1        | [2m2026-10-28T10:06:23.856816Z[0m [33m WARN[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m failed serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/interop }, error: duplicate [3mnamespace[0m[2m=[0m/moq-test/interop [3merror[0m[2m=[0mduplicate
 test-client-1  | adapter: closing stream requestId=0
 test-client-1  | announce failed: broadcast=moq-test/interop error=PublishNamespace rejected: typeId=0x8
-relay-1        | [2m2026-10-28T03:22:59.257229Z[0m [33m WARN[0m [2mmoq_relay_ietf::relay[0m[2m:[0m MoQ session error: duplicate [3merror[0m[2m=[0mduplicate
+relay-1        | [2m2026-10-28T10:06:23.917583Z[0m [33m WARN[0m [2mmoq_relay_ietf::relay[0m[2m:[0m MoQ session error: duplicate [3merror[0m[2m=[0mduplicate
 test-client-1  | adapter: close() called
 test-client-1  | announce failed: broadcast=moq-test/interop error=control stream closed
-relay-1        | [2m2026-10-28T03:23:01.199357Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
+relay-1        | [2m2026-10-28T10:06:25.857909Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | adapter: close() called
-relay-1        | [2m2026-10-28T03:23:01.199885Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | subscribe_namespace error: unexpected end of stream
 test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 184 |         }
 test-client-1  | 185 |         if (this.#buffer.byteLength >= size)
@@ -153,21 +152,22 @@ test-client-1  | error: unexpected end of stream
 test-client-1  |       at #fillTo (/app/node_modules/@moq/net/stream.js:189:23)
 test-client-1  |       at async decode (/app/node_modules/@moq/net/stream.js:236:24)
 test-client-1  | 
+relay-1        | [2m2026-10-28T10:06:25.858531Z[0m [33m WARN[0m [2mweb_transport_quinn::session[0m[2m:[0m unknown capsule [3mtyp[0m[2m=[0m0 [3msize[0m[2m=[0m7
 test-client-1  | ok 7 - subscribe-before-announce
 test-client-1  |   ---
-test-client-1  |   duration_ms: 2511
+test-client-1  |   duration_ms: 2515
 test-client-1  |   ...
-relay-1        | [2m2026-10-28T03:23:01.203817Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:25.863225Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
-relay-1        | [2m2026-10-28T03:23:01.206714Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/data-subgroup-basic/65ea295792af9aabc7b36b3549b5b5b2 } [3mnamespace[0m[2m=[0m/moq-test/data-subgroup-basic/65ea295792af9aabc7b36b3549b5b5b2
-relay-1        | [2m2026-10-28T03:23:01.206827Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/data-subgroup-basic/65ea295792af9aabc7b36b3549b5b5b2 -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/data-subgroup-basic/65ea295792af9aabc7b36b3549b5b5b2 [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
-relay-1        | [2m2026-10-28T03:23:01.208185Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
+relay-1        | [2m2026-10-28T10:06:25.865923Z[0m [32m INFO[0m [2mmoq_relay_ietf::consumer[0m[2m:[0m serving announce: AnnounceInfo { request_id: 0, namespace: /moq-test/data-subgroup-basic/076ac948ced447805c371c9e7ff3c465 } [3mnamespace[0m[2m=[0m/moq-test/data-subgroup-basic/076ac948ced447805c371c9e7ff3c465
+relay-1        | [2m2026-10-28T10:06:25.866084Z[0m [32m INFO[0m [2mmoq_relay_ietf::file_coordinator[0m[2m:[0m registering namespace: /moq-test/data-subgroup-basic/076ac948ced447805c371c9e7ff3c465 -> https://0.0.0.0:4443/ [3mnamespace[0m[2m=[0m/moq-test/data-subgroup-basic/076ac948ced447805c371c9e7ff3c465 [3mscope[0m[2m=[0m [3mrelay_url[0m[2m=[0mhttps://0.0.0.0:4443/
+relay-1        | [2m2026-10-28T10:06:25.867456Z[0m [33m WARN[0m [2mmoq_transport::session[0m[2m:[0m Failed to create mlog: Permission denied (os error 13)
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: (none)
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m2026-10-28T03:23:01.211214Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [5d085d57-77d8-446e-80c2-70873c61f98f] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
-relay-1        | [2m2026-10-28T03:23:01.211317Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:5d085d57-77d8-446e-80c2-70873c61f98f]
+relay-1        | [2m2026-10-28T10:06:25.870482Z[0m [33m WARN[0m [2mmoq_transport::serve::error[0m[2m:[0m [efd35bad-f1a8-4122-9ecb-123e7b7bfe80] Not implemented: SUBSCRIBE_NAMESPACE at moq-transport/src/session/error.rs:77
+relay-1        | [2m2026-10-28T10:06:25.870497Z[0m [33m WARN[0m [2mmoq_transport::session::publisher[0m[2m:[0m failed to process message: serve error: not implemented: Feature not implemented [error:efd35bad-f1a8-4122-9ecb-123e7b7bfe80]
 test-client-1  | not ok 8 - data-subgroup-basic
 test-client-1  |   ---
 test-client-1  |   duration_ms: 5011
