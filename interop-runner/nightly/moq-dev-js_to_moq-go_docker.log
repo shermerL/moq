@@ -4,292 +4,292 @@ Running interop tests...
   Relay:  ghcr.io/englishm/moq-interop-runner-moq-go-relay:latest
   Client: ghcr.io/englishm/moq-interop-runner-moq-dev-js-client:latest
   URL:    https://relay:4443
-time="2026-10-28T15:12:30Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T15:12:30Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T15:12:30Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T15:12:30Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
-time="2026-10-28T15:12:30Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-29T11:25:43Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-29T11:25:43Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-29T11:25:43Z" level=warning msg="The \"PORT\" variable is not set. Defaulting to a blank string."
+time="2026-10-29T11:25:43Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
+time="2026-10-29T11:25:43Z" level=warning msg="The \"HEX\" variable is not set. Defaulting to a blank string."
  Container runner-upstream-relay-1  Recreate
  Container runner-upstream-relay-1  Recreated
 Attaching to relay-1, test-client-1
 relay-1        | Starting moq relay: port=4443 cert=/certs/cert.pem wt-path=/ (serving raw QUIC and WebTransport; MOQT_TRANSPORT=webtransport is informational)
-relay-1        | [2m15:12:30[0m [92mINF[0m failed to sufficiently increase receive buffer size (was: 1024 kiB, wanted: 7168 kiB, got: 2048 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
-relay-1        | [2m15:12:30[0m [92mINF[0m relay listening on [::]:4443 (raw QUIC as moqt://0.0.0.0:4443, WebTransport as https://0.0.0.0:4443/)
-relay-1        | [2m15:12:30[0m [92mINF[0m WebTransport server cert SHA-256: 74c9890b234eb29e37b88e1187284cdd3e14e242f7bef2fcc3d383f31705865a
-relay-1        | [2m15:12:30[0m [92mINF[0m   → new WebTransport("https://0.0.0.0:4443/", {serverCertificateHashes: [{algorithm: "sha-256", value: new Uint8Array([116,201,137,11,35,78,178,158,55,184,142,17,135,40,76,221,62,20,226,66,247,190,242,252,195,211,131,243,23,5,134,90])}]})
-relay-1        | [2m15:12:30[0m [92mINF[0m relay accept loop starting [2mcomponent=[0mrelay [2maddr=[0m[::]:4443
+relay-1        | [2m11:25:44[0m [92mINF[0m failed to sufficiently increase receive buffer size (was: 1024 kiB, wanted: 7168 kiB, got: 2048 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+relay-1        | [2m11:25:44[0m [92mINF[0m relay listening on [::]:4443 (raw QUIC as moqt://0.0.0.0:4443, WebTransport as https://0.0.0.0:4443/)
+relay-1        | [2m11:25:44[0m [92mINF[0m WebTransport server cert SHA-256: 54622bdc8189ee8c47e05c91af8037f11a992fce72b20a06ceade90468b5c20a
+relay-1        | [2m11:25:44[0m [92mINF[0m   → new WebTransport("https://0.0.0.0:4443/", {serverCertificateHashes: [{algorithm: "sha-256", value: new Uint8Array([84,98,43,220,129,137,238,140,71,224,92,145,175,128,55,241,26,153,47,206,114,178,10,6,206,173,233,4,104,181,194,10])}]})
+relay-1        | [2m11:25:44[0m [92mINF[0m relay accept loop starting [2mcomponent=[0mrelay [2maddr=[0m[::]:4443
 test-client-1  | TAP version 14
-test-client-1  | # moq-dev-js-client v0.1.0 (@moq/net 0.4.4)
+test-client-1  | # moq-dev-js-client v0.1.0 (@moq/net 0.4.7)
 test-client-1  | # Relay: https://relay:4443
 test-client-1  | 1..8
-relay-1        | [2m15:12:36[0m [92mINF[0m tls: ClientHello from 172.18.0.3:46724 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:36[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:46724 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:36[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:46724 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:49[0m [92mINF[0m tls: ClientHello from 172.18.0.3:47576 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:49[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:47576 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:49[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:47576 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:36[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532668b00 [2merr=[0mEOF
-relay-1        | [2m15:12:36[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532668b00 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:36[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:49[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e848840 [2merr=[0mEOF
+relay-1        | [2m11:25:49[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e848840 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:49[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | ok 1 - setup-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 275
+test-client-1  |   duration_ms: 135
 test-client-1  |   ...
-relay-1        | [2m15:12:36[0m [92mINF[0m tls: ClientHello from 172.18.0.3:33981 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:36[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:33981 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:36[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:33981 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:50[0m [92mINF[0m tls: ClientHello from 172.18.0.3:50297 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:50[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:50297 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:50[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:50297 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:36[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532669080 [2mtype=[0m*message.PublishNamespace
-relay-1        | [2m15:12:37[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532669080 [2merr=[0mEOF
-relay-1        | [2m15:12:37[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532669080 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:37[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:50[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849080 [2mtype=[0m*message.PublishNamespace
+relay-1        | [2m11:25:50[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849080 [2merr=[0mEOF
+relay-1        | [2m11:25:50[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849080 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:50[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | ok 2 - announce-only
 test-client-1  |   ---
-test-client-1  |   duration_ms: 609
+test-client-1  |   duration_ms: 608
 test-client-1  |   ...
-relay-1        | [2m15:12:37[0m [92mINF[0m tls: ClientHello from 172.18.0.3:40723 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:37[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:40723 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:37[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:40723 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:50[0m [92mINF[0m tls: ClientHello from 172.18.0.3:33429 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:50[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:33429 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:50[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:33429 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:37[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845326c2dc0 [2mtype=[0m*message.PublishNamespace
-relay-1        | [2m15:12:38[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845326c2dc0 [2merr=[0mEOF
-relay-1        | [2m15:12:38[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845326c2dc0 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:38[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:50[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849a20 [2mtype=[0m*message.PublishNamespace
+relay-1        | [2m11:25:51[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849a20 [2merr=[0mEOF
+relay-1        | [2m11:25:51[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e849a20 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | ok 3 - publish-namespace-done
 test-client-1  |   ---
-test-client-1  |   duration_ms: 808
+test-client-1  |   duration_ms: 806
 test-client-1  |   ...
-relay-1        | [2m15:12:38[0m [92mINF[0m tls: ClientHello from 172.18.0.3:42715 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:38[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:42715 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:38[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:42715 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:51[0m [92mINF[0m tls: ClientHello from 172.18.0.3:38804 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:38804 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:38804 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
+relay-1        | [2m11:25:51[0m [92mINF[0m tls: ClientHello from 172.18.0.3:41588 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:51[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e72f600 [2mtype=[0m*message.SubscribeNamespace
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m15:12:38[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845326c38c0 [2mtype=[0m*message.SubscribeNamespace
-relay-1        | [2m15:12:38[0m [92mINF[0m tls: ClientHello from 172.18.0.3:53941 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:38[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:53941 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:38[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:53941 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:41588 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:41588 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:38[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532774580 [2mtype=[0m*message.PublishNamespace
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=true
-test-client-1  | not ok 4 - subscribe-namespace-lifecycle
+relay-1        | [2m11:25:51[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ac580 [2mtype=[0m*message.PublishNamespace
+test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/66352d0f8cd66844ba46bbdf6079b0a9 active=true
+test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/66352d0f8cd66844ba46bbdf6079b0a9 active=false
+relay-1        | [2m11:25:51[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ac580 [2merr=[0mEOF
+relay-1        | [2m11:25:51[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ac580 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e72f600 [2merr=[0mEOF
+relay-1        | [2m11:25:51[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e72f600 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+test-client-1  | ok 4 - subscribe-namespace-lifecycle
 test-client-1  |   ---
-test-client-1  |   duration_ms: 3014
+test-client-1  |   duration_ms: 216
 test-client-1  |   test_spec_revision: 1
-test-client-1  |   message: "timeout after 3000ms: NAMESPACE_DONE"
 test-client-1  |   ...
-relay-1        | [2m15:12:41[0m [92mINF[0m tls: ClientHello from 172.18.0.3:39481 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:39481 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:39481 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:51[0m [92mINF[0m tls: ClientHello from 172.18.0.3:55058 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:55058 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:51[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:55058 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
 test-client-1  | subscribe start: id=2 broadcast=nonexistent/namespace track=test-track
 test-client-1  | subscribe_namespace written: requestId=0
 test-client-1  | subscribe written: id=2 broadcast=nonexistent/namespace track=test-track
-relay-1        | [2m15:12:41[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mtype=[0m*message.SubscribeNamespace
-relay-1        | [2m15:12:41[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mtype=[0m*message.Subscribe
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mentry_exists=[0mfalse
-relay-1        | [2m15:12:41[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mnamespace=[0m/nonexistent/namespace [2mpublishers_found=[0m0
-relay-1        | [2m15:12:41[0m [92mINF[0m subscribeUpstream: no upstream established [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track [2mlocal_publishers=[0m0 [2mremote_candidates=[0m0
-relay-1        | [2m15:12:41[0m [92mINF[0m SUBSCRIBE rejected: no publisher for namespace [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track [2mrequest_id=[0m2
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=true
+relay-1        | [2m11:25:51[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mtype=[0m*message.SubscribeNamespace
+relay-1        | [2m11:25:51[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mtype=[0m*message.Subscribe
+relay-1        | [2m11:25:51[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track
+relay-1        | [2m11:25:51[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mentry_exists=[0mfalse
+relay-1        | [2m11:25:51[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mnamespace=[0m/nonexistent/namespace [2mpublishers_found=[0m0
+relay-1        | [2m11:25:51[0m [92mINF[0m subscribeUpstream: no upstream established [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track [2mlocal_publishers=[0m0 [2mremote_candidates=[0m0
+relay-1        | [2m11:25:51[0m [92mINF[0m SUBSCRIBE rejected: no publisher for namespace [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2mnamespace=[0m/nonexistent/namespace [2mname=[0mtest-track [2mrequest_id=[0m2
 test-client-1  | subscribe error: id=2 broadcast=nonexistent/namespace track=test-track error=SUBSCRIBE error: does_not_exist (code=16) relay: no publisher for namespace
-relay-1        | [2m15:12:41[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2merr=[0mEOF
-relay-1        | [2m15:12:41[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775080 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:41[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2merr=[0mEOF
+relay-1        | [2m11:25:51[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e974580 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:51[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | subscribe_namespace error: session error: connection error: closed
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=false
-test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 162 |         if (!this.#reader) {
-test-client-1  | 163 |             return false;
-test-client-1  | 164 |         }
-test-client-1  | 165 |         // Every read of this stream funnels through here, so decoding the peer's reset code
-test-client-1  | 166 |         // once is enough to keep the raw transport error out of every caller (and every app).
-test-client-1  | 167 |         const result = await this.#reader.read().catch((err) => {
+test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 172 |         if (!this.#reader) {
+test-client-1  | 173 |             return false;
+test-client-1  | 174 |         }
+test-client-1  | 175 |         // Every read of this stream funnels through here, so decoding the peer's reset code
+test-client-1  | 176 |         // once is enough to keep the raw transport error out of every caller (and every app).
+test-client-1  | 177 |         const result = await this.#reader.read().catch((err) => {
 test-client-1  |                                                        ^
 test-client-1  | error: session error: connection error: closed
 test-client-1  |  code: "GenericFailure"
 test-client-1  | 
-test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:167:50)
-test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:333:29)
+test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:177:50)
+test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:343:29)
 test-client-1  |       at async <anonymous> (/app/node_modules/@moq/net/ietf/subscriber.js:278:58)
 test-client-1  | 
 test-client-1  | ok 5 - subscribe-error
 test-client-1  |   ---
-test-client-1  |   duration_ms: 417
+test-client-1  |   duration_ms: 412
 test-client-1  |   ...
-relay-1        | [2m15:12:41[0m [92mINF[0m tls: ClientHello from 172.18.0.3:40504 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:40504 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:40504 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:52[0m [92mINF[0m tls: ClientHello from 172.18.0.3:53138 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:53138 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:53138 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:41[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775a20 [2mtype=[0m*message.PublishNamespace
-relay-1        | [2m15:12:41[0m [92mINF[0m tls: ClientHello from 172.18.0.3:46136 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:46136 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:41[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:46136 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:52[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ad340 [2mtype=[0m*message.PublishNamespace
+relay-1        | [2m11:25:52[0m [92mINF[0m tls: ClientHello from 172.18.0.3:60894 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:60894 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:60894 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m15:12:41[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mtype=[0m*message.SubscribeNamespace
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=true
+relay-1        | [2m11:25:52[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mtype=[0m*message.SubscribeNamespace
 test-client-1  | announced: broadcast=moq-test/interop active=true
 test-client-1  | subscribe start: id=2 broadcast=moq-test/interop track=test-track
 test-client-1  | subscribe written: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:41[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mtype=[0m*message.Subscribe
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mnamespace=[0m/moq-test/interop [2mname=[0mtest-track
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mentry_exists=[0mfalse
-relay-1        | [2m15:12:41[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mnamespace=[0m/moq-test/interop [2mpublishers_found=[0m1
-relay-1        | [2m15:12:41[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2msource=[0mlocal-publisher
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mname=[0mtest-track [2malias=[0m1
+relay-1        | [2m11:25:52[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mtype=[0m*message.Subscribe
+relay-1        | [2m11:25:52[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mnamespace=[0m/moq-test/interop [2mname=[0mtest-track
+relay-1        | [2m11:25:52[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mentry_exists=[0mfalse
+relay-1        | [2m11:25:52[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mnamespace=[0m/moq-test/interop [2mpublishers_found=[0m1
+relay-1        | [2m11:25:52[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2msource=[0mlocal-publisher
 test-client-1  | publish ok: broadcast=moq-test/interop track=test-track
+relay-1        | [2m11:25:52[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mname=[0mtest-track [2malias=[0m1
 test-client-1  | subscribe ok: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:41[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775a20 [2merr=[0mEOF
-relay-1        | [2m15:12:41[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x84532775a20 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:41[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:52[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ad340 [2merr=[0mEOF
+relay-1        | [2m11:25:52[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e8ad340 [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | announced: broadcast=moq-test/interop active=false
+relay-1        | [2m11:25:52[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | publish done: broadcast=moq-test/interop track=test-track
 test-client-1  | publish error: broadcast=moq-test/interop track=test-track error=session error: connection error: closed
-relay-1        | [2m15:12:41[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2merr=[0mEOF
-relay-1        | [2m15:12:41[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2mname=[0mtest-track
-relay-1        | [2m15:12:41[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283a580 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:41[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:52[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2merr=[0mEOF
+relay-1        | [2m11:25:52[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2mname=[0mtest-track
+relay-1        | [2m11:25:52[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e975760 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:52[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | subscribe_namespace error: session error: connection error: closed
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=false
-test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 162 |         if (!this.#reader) {
-test-client-1  | 163 |             return false;
-test-client-1  | 164 |         }
-test-client-1  | 165 |         // Every read of this stream funnels through here, so decoding the peer's reset code
-test-client-1  | 166 |         // once is enough to keep the raw transport error out of every caller (and every app).
-test-client-1  | 167 |         const result = await this.#reader.read().catch((err) => {
+test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 172 |         if (!this.#reader) {
+test-client-1  | 173 |             return false;
+test-client-1  | 174 |         }
+test-client-1  | 175 |         // Every read of this stream funnels through here, so decoding the peer's reset code
+test-client-1  | 176 |         // once is enough to keep the raw transport error out of every caller (and every app).
+test-client-1  | 177 |         const result = await this.#reader.read().catch((err) => {
 test-client-1  |                                                        ^
 test-client-1  | error: session error: connection error: closed
 test-client-1  |  code: "GenericFailure"
 test-client-1  | 
-test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:167:50)
-test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:333:29)
+test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:177:50)
+test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:343:29)
 test-client-1  |       at async <anonymous> (/app/node_modules/@moq/net/ietf/subscriber.js:278:58)
 test-client-1  | 
 test-client-1  | ok 6 - announce-subscribe
 test-client-1  |   ---
-test-client-1  |   duration_ms: 521
+test-client-1  |   duration_ms: 518
 test-client-1  |   ...
-relay-1        | [2m15:12:42[0m [92mINF[0m tls: ClientHello from 172.18.0.3:44899 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:44899 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:44899 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:52[0m [92mINF[0m tls: ClientHello from 172.18.0.3:36230 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:36230 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:52[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:36230 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mtype=[0m*message.SubscribeNamespace
 test-client-1  | subscribe_namespace written: requestId=0
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=true
-relay-1        | [2m15:12:42[0m [92mINF[0m tls: ClientHello from 172.18.0.3:58527 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:58527 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:58527 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:52[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mtype=[0m*message.SubscribeNamespace
+relay-1        | [2m11:25:53[0m [92mINF[0m tls: ClientHello from 172.18.0.3:56939 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:56939 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:56939 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e2000 [2mtype=[0m*message.PublishNamespace
+relay-1        | [2m11:25:53[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2ec60 [2mtype=[0m*message.PublishNamespace
 test-client-1  | announced: broadcast=moq-test/interop active=true
 test-client-1  | subscribe start: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mtype=[0m*message.Subscribe
 test-client-1  | subscribe written: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mnamespace=[0m/moq-test/interop [2mname=[0mtest-track
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mentry_exists=[0mfalse
-relay-1        | [2m15:12:42[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mnamespace=[0m/moq-test/interop [2mpublishers_found=[0m1
-relay-1        | [2m15:12:42[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2msource=[0mlocal-publisher
+relay-1        | [2m11:25:53[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mtype=[0m*message.Subscribe
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mnamespace=[0m/moq-test/interop [2mname=[0mtest-track
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mentry_exists=[0mfalse
+relay-1        | [2m11:25:53[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mnamespace=[0m/moq-test/interop [2mpublishers_found=[0m1
+relay-1        | [2m11:25:53[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2msource=[0mlocal-publisher
 test-client-1  | publish ok: broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mname=[0mtest-track [2malias=[0m1
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mname=[0mtest-track [2malias=[0m1
 test-client-1  | subscribe ok: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:42[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e2000 [2merr=[0mEOF
-relay-1        | [2m15:12:42[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e2000 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:42[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | announced: broadcast=moq-test/interop active=false
+relay-1        | [2m11:25:53[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2ec60 [2merr=[0mEOF
+relay-1        | [2m11:25:53[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2ec60 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:53[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | publish done: broadcast=moq-test/interop track=test-track
 test-client-1  | publish error: broadcast=moq-test/interop track=test-track error=session error: connection error: closed
-relay-1        | [2m15:12:42[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2merr=[0mEOF
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2mname=[0mtest-track
+relay-1        | [2m11:25:53[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2merr=[0mEOF
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2mname=[0mtest-track
+relay-1        | [2m11:25:53[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c4420 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:53[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | subscribe_namespace error: session error: connection error: closed
-relay-1        | [2m15:12:42[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453283b080 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:42[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
-test-client-1  | announced: broadcast=moq-test/interop/subscribe-namespace-lifecycle/2d74f45e925777c271d75342a79b8cf5 active=false
-test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 162 |         if (!this.#reader) {
-test-client-1  | 163 |             return false;
-test-client-1  | 164 |         }
-test-client-1  | 165 |         // Every read of this stream funnels through here, so decoding the peer's reset code
-test-client-1  | 166 |         // once is enough to keep the raw transport error out of every caller (and every app).
-test-client-1  | 167 |         const result = await this.#reader.read().catch((err) => {
+test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 172 |         if (!this.#reader) {
+test-client-1  | 173 |             return false;
+test-client-1  | 174 |         }
+test-client-1  | 175 |         // Every read of this stream funnels through here, so decoding the peer's reset code
+test-client-1  | 176 |         // once is enough to keep the raw transport error out of every caller (and every app).
+test-client-1  | 177 |         const result = await this.#reader.read().catch((err) => {
 test-client-1  |                                                        ^
 test-client-1  | error: session error: connection error: closed
 test-client-1  |  code: "GenericFailure"
 test-client-1  | 
-test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:167:50)
-test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:333:29)
+test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:177:50)
+test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:343:29)
 test-client-1  |       at async <anonymous> (/app/node_modules/@moq/net/ietf/subscriber.js:278:58)
 test-client-1  | 
 test-client-1  | ok 7 - subscribe-before-announce
 test-client-1  |   ---
-test-client-1  |   duration_ms: 715
+test-client-1  |   duration_ms: 716
 test-client-1  |   ...
-relay-1        | [2m15:12:42[0m [92mINF[0m tls: ClientHello from 172.18.0.3:59003 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:59003 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:59003 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:53[0m [92mINF[0m tls: ClientHello from 172.18.0.3:47431 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:47431 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:47431 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e29a0 [2mtype=[0m*message.PublishNamespace
-relay-1        | [2m15:12:42[0m [92mINF[0m tls: ClientHello from 172.18.0.3:52960 sni="relay" alpn=[h3] versions=[772]
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:52960 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
-relay-1        | [2m15:12:42[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:52960 [2mwt_protocol=[0mmoqt-22
+relay-1        | [2m11:25:53[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2f600 [2mtype=[0m*message.PublishNamespace
+relay-1        | [2m11:25:53[0m [92mINF[0m tls: ClientHello from 172.18.0.3:34403 sni="relay" alpn=[h3] versions=[772]
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade request [2mremote=[0m172.18.0.3:34403 [2mmethod=[0mCONNECT [2mpath=[0m/ [2mproto=[0mwebtransport [2morigin=[0m""
+relay-1        | [2m11:25:53[0m DBG wtconn: upgrade ok [2mremote=[0m172.18.0.3:34403 [2mwt_protocol=[0mmoqt-22
 test-client-1  | https://relay:4443/ connected via WebTransport
 test-client-1  | https://relay:4443/ negotiated ALPN: moqt-22
 test-client-1  | subscribe_namespace written: requestId=0
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mtype=[0m*message.SubscribeNamespace
-test-client-1  | announced: broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced active=true
-test-client-1  | subscribe start: id=2 broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-test-client-1  | subscribe written: id=2 broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-relay-1        | [2m15:12:42[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mtype=[0m*message.Subscribe
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mnamespace=[0m/moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 [2mname=[0mtrack
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mentry_exists=[0mfalse
-relay-1        | [2m15:12:42[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mnamespace=[0m/moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 [2mpublishers_found=[0m1
-relay-1        | [2m15:12:42[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2msource=[0mlocal-publisher
-test-client-1  | publish ok: broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mname=[0mtrack [2malias=[0m1
-test-client-1  | subscribe ok: id=2 broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-test-client-1  | publish done: broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-test-client-1  | subscribe close: id=2 broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
-relay-1        | [2m15:12:42[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2mname=[0mtrack
-relay-1        | [2m15:12:42[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e29a0 [2merr=[0mEOF
-relay-1        | [2m15:12:42[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x845328e29a0 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:42[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
-test-client-1  | announced: broadcast=moq-test/data-subgroup-basic/c540f008710feb4d9a1da44024298ced active=false
+relay-1        | [2m11:25:53[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mtype=[0m*message.SubscribeNamespace
+test-client-1  | announced: broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d active=true
+test-client-1  | subscribe start: id=2 broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+test-client-1  | subscribe written: id=2 broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+relay-1        | [2m11:25:53[0m DBG relay dispatching request [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mtype=[0m*message.Subscribe
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE received [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mnamespace=[0m/moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 [2mname=[0mtrack
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE no established upstream, trying on-demand [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mentry_exists=[0mfalse
+relay-1        | [2m11:25:53[0m DBG subscribeUpstream: namespace registry lookup [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mnamespace=[0m/moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 [2mpublishers_found=[0m1
+relay-1        | [2m11:25:53[0m DBG subscribeUpstream: issuing upstream SUBSCRIBE [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2msource=[0mlocal-publisher
+test-client-1  | publish ok: broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE_OK sent, waiting for subscriber [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mname=[0mtrack [2malias=[0m1
+test-client-1  | subscribe ok: id=2 broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+test-client-1  | publish done: broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+test-client-1  | subscribe close: id=2 broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d/moq-test-00/0/0/0/2/4/5/64/32/2/1/1/0/-1/-1/0 track=track
+relay-1        | [2m11:25:53[0m DBG SUBSCRIBE stream ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2mname=[0mtrack
+relay-1        | [2m11:25:53[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2f600 [2merr=[0mEOF
+relay-1        | [2m11:25:53[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8ea2f600 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:53[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+test-client-1  | announced: broadcast=moq-test/data-subgroup-basic/d146f2fa78d6ee42a0d4750bbb5bff1d active=false
 test-client-1  | subscribe close: id=2 broadcast=moq-test/interop track=test-track
-relay-1        | [2m15:12:42[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2merr=[0mEOF
-relay-1        | [2m15:12:42[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x8453293ac60 [2merr=[0m"moqt/session: peer closed with code 0x0: "
-relay-1        | [2m15:12:42[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:53[0m DBG relay datagram loop ended; datagrams unavailable on this session [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2merr=[0mEOF
+relay-1        | [2m11:25:53[0m DBG relay request loop ended [2mcomponent=[0mrelay [2mmoqt.session=[0m0x20bd8e9c5760 [2merr=[0m"moqt/session: peer closed with code 0x0: "
+relay-1        | [2m11:25:53[0m DBG relay session handler returned [2mcomponent=[0mrelay [2merr=[0m"moqt/session: peer closed with code 0x0: "
 test-client-1  | subscribe_namespace error: session error: connection error: closed
-test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 162 |         if (!this.#reader) {
-test-client-1  | 163 |             return false;
-test-client-1  | 164 |         }
-test-client-1  | 165 |         // Every read of this stream funnels through here, so decoding the peer's reset code
-test-client-1  | 166 |         // once is enough to keep the raw transport error out of every caller (and every app).
-test-client-1  | 167 |         const result = await this.#reader.read().catch((err) => {
+test-client-1  | broadcast discovery failed; broadcasts resolve on request only. 172 |         if (!this.#reader) {
+test-client-1  | 173 |             return false;
+test-client-1  | 174 |         }
+test-client-1  | 175 |         // Every read of this stream funnels through here, so decoding the peer's reset code
+test-client-1  | 176 |         // once is enough to keep the raw transport error out of every caller (and every app).
+test-client-1  | 177 |         const result = await this.#reader.read().catch((err) => {
 test-client-1  |                                                        ^
 test-client-1  | error: session error: connection error: closed
 test-client-1  |  code: "GenericFailure"
 test-client-1  | 
-test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:167:50)
-test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:333:29)
+test-client-1  |       at async #fill (/app/node_modules/@moq/net/stream.js:177:50)
+test-client-1  |       at async done (/app/node_modules/@moq/net/stream.js:343:29)
 test-client-1  |       at async <anonymous> (/app/node_modules/@moq/net/ietf/subscriber.js:278:58)
 test-client-1  | 
 test-client-1  | ok 8 - data-subgroup-basic
 test-client-1  |   ---
-test-client-1  |   duration_ms: 251
+test-client-1  |   duration_ms: 249
 test-client-1  |   test_spec_revision: 2
 test-client-1  |   ...
-[Ktest-client-1 exited with code 1
+[Ktest-client-1 exited with code 0
 Aborting on container exit...
  Container runner-upstream-test-client-1  Stopping
  Container runner-upstream-test-client-1  Stopped
  Container runner-upstream-relay-1  Stopping
  Container runner-upstream-relay-1  Stopped
 
-make: *** [Makefile:86: test] Error 1
+Test results in mlog/
