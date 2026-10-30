@@ -1,9 +1,25 @@
-publishing smoke-js-web-4922-9456.hang (fake camera, vite) to https://fb.mvfst.net:9448/moq-relay
+publishing smoke-js-web-4934-27225.hang (fake camera, vite) to https://fb.mvfst.net:9448/moq-relay
 [page] negotiated protocol: moqt-16
 [page] subscribe_namespace written: requestId=0
-[page] publish ok: broadcast=smoke-js-web-4922-9456.hang track=catalog.json
-[page] publish ok: broadcast=smoke-js-web-4922-9456.hang track=video
+[page] announced: broadcast=eyevinn-mt22-32043 active=true
+[page] announced: broadcast=eyevinn-mt22-32044 active=true
+[page] announced: broadcast=eyevinn-mt22-32042 active=true
+[page] announced: broadcast=eyevinn-mt22-32038 active=true
+[page] announced: broadcast=eyevinn-mt22-32039 active=true
+[page] announced: broadcast=eyevinn-mt22-32033 active=true
+[page] announced: broadcast=eyevinn-mt22-32040 active=true
+[page] announced: broadcast=eyevinn-mt22-32037 active=true
+[page] publish ok: broadcast=smoke-js-web-4934-27225.hang track=catalog.json
+[page] publish ok: broadcast=smoke-js-web-4934-27225.hang track=video
 [page] adapter: closing stream requestId=3
-[page] publish done: broadcast=smoke-js-web-4922-9456.hang track=video
-[page] adapter: closing stream requestId=1
-[page] publish done: broadcast=smoke-js-web-4922-9456.hang track=catalog.json
+[page] publish done: broadcast=smoke-js-web-4934-27225.hang track=video
+[page] publish ok: broadcast=smoke-js-web-4934-27225.hang track=video
+[page] adapter: closing stream requestId=5
+[page] publish done: broadcast=smoke-js-web-4934-27225.hang track=video
+[page] announced: broadcast=eyevinn-mt22-32039 active=false
+[page] announced: broadcast=eyevinn-mt22-32038 active=false
+[page] announced: broadcast=eyevinn-mt22-32040 active=false
+[page] announced: broadcast=eyevinn-mt22-32037 active=false
+[page] announced: broadcast=eyevinn-mt22-32043 active=false
+[page] announced: broadcast=eyevinn-mt22-32044 active=false
+[page] announced: broadcast=eyevinn-mt22-32033 active=false

@@ -1,7 +1,7 @@
 [
   {
-    "generated": "2026-10-29T15:07:32Z",
-    "run_url": "https://github.com/shermerL/moq/actions/runs/40896734096",
+    "generated": "2026-10-30T12:58:42Z",
+    "run_url": "https://github.com/shermerL/moq/actions/runs/41058287654",
     "endpoints": {
       "moqt://aiomoqt-relay.marzresearch.net:4443": {
         "ok": true,
@@ -36,9 +36,11 @@
         "total": 1
       },
       "https://us-west-2.relay.quicr.org:33437/relay": {
-        "ok": false,
-        "versions": [],
-        "passed": 0,
+        "ok": true,
+        "versions": [
+          "moq-transport-18"
+        ],
+        "passed": 6,
         "total": 6
       },
       "moqt://us-west-2.relay.quicr.org:33437": {
@@ -107,18 +109,16 @@
       },
       "https://relay.moqtail.dev:8244": {
         "ok": false,
-        "versions": [
-          "moq-transport-22"
-        ],
-        "passed": 3,
+        "versions": [],
+        "passed": 0,
         "total": 6
       },
       "https://relay.moqtail.dev": {
         "ok": false,
         "versions": [
-          "moq-transport-18"
+          "moq-transport-22"
         ],
-        "passed": 5,
+        "passed": 3,
         "total": 6
       },
       "moqt://moqt.nokiaresearch.com:8443/moq": {

@@ -2,19 +2,35 @@ https://fb.mvfst.net:9448/moq-relay connected via WebTransport
 https://fb.mvfst.net:9448/moq-relay negotiated ALPN: moqt-16
 connected version=moq-transport-16
 subscribe_namespace written: requestId=0
-announced: broadcast=smoke-js-web-4922-9456.hang active=true
-subscribe start: id=2 broadcast=smoke-js-web-4922-9456.hang track=catalog.json
-subscribe written: id=2 broadcast=smoke-js-web-4922-9456.hang track=catalog.json
-subscribe ok: id=2 broadcast=smoke-js-web-4922-9456.hang track=catalog.json
-subscribe start: id=4 broadcast=smoke-js-web-4922-9456.hang track=video
-subscribe written: id=4 broadcast=smoke-js-web-4922-9456.hang track=video
-subscribe ok: id=4 broadcast=smoke-js-web-4922-9456.hang track=video
-received 6916 bytes from smoke-js-web-4922-9456.hang
+announced: broadcast=eyevinn-mt22-32043 active=true
+announced: broadcast=eyevinn-mt22-32044 active=true
+announced: broadcast=eyevinn-mt22-32042 active=true
+announced: broadcast=eyevinn-mt22-32038 active=true
+announced: broadcast=eyevinn-mt22-32039 active=true
+announced: broadcast=eyevinn-mt22-32033 active=true
+announced: broadcast=eyevinn-mt22-32040 active=true
+announced: broadcast=eyevinn-mt22-32037 active=true
+announced: broadcast=smoke-js-web-4934-27225.hang active=true
+subscribe start: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
+subscribe written: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
+subscribe ok: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
+subscribe start: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
+subscribe written: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
+subscribe ok: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
+received 7804 bytes from smoke-js-web-4934-27225.hang
 adapter: close() called
-subscribe error: id=2 broadcast=smoke-js-web-4922-9456.hang track=catalog.json error=subscribe stream ended without PUBLISH_DONE
-subscribe error: id=4 broadcast=smoke-js-web-4922-9456.hang track=video error=subscribe stream ended without PUBLISH_DONE
+subscribe error: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json error=subscribe stream ended without PUBLISH_DONE
+subscribe error: id=4 broadcast=smoke-js-web-4934-27225.hang track=video error=subscribe stream ended without PUBLISH_DONE
 subscribe_namespace error: remote error: 386759528
-announced: broadcast=smoke-js-web-4922-9456.hang active=false
+announced: broadcast=eyevinn-mt22-32043 active=false
+announced: broadcast=eyevinn-mt22-32044 active=false
+announced: broadcast=eyevinn-mt22-32042 active=false
+announced: broadcast=eyevinn-mt22-32038 active=false
+announced: broadcast=eyevinn-mt22-32039 active=false
+announced: broadcast=eyevinn-mt22-32033 active=false
+announced: broadcast=eyevinn-mt22-32040 active=false
+announced: broadcast=eyevinn-mt22-32037 active=false
+announced: broadcast=smoke-js-web-4934-27225.hang active=false
 broadcast discovery failed; broadcasts resolve on request only. Stream: remote error: 386759528
  code: 0,
 

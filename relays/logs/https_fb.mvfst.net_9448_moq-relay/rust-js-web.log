@@ -1,17 +1,25 @@
 [page] negotiated protocol: moqt-16
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-rust-4922-9219.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-rust-4922-9219.hang track=catalog.json
-[page] subscribe written: id=2 broadcast=smoke-rust-4922-9219.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-rust-4922-9219.hang track=catalog.json
-[page] received catalog hang smoke-rust-4922-9219.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-rust-4922-9219.hang track=0.avc3
-[page] subscribe written: id=4 broadcast=smoke-rust-4922-9219.hang track=0.avc3
-[page] subscribe ok: id=4 broadcast=smoke-rust-4922-9219.hang track=0.avc3
-[page] dropping a group with no head: alias=3 group=2
+[page] announced: broadcast=smoke-rust-4934-23285.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-4934-23285.hang track=catalog.json
+[page] subscribe written: id=2 broadcast=smoke-rust-4934-23285.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-4934-23285.hang track=catalog.json
+[page] received catalog hang smoke-rust-4934-23285.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-rust-4934-23285.hang track=0.avc3
+[page] subscribe written: id=4 broadcast=smoke-rust-4934-23285.hang track=0.avc3
+[page] subscribe ok: id=4 broadcast=smoke-rust-4934-23285.hang track=0.avc3
+[page] dropping a group with no head: alias=4 group=2
 [page] adapter: closing stream requestId=4
-[page] subscribe error: id=4 broadcast=smoke-rust-4922-9219.hang track=0.avc3 error=publish done: status=0x0 reason=Write after stream complete or reset
+[page] subscribe error: id=4 broadcast=smoke-rust-4934-23285.hang track=0.avc3 error=publish done: status=0x0 reason=Write after stream complete or reset
 [page] spawn error Error: publish done: status=0x0 reason=Write after stream complete or reset
-    at #x (http://localhost:46223/assets/index-B3sTODoC.js:1:220598)
-[page] received catalog hang smoke-rust-4922-9219.hang {video: Object, audio: Object, archive: Object, clock: Object}
-decoded 0 frames from smoke-rust-4922-9219.hang (vite)
+    at #x (http://localhost:41645/assets/index-QjPCWezJ.js:1:220598)
+[page] received catalog hang smoke-rust-4934-23285.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] announced: broadcast=eyevinn-mt22-32040 active=true
+[page] announced: broadcast=eyevinn-mt22-32033 active=true
+[page] announced: broadcast=eyevinn-mt22-32039 active=true
+[page] announced: broadcast=eyevinn-mt22-32038 active=true
+[page] announced: broadcast=eyevinn-mt22-32042 active=true
+[page] announced: broadcast=eyevinn-mt22-32044 active=true
+[page] announced: broadcast=eyevinn-mt22-32043 active=true
+[page] announced: broadcast=eyevinn-mt22-32037 active=true
+decoded 0 frames from smoke-rust-4934-23285.hang (vite)
