@@ -1,20 +1,11 @@
 [page] negotiated protocol: moqt-16
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-js-web-4934-27225.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
-[page] announced: broadcast=eyevinn-mt22-32043 active=true
-[page] announced: broadcast=eyevinn-mt22-32044 active=true
-[page] announced: broadcast=eyevinn-mt22-32042 active=true
-[page] announced: broadcast=eyevinn-mt22-32038 active=true
-[page] announced: broadcast=eyevinn-mt22-32039 active=true
-[page] subscribe written: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
-[page] announced: broadcast=eyevinn-mt22-32033 active=true
-[page] announced: broadcast=eyevinn-mt22-32040 active=true
-[page] announced: broadcast=eyevinn-mt22-32037 active=true
-[page] subscribe ok: id=2 broadcast=smoke-js-web-4934-27225.hang track=catalog.json
-[page] received catalog hang smoke-js-web-4934-27225.hang {video: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
-[page] subscribe written: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
-[page] subscribe ok: id=4 broadcast=smoke-js-web-4934-27225.hang track=video
-[page] received catalog hang smoke-js-web-4934-27225.hang {video: Object, clock: Object}
-decoded 3 frames from smoke-js-web-4934-27225.hang (vite)
+[page] announced: broadcast=smoke-js-web-4713-28477.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-js-web-4713-28477.hang track=catalog.json
+[page] subscribe written: id=2 broadcast=smoke-js-web-4713-28477.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-js-web-4713-28477.hang track=catalog.json
+[page] received catalog hang smoke-js-web-4713-28477.hang {video: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-js-web-4713-28477.hang track=video
+[page] subscribe written: id=4 broadcast=smoke-js-web-4713-28477.hang track=video
+[page] subscribe ok: id=4 broadcast=smoke-js-web-4713-28477.hang track=video
+decoded 2 frames from smoke-js-web-4713-28477.hang (vite)
