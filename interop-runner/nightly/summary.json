@@ -99,8 +99,8 @@
       "classification": "ahead",
       "mode": "docker",
       "target": "moq-interop-relay:local",
-      "status": "fail",
-      "exit_code": 2,
+      "status": "pass",
+      "exit_code": 0,
       "negotiated_versions": [
         "draft-22"
       ]
@@ -329,5 +329,5 @@
     }
   ],
   "target_version": "draft-18",
-  "timestamp": "2026-11-01T15:01:30Z"
+  "timestamp": "2026-11-02T13:46:24Z"
 }
