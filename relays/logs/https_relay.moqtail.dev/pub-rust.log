@@ -1,9 +1,10 @@
-[2m2026-11-01T14:50:31.101971Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m6808967727546343 [3mconfigured[0m[2m=[0mfalse
-[2m2026-11-01T14:50:31.123440Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
-[2m2026-11-01T14:50:31.123462Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m4194304
-[2m2026-11-01T14:50:31.143201Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
-[2m2026-11-01T14:50:31.143499Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
-[2m2026-11-01T14:50:31.468554Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
-[2m2026-11-01T14:50:31.468580Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
-[2m2026-11-01T14:50:31.614088Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m353 [3mbroadcast[0m[2m=[0msmoke-rust-4197-20480.hang [3mtrack[0m[2m=[0mcatalog.json
-[2m2026-11-01T14:50:33.461704Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m355 [3mbroadcast[0m[2m=[0msmoke-rust-4197-20480.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-11-02T13:34:17.402964Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m cluster initialized [3mhop_id[0m[2m=[0m2799029615530170 [3mconfigured[0m[2m=[0mfalse
+[2m2026-11-02T13:34:17.410437Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP receive buffer is smaller than requested; raise `net.core.rmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m1048576
+[2m2026-11-02T13:34:17.410455Z[0m [33m WARN[0m [2mmoq_sock::bind[0m[2m:[0m UDP send buffer is smaller than requested; raise `net.core.wmem_max` or expect packet loss under load [3mwanted[0m[2m=[0m8388608 [3mgranted[0m[2m=[0m4194304
+[2m2026-11-02T13:34:17.413917Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connecting [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
+[2m2026-11-02T13:34:17.413928Z[0m [32m INFO[0m [2mmoq_relay::cluster[0m[2m:[0m no cluster peers configured; running standalone
+[2m2026-11-02T13:34:17.572278Z[0m [32m INFO[0m [2mmoq_tokio::client[0m[2m:[0m connected [3mversion[0m[2m=[0mmoq-transport-22
+[2m2026-11-02T13:34:17.572309Z[0m [32m INFO[0m [2mmoq_tokio::connection[0m[2m:[0m connected [3mpeer[0m[2m=[0mhttps://relay.moqtail.dev
+[2m2026-11-02T13:34:17.611130Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m27 [3mbroadcast[0m[2m=[0msmoke-rust-4009-2320.hang [3mtrack[0m[2m=[0mcatalog.json
+[2m2026-11-02T13:34:17.766863Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m29 [3mbroadcast[0m[2m=[0msmoke-rust-4009-2320.hang [3mtrack[0m[2m=[0m0.avc3
+[2m2026-11-02T13:34:19.689933Z[0m [32m INFO[0m [2mmoq_net::ietf::publisher[0m[2m:[0m subscribe started [3mid[0m[2m=[0m31 [3mbroadcast[0m[2m=[0msmoke-rust-4009-2320.hang [3mtrack[0m[2m=[0m0.avc3
