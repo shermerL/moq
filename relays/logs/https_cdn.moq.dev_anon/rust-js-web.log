@@ -2,10 +2,10 @@
 [page] announced: prefix=
 [page] announce: prefix=
 [page] announced: broadcast=lcb-6817779-4bcd.hang active=true
-[page] announced: broadcast=smoke-rust-4237-15915.hang active=true
-[page] subscribe start: id=0 broadcast=smoke-rust-4237-15915.hang track=catalog.json
-[page] subscribe ok: id=0 broadcast=smoke-rust-4237-15915.hang track=catalog.json
-[page] received catalog hang smoke-rust-4237-15915.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=1 broadcast=smoke-rust-4237-15915.hang track=0.avc3
-[page] subscribe ok: id=1 broadcast=smoke-rust-4237-15915.hang track=0.avc3
-decoded 24 frames from smoke-rust-4237-15915.hang (vite)
+[page] announced: broadcast=smoke-rust-4250-14465.hang active=true
+[page] subscribe start: id=0 broadcast=smoke-rust-4250-14465.hang track=catalog.json
+[page] subscribe ok: id=0 broadcast=smoke-rust-4250-14465.hang track=catalog.json
+[page] received catalog hang smoke-rust-4250-14465.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=1 broadcast=smoke-rust-4250-14465.hang track=0.avc3
+[page] subscribe ok: id=1 broadcast=smoke-rust-4250-14465.hang track=0.avc3
+decoded 25 frames from smoke-rust-4250-14465.hang (vite)
