@@ -2,15 +2,17 @@ https://cdn.moq.dev/anon connected via WebTransport
 https://cdn.moq.dev/anon negotiated ALPN: moq-lite-06
 announced: prefix=
 connected version=moq-lite-06
-announced: broadcast=smoke-rust-4233-12466.hang active=true
-subscribe start: id=0 broadcast=smoke-rust-4233-12466.hang track=catalog.json
+announced: broadcast=alluno/comms/8afe57cd-9e40-4f0f-946e-dbca939eb524/b767c775-2ef2-492f-b8b6-d0827cce48d3/~vq7mwn5w899h active=true
+announced: broadcast=alluno/host/8afe57cd-9e40-4f0f-946e-dbca939eb524 active=true
+announced: broadcast=smoke-rust-4209-22317.hang active=true
+subscribe start: id=0 broadcast=smoke-rust-4209-22317.hang track=catalog.json
 announce: prefix=
-subscribe ok: id=0 broadcast=smoke-rust-4233-12466.hang track=catalog.json
-subscribe start: id=1 broadcast=smoke-rust-4233-12466.hang track=0.avc3
-subscribe ok: id=1 broadcast=smoke-rust-4233-12466.hang track=0.avc3
-received 6709 bytes from smoke-rust-4233-12466.hang
-subscribe close: id=0 broadcast=smoke-rust-4233-12466.hang track=catalog.json
-subscribe close: id=1 broadcast=smoke-rust-4233-12466.hang track=0.avc3
+subscribe ok: id=0 broadcast=smoke-rust-4209-22317.hang track=catalog.json
+subscribe start: id=1 broadcast=smoke-rust-4209-22317.hang track=0.avc3
+subscribe ok: id=1 broadcast=smoke-rust-4209-22317.hang track=0.avc3
+received 6709 bytes from smoke-rust-4209-22317.hang
+subscribe close: id=0 broadcast=smoke-rust-4209-22317.hang track=catalog.json
+subscribe close: id=1 broadcast=smoke-rust-4209-22317.hang track=0.avc3
 broadcast discovery failed; broadcasts resolve on request only. WebTransportError {
   source: "session",
   streamErrorCode: null,
