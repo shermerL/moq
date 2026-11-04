@@ -1,20 +1,30 @@
 [page] negotiated protocol: moqt-16
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=smoke-rust-4489-28672.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-rust-4489-28672.hang track=catalog.json
-[page] subscribe written: id=2 broadcast=smoke-rust-4489-28672.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-rust-4489-28672.hang track=catalog.json
-[page] received catalog hang smoke-rust-4489-28672.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-rust-4489-28672.hang track=0.avc3
-[page] subscribe written: id=4 broadcast=smoke-rust-4489-28672.hang track=0.avc3
-[page] subscribe ok: id=4 broadcast=smoke-rust-4489-28672.hang track=0.avc3
-[page] dropping a group with no head: alias=3 group=2
+[page] announced: broadcast=smoke-rust-4210-32112.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-4210-32112.hang track=catalog.json
+[page] announced: broadcast=aiomoqt active=true
+[page] subscribe written: id=2 broadcast=smoke-rust-4210-32112.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-4210-32112.hang track=catalog.json
+[page] received catalog hang smoke-rust-4210-32112.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-rust-4210-32112.hang track=0.avc3
+[page] subscribe written: id=4 broadcast=smoke-rust-4210-32112.hang track=0.avc3
+[page] subscribe ok: id=4 broadcast=smoke-rust-4210-32112.hang track=0.avc3
+[page] dropping a group with no head: alias=4 group=2
 [page] adapter: closing stream requestId=4
-[page] subscribe error: id=4 broadcast=smoke-rust-4489-28672.hang track=0.avc3 error=publish done: status=0x0 reason=Write after stream complete or reset
+[page] subscribe error: id=4 broadcast=smoke-rust-4210-32112.hang track=0.avc3 error=publish done: status=0x0 reason=Write after stream complete or reset
 [page] spawn error Error: publish done: status=0x0 reason=Write after stream complete or reset
-    at #x (http://localhost:42947/assets/index-QjPCWezJ.js:1:220598)
-[page] received catalog hang smoke-rust-4489-28672.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] received catalog hang smoke-rust-4489-28672.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] received catalog hang smoke-rust-4489-28672.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] received catalog hang smoke-rust-4489-28672.hang {video: Object, audio: Object, archive: Object, clock: Object}
-decoded 0 frames from smoke-rust-4489-28672.hang (vite)
+    at #x (http://localhost:40597/assets/index-QjPCWezJ.js:1:220598)
+[page] received catalog hang smoke-rust-4210-32112.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] announced: broadcast=aiomoqt active=false
+[page] received catalog hang smoke-rust-4210-32112.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] received catalog hang smoke-rust-4210-32112.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] announced: broadcast=moq-test/join/6f0e6aa37fa11cf876a6759ae06afb48 active=true
+[page] announced: broadcast=moq-test/join/6f0e6aa37fa11cf876a6759ae06afb48 active=false
+[page] announced: broadcast=moq-test/fetch/6423b51998b76443c45baf625aec4923 active=true
+[page] announced: broadcast=moq-test/fetch/6423b51998b76443c45baf625aec4923 active=false
+[page] announced: broadcast=moq-test/5766/interop/namespace-discovery active=true
+[page] announced: broadcast=moq-test/5766/interop/namespace-discovery active=false
+[page] announced: broadcast=moq-test/data-subgroup-basic/e087cefb6889f0cd3732ba35f03434f9 active=true
+[page] announced: broadcast=moq-test/data-subgroup-basic/e087cefb6889f0cd3732ba35f03434f9 active=false
+[page] received catalog hang smoke-rust-4210-32112.hang {video: Object, audio: Object, archive: Object, clock: Object}
+decoded 0 frames from smoke-rust-4210-32112.hang (vite)
