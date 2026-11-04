@@ -2,12 +2,13 @@
 [page] subscribe_namespace written: requestId=0
 [page] announced: broadcast=openmoq/aiomoqt/mtt_00/artemis_directors/loc/h264/1080/30/aac/2 active=true
 [page] announced: broadcast=openmoq/aiomoqt/mtt_00/bbb_4k30/cmaf/h264/1080/30/aac/2 active=true
-[page] announced: broadcast=smoke-js-web-4250-14927.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-js-web-4250-14927.hang track=catalog.json
-[page] subscribe written: id=2 broadcast=smoke-js-web-4250-14927.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-js-web-4250-14927.hang track=catalog.json
-[page] received catalog hang smoke-js-web-4250-14927.hang {video: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-js-web-4250-14927.hang track=video
-[page] subscribe written: id=4 broadcast=smoke-js-web-4250-14927.hang track=video
-[page] subscribe ok: id=4 broadcast=smoke-js-web-4250-14927.hang track=video
-decoded 3 frames from smoke-js-web-4250-14927.hang (vite)
+[page] announced: broadcast=g5-6c22119d active=true
+[page] announced: broadcast=smoke-js-web-4340-17465.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-js-web-4340-17465.hang track=catalog.json
+[page] subscribe written: id=2 broadcast=smoke-js-web-4340-17465.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-js-web-4340-17465.hang track=catalog.json
+[page] received catalog hang smoke-js-web-4340-17465.hang {video: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-js-web-4340-17465.hang track=video
+[page] subscribe written: id=4 broadcast=smoke-js-web-4340-17465.hang track=video
+[page] subscribe ok: id=4 broadcast=smoke-js-web-4340-17465.hang track=video
+decoded 3 frames from smoke-js-web-4340-17465.hang (vite)
