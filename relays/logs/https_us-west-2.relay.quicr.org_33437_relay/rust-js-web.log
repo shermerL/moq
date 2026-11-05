@@ -1,18 +1,12 @@
 [page] negotiated protocol: moqt-18
 [page] subscribe_namespace written: requestId=0
-[page] announced: broadcast=moq-test/5651/interop/namespace-discovery active=true
-[page] announced: broadcast=smoke-rust-4210-10415.hang active=true
-[page] subscribe start: id=2 broadcast=smoke-rust-4210-10415.hang track=catalog.json
+[page] announced: broadcast=smoke-rust-4233-22731.hang active=true
+[page] subscribe start: id=2 broadcast=smoke-rust-4233-22731.hang track=catalog.json
 [page] announced: broadcast=metrics/us-west-2.relay.public active=true
-[page] subscribe written: id=2 broadcast=smoke-rust-4210-10415.hang track=catalog.json
-[page] subscribe ok: id=2 broadcast=smoke-rust-4210-10415.hang track=catalog.json
-[page] announced: broadcast=moq-test/5651/interop/publish-track-only active=true
-[page] announced: broadcast=moq-test/5651/interop/publish-track-only active=false
-[page] announced: broadcast=moq-test/5651/interop/publish-track-subscribe active=true
-[page] received catalog hang smoke-rust-4210-10415.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=4 broadcast=smoke-rust-4210-10415.hang track=0.avc3
-[page] subscribe written: id=4 broadcast=smoke-rust-4210-10415.hang track=0.avc3
-[page] subscribe ok: id=4 broadcast=smoke-rust-4210-10415.hang track=0.avc3
-[page] announced: broadcast=moq-test-00/0/0/0/2/5/5/64/32/2/1/1/1/-1/-1/0 active=true
-[page] announced: broadcast=moq-test-00/0/0/0/2/5/5/64/32/2/1/1/1/-1/-1/0 active=false
-decoded 11 frames from smoke-rust-4210-10415.hang (vite)
+[page] subscribe written: id=2 broadcast=smoke-rust-4233-22731.hang track=catalog.json
+[page] subscribe ok: id=2 broadcast=smoke-rust-4233-22731.hang track=catalog.json
+[page] received catalog hang smoke-rust-4233-22731.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=4 broadcast=smoke-rust-4233-22731.hang track=0.avc3
+[page] subscribe written: id=4 broadcast=smoke-rust-4233-22731.hang track=0.avc3
+[page] subscribe ok: id=4 broadcast=smoke-rust-4233-22731.hang track=0.avc3
+decoded 3 frames from smoke-rust-4233-22731.hang (vite)
