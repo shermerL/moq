@@ -1,14 +1,12 @@
 [page] negotiated protocol: moq-lite-06
 [page] announced: prefix=
 [page] announce: prefix=
-[page] announced: broadcast=alluno/comms/4defd109-b88c-4900-8c00-e409f1cb7e6e/b767c775-2ef2-492f-b8b6-d0827cce48d3/~b7fvh7my4bk0 active=true
-[page] announced: broadcast=alluno/host/4defd109-b88c-4900-8c00-e409f1cb7e6e active=true
-[page] announced: broadcast=iori-dev active=true
+[page] announced: broadcast=blume-town-sp-node active=true
 [page] announced: broadcast=lcb-6840218-7405.hang active=true
-[page] announced: broadcast=smoke-rust-4274-29594.hang active=true
-[page] subscribe start: id=0 broadcast=smoke-rust-4274-29594.hang track=catalog.json
-[page] subscribe ok: id=0 broadcast=smoke-rust-4274-29594.hang track=catalog.json
-[page] received catalog hang smoke-rust-4274-29594.hang {video: Object, audio: Object, archive: Object, clock: Object}
-[page] subscribe start: id=1 broadcast=smoke-rust-4274-29594.hang track=0.avc3
-[page] subscribe ok: id=1 broadcast=smoke-rust-4274-29594.hang track=0.avc3
-decoded 22 frames from smoke-rust-4274-29594.hang (vite)
+[page] announced: broadcast=smoke-rust-4251-14061.hang active=true
+[page] subscribe start: id=0 broadcast=smoke-rust-4251-14061.hang track=catalog.json
+[page] subscribe ok: id=0 broadcast=smoke-rust-4251-14061.hang track=catalog.json
+[page] received catalog hang smoke-rust-4251-14061.hang {video: Object, audio: Object, archive: Object, clock: Object}
+[page] subscribe start: id=1 broadcast=smoke-rust-4251-14061.hang track=0.avc3
+[page] subscribe ok: id=1 broadcast=smoke-rust-4251-14061.hang track=0.avc3
+decoded 23 frames from smoke-rust-4251-14061.hang (vite)

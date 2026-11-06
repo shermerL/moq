@@ -1,16 +1,20 @@
-publishing smoke-js-web-4274-8613.hang (fake camera, vite) to https://relay.moqtail.dev
+publishing smoke-js-web-4251-13570.hang (fake camera, vite) to https://relay.moqtail.dev
 [page] negotiated protocol: moqt-22
 [page] subscribe_namespace written: requestId=0
+[page] announced: broadcast=moqtail/testsrc active=true
+[page] announced: broadcast=moqtail/ch04 active=true
+[page] announced: broadcast=moqtail/ch07_all active=true
+[page] announced: broadcast=moqtail/ch02 active=true
 [page] announced: broadcast=moqtail/ch00_all active=true
+[page] announced: broadcast=moqtail/ch07 active=true
 [page] announced: broadcast=moqtail/ch00 active=true
 [page] announced: broadcast=moqtail/ch07_vod active=true
-[page] announced: broadcast=moqtail/ch06 active=true
-[page] announced: broadcast=moqtail/ch07 active=true
-[page] announced: broadcast=moqtail/ch02 active=true
 [page] announced: broadcast=moqtail/ch05 active=true
-[page] announced: broadcast=moqtail/ch03 active=true
-[page] announced: broadcast=moqtail/ch04 active=true
-[page] announced: broadcast=moqtail/testsrc active=true
+[page] announced: broadcast=moqtail/ch06 active=true
 [page] announced: broadcast=moqtail/ch01 active=true
-[page] announced: broadcast=moqtail/ch07_all active=true
-[page] publish ok: broadcast=smoke-js-web-4274-8613.hang track=catalog.json
+[page] announced: broadcast=moqtap-testlab/mp-10a44411 active=true
+[page] announced: broadcast=moqtail/ch03 active=true
+[page] publish ok: broadcast=smoke-js-web-4251-13570.hang track=catalog.json
+[page] announced: broadcast=moqtap-testlab/mp-10a44411 active=false
+[page] publish done: broadcast=smoke-js-web-4251-13570.hang track=catalog.json
+[page] publish error: broadcast=smoke-js-web-4251-13570.hang track=catalog.json error=remote error: 0
