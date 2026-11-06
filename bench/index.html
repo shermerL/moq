@@ -12,14 +12,14 @@ td{font-variant-numeric:tabular-nums}polyline{fill:none;stroke:#555}.worse{backg
 .better{background:#cec}.muted{color:#888;font-weight:400}input{font:inherit;width:100%;padding:.3rem}
 </style>
 <h1>MoQ nightly benchmarks</h1>
-<p>Nightly <a href="https://github.com/moq-dev/moq/commit/419b799c75e0a0db1485a0920e29b2b264e18600">419b799c7</a>, 0 flagged
+<p>Nightly <a href="https://github.com/moq-dev/moq/commit/1a6ac473d75fcbfd5d23bdbdfd64eb4750b077ad">1a6ac473d</a>, 0 flagged
 of 1044 series. Each series compares its newest point with the median
 of its previous 7. Red is worse and green is better by more than 10% and 3 times that window's median
 absolute deviation. Grey rows lack history or come from a source that did not finish tonight.
 <a href="https://github.com/moq-dev/moq/blob/main/bench/README.md#nightly-trends">Metrics and local
 reproduction</a></p>
 <input id="filter" type="search" placeholder="Filter series">
-<h2>Paired comparison</h2><p class="muted">No paired comparison finished on the latest nightly.</p><details open class="flagged"><summary>Regressions (0)</summary></details><details open class="flagged"><summary>Improvements (0)</summary></details><details><summary>bench-js (1044) <span class="muted">stale: last measured 2026-11-02 at f8c608a24, 2 days ago</span></summary><table><thead><tr><th>Series<th>Latest<th>Baseline<th>Change<th>Trend</thead><tbody><tr><td>bench-js/js/arrivals/handles=1/backlog=0/ns_per_handle_write<td>487 ns<td>488 ns<td class="muted">-0.2%<td><svg width="87" height="16"><polyline points="0,1 3,14 6,13 9,15 12,9 15,15 18,13 21,13 24,8 27,9 30,13"/></svg>
+<h2>Paired comparison</h2><p class="muted">No paired comparison finished on the latest nightly.</p><details open class="flagged"><summary>Regressions (0)</summary></details><details open class="flagged"><summary>Improvements (0)</summary></details><details><summary>bench-js (1044) <span class="muted">stale: last measured 2026-11-02 at f8c608a24, 3 days ago</span></summary><table><thead><tr><th>Series<th>Latest<th>Baseline<th>Change<th>Trend</thead><tbody><tr><td>bench-js/js/arrivals/handles=1/backlog=0/ns_per_handle_write<td>487 ns<td>488 ns<td class="muted">-0.2%<td><svg width="87" height="16"><polyline points="0,1 3,14 6,13 9,15 12,9 15,15 18,13 21,13 24,8 27,9 30,13"/></svg>
 <tr><td>bench-js/js/arrivals/handles=1/backlog=256/ns_per_handle_write<td>265 ns<td>236 ns<td class="muted">+12.3%<td><svg width="87" height="16"><polyline points="0,9 3,14 6,12 9,14 12,9 15,15 18,10 21,1 24,13 27,14 30,11"/></svg>
 <tr><td>bench-js/js/arrivals/handles=1/backlog=4096/ns_per_handle_write<td>472 ns<td>453 ns<td class="muted">+4.2%<td><svg width="87" height="16"><polyline points="0,10 3,1 6,14 9,12 12,9 15,15 18,2 21,15 24,12 27,12 30,12"/></svg>
 <tr><td>bench-js/js/arrivals/handles=16/backlog=0/ns_per_handle_write<td>152 ns<td>156 ns<td class="muted">-2.6%<td><svg width="87" height="16"><polyline points="0,8 3,1 6,14 9,3 12,10 15,1 18,11 21,12 24,14 27,15 30,15"/></svg>
